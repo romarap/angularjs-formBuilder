@@ -4,8 +4,8 @@
  * For the correct positioning of the placeholder element, the dnd-list and
  * it's children must have position: relative
  */
-.nestedDemo ul[dnd-list],
-.nestedDemo ul[dnd-list] > li {
+.formBuilder ul[dnd-list],
+.formBuilder ul[dnd-list] > li {
 	position: relative;
 }
 
@@ -15,7 +15,7 @@
  * The dnd-list should always have a min-height,
  * otherwise you can't drop to it once it's empty
  */
-.nestedDemo .dropzone ul[dnd-list] {
+.formBuilder .dropzone ul[dnd-list] {
     min-height: 42px;
     margin: 0px;
     padding-left: 0px;
@@ -28,7 +28,7 @@
  * half of the element we are dragging over. In other
  * browsers we can use event.offsetY for this.
  */
-.nestedDemo .dropzone li {
+.formBuilder .dropzone li {
     background-color: #fff;
     border: 1px solid #ddd;
     display: block;
@@ -40,7 +40,7 @@
  * to see where he is dropping his element, even if the element is huge. The
  * .dndDragging class is automatically set during the drag operation.
  */
-.nestedDemo .dropzone .dndDragging {
+.formBuilder .dropzone .dndDragging {
     opacity: 0.7;
 }
 
@@ -49,7 +49,7 @@
  * operation. It makes sense to hide it to give the user the feeling that he's
  * actually moving it. Note that the source element has also .dndDragging class.
  */
-.nestedDemo .dropzone .dndDraggingSource {
+.formBuilder .dropzone .dndDraggingSource {
     display: none;
 }
 
@@ -57,89 +57,113 @@
  * An element with .dndPlaceholder class will be added as child of the dnd-list
  * while the user is dragging over it.
  */
-.nestedDemo .dropzone .dndPlaceholder {
+.formBuilder .dropzone .dndPlaceholder {
     background-color: #ddd;
-    min-height: 42px;
+    /*min-height: 42px;*/
+    min-height: 100px;
     display: block;
     position: relative;
 }
 
 /***************************** Element Selection *****************************/
 
-.nestedDemo .dropzone .selected .item {
+.formBuilder .dropzone .selected .item {
     color: #3c763d;
     background-color: #dff0d8;
 }
 
-.nestedDemo .dropzone .selected .box {
+.formBuilder .dropzone .selected .box {
     border-color: #d6e9c6;
 }
 
-.nestedDemo .dropzone .selected .box > h3 {
+.formBuilder .dropzone .selected .box > h3 {
     color: #3c763d;
     background-color: #dff0d8;
     background-image: linear-gradient(to bottom,#dff0d8 0,#d0e9c6 100%);
     border-color: #d6e9c6;
+    font-size:8px;
+    padding: 2px;
+    margin:0px;
 }
 
 /***************************** Element type specific styles *****************************/
 
-.nestedDemo .dropzone .item {
+.formBuilder .dropzone .item {
     padding: 10px 15px;
 }
 
-.nestedDemo .dropzone .container-element {
+.formBuilder .dropzone .container-element {
     margin: 10px;
 }
 
-.nestedDemo .dropzone .container-element .column {
+.formBuilder .dropzone .container-element .column {
     float: left;
     width: 50%;
 }
 
 /***************************** Toolbox *****************************/
 
-.nestedDemo .toolbox ul {
+.formBuilder .toolbox ul {
     list-style: none;
     padding-left: 0px;
     cursor: move;
 }
 
-.nestedDemo .toolbox button {
+.formBuilder .toolbox button {
     margin: 5px;
     width: 123px;
     opacity: 1.0;
 }
 
-.nestedDemo .toolbox .dndDragging {
+.formBuilder .toolbox .dndDragging {
     opacity: 0.5;
 }
 
-.nestedDemo .toolbox .dndDraggingSource {
+.formBuilder .toolbox .dndDraggingSource {
     opacity: 1.0;
 }
 
 /***************************** Trashcan *****************************/
 
-.nestedDemo .trashcan ul {
+.formBuilder .trashcan ul {
     list-style: none;
     padding-left: 0px;
 }
 
-.nestedDemo .trashcan img {
+.formBuilder .trashcan img {
     width: 100%;
     -webkit-filter: grayscale(100%);
     -moz-filter: grayscale(100%);
     filter: grayscale(100%);
 }
 
-.nestedDemo .trashcan .dndDragover img {
+.formBuilder .trashcan .dndDragover img {
     width: 100%;
     -webkit-filter: none;
     -moz-filter: none;
     filter: none;
 }
 
-.nestedDemo .trashcan .dndPlaceholder {
+.formBuilder .trashcan .dndPlaceholder {
     display: none;
 }
+
+
+.nav-tabs > li > a {
+    border: 1px solid #000;
+}
+
+.tabset, .tab-content, .tab-pane, .tabbable {
+  height:100%;
+}
+
+.tab-content {
+        height:100%;
+        border: 1px solid #000;
+      }
+
+.tab-area {
+    min-height:300px;
+    padding-bottom:20px;
+}
+

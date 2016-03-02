@@ -1,0 +1,5 @@
+<div class="container-element box box-blue">
+    <h3>Container {{item.id}}</h3>
+    <div class="column box-yellow" ng-repeat="list in item.columns" ng-include="'views/directive-templates/dropZone/dropZone.html'"></div>
+    <div class="clearfix"></div>
+</div>

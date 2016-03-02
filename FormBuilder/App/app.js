@@ -19,16 +19,16 @@ var app = angular.module('myApp', ['ui.bootstrap', 'ngRoute', 'dndLists'])
             templateUrl: 'views/tryIt.html',
             controller: 'tryItController'
         })
-      .when('/about', {
-          templateUrl: 'views/about.html',
-          controller: 'aboutController'
+      .when('/build', {
+          templateUrl: 'views/build.html',
+          controller: 'buildController'
       })
       .otherwise({
           redirectTo: '/'
       });
 }])
 .controller('mainController', function ($scope) {
-    $scope.message = "Main Content";
+    
 });;
 
 

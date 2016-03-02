@@ -68,15 +68,18 @@
     <Content Include="App\scripts\directives\form-directive.js" />
     <Content Include="App\scripts\services\form-service.js" />
     <Content Include="App\styles\bootstrap-2.3.2.min.css" />
-    <Content Include="App\styles\nestedDragDrop.css" />
-    <Content Include="App\styles\simpleDragDrop.css" />
+    <Content Include="App\styles\formBuilder.css" />
     <Content Include="App\styles\main.css" />
     <Content Include="App\styles\demoFramework.css" />
+    <Content Include="App\views\directive-templates\dropZone\dropZone.html" />
+    <Content Include="App\views\directive-templates\field-templates\container.html" />
+    <Content Include="App\views\directive-templates\field-templates\radio.html" />
+    <Content Include="App\views\directive-templates\field-templates\textfield.html" />
     <Content Include="App\views\tryIt.html" />
-    <Content Include="App\views\about.html" />
+    <Content Include="App\views\build.html" />
     <Content Include="App\views\create.html" />
-    <Content Include="App\views\directive-templates\dragDrop\nested.html" />
-    <Content Include="App\views\directive-templates\dragDrop\simple.html" />
+    <Content Include="App\views\directive-templates\dragDropExample\nested.html" />
+    <Content Include="App\views\directive-templates\dragDropExample\simple.html" />
     <Content Include="App\views\directive-templates\field\checkbox.html" />
     <Content Include="App\views\directive-templates\field\date.html" />
     <Content Include="App\views\directive-templates\field\dropdown.html" />
@@ -907,7 +910,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\app.js" />
-    <Content Include="App\scripts\controllers\aboutController.js" />
+    <Content Include="App\scripts\controllers\buildController.js" />
     <Content Include="App\scripts\controllers\homeController.js" />
     <Content Include="App\Index.html" />
     <Content Include="App\views\about1.html" />

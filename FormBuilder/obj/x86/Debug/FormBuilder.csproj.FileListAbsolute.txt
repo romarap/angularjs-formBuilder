@@ -3,3 +3,4 @@ C:\Users\Mark\Desktop\Mark Work 2016\development\SADS\AngularJs\FormBuilder\Form
 C:\Users\Mark\Desktop\Mark Work 2016\development\SADS\AngularJs\FormBuilder\FormBuilder\bin\AngularJSSample.pdb
 C:\Users\Mark\Desktop\Mark Work 2016\development\SADS\AngularJs\FormBuilder\FormBuilder\obj\x86\Debug\AngularJSSample.dll
 C:\Users\Mark\Desktop\Mark Work 2016\development\SADS\AngularJs\FormBuilder\FormBuilder\obj\x86\Debug\AngularJSSample.pdb
+C:\Users\Mark\Desktop\Mark Work 2016\development\SADS\AngularJs\FormBuilder\FormBuilder\obj\x86\Debug\FormBuilder.csprojResolveAssemblyReference.cache

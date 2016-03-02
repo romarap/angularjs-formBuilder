@@ -24,22 +24,22 @@
             dnd-moved="list.splice($index, 1)"
             dnd-selected="models.selected = item"
             ng-class="{selected: models.selected === item}"
-            ng-include="item.type + '.html'">
+            ng-include="'views/directive-templates/field-templates/' + item.type + '.html'">
         </li>
     </ul>
 </script>
 
 <!-- This template is responsible for rendering a container element. It uses
-     the above list template to render each container column -->
+     the above list template to render each container column 
 <script type="text/ng-template" id="container.html">
     <div class="container-element box box-blue">
         <h3>Container {{item.id}}</h3>
         <div class="column" ng-repeat="list in item.columns" ng-include="'list.html'"></div>
         <div class="clearfix"></div>
     </div>
-</script>
+</script>-->
 
-<!-- Template for a normal list item -->
+<!-- Template for a normal list item 
 <script type="text/ng-template" id="item.html">
     <div class="item">
         <div>
@@ -50,7 +50,7 @@
             <input id="Radio1" type="radio" />
         </div>
     </div>
-</script>
+</script>-->
 
 <style type="text/css">
     form.tab-form-demo .tab-pane {
@@ -58,7 +58,7 @@
     }
 </style>
 
-<!-- Main area with dropzones and source code -->
+<!-- Main area with tabs and source code -->
 <div class="col-md-8">
     <div class="row">
         <uib-tabset active="activeJustified" justified="true" class="col-md-4">
@@ -69,7 +69,7 @@
                 </uib-tab-heading>
             </uib-tab>
             
-            <uib-tab dnd-list="list" index="{{n}}" ng-repeat="zone in models.dropzones" ng-init="list=zone.controls" active="tab.active" disable="tab.disabled">
+            <uib-tab dnd-list="list" index="{{n}}" ng-repeat="zone in models.tabs" ng-init="list=zone.controls" active="tab.active" disable="tab.disabled">
                 <uib-tab-heading>
                     Dropzone {{zone.tabLabel}} <i class="glyphicon glyphicon-remove-sign" ng-click="addNewTab()"></i>
                 </uib-tab-heading>
@@ -100,7 +100,7 @@
                 dnd-effect-allowed="copy"
                 dnd-copied="item.id = item.id + 1"
                 >
-                <button type="button" class="btn btn-default btn-lg" >{{item.type}}</button>
+                <button type="button" class="btn btn-default btn-lg" >{{item.displayName}}</button>
             </li>
         </ul>
     </div>

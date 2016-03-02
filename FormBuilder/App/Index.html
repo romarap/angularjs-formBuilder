@@ -21,15 +21,14 @@
     <!--<link rel="stylesheet" href="styles/bootstrap-2.3.2.min.css">-->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles/demoFramework.css">
-    <link rel="stylesheet" href="styles/simpleDragDrop.css">
-    <link rel="stylesheet" href="styles/nestedDragDrop.css">
+    <link rel="stylesheet" href="styles/formBuilder.css">
 
     <script src="../Scripts/angular-ui/ui-bootstrap-tpls.min.js"></script>
     <script src="../Scripts/angular-route.js"></script>
 
     <script src="app.js"></script>
     <script src="scripts/controllers/homeController.js"></script>
-    <script src="scripts/controllers/aboutController.js"></script>
+    <script src="scripts/controllers/buildController.js"></script>
     <script src="scripts/controllers/headerController.js"></script>
     <script src="scripts/controllers/viewController.js"></script>
     <script src="scripts/controllers/createController.js"></script>
@@ -45,10 +44,11 @@
         <div class="masthead" ng-controller="HeaderCtrl">
             <ul class="nav nav-pills pull-right">
                 <li ng-class="{active: ($location.path() == '/') }"><a href="#/">Home</a></li>
+                <li ng-class="{active: ($location.path() == '/build') }"><a href="#/build">Build</a></li>
                 <li ng-class="{active: ($location.path() == '/create') }"><a href="#/create">Create a Form</a></li>
                 <li ng-class="{active: ($location.path() == '/1/view') }"><a href="#/1/view">View Example Form</a></li>
                 <li ng-class="{active: ($location.path() == '/tryIt') }"><a href="#/tryIt">Try It</a></li>
-                <li ng-class="{active: ($location.path() == '/about') }"><a href="#/about">About</a></li>
+                
             </ul>
             <h3 class="muted">Form Builder</h3>
         </div>

@@ -4,7 +4,7 @@
 }
 
 .box {
-    margin-bottom: 20px;
+    margin-bottom: 2px;
     background-color: #fff;
     border: 1px solid transparent;
     border-radius: 4px;
@@ -59,6 +59,7 @@
 
 .box-yellow {
     border-color: #faebcc;
+    border-width: 2px;
 }
 
 .box-yellow > h3 {
