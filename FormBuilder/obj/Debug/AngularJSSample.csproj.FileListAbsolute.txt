@@ -1,0 +1,12 @@
+C:\Users\Jaliya\Desktop\AngularJSSample\AngularJSSample\bin\AngularJSSample.dll.config
+C:\Users\Jaliya\Desktop\AngularJSSample\AngularJSSample\bin\AngularJSSample.dll
+C:\Users\Jaliya\Desktop\AngularJSSample\AngularJSSample\bin\AngularJSSample.pdb
+C:\Users\Jaliya\Desktop\AngularJSSample\AngularJSSample\obj\Debug\AngularJSSample.csprojResolveAssemblyReference.cache
+C:\Users\Jaliya\Desktop\AngularJSSample\AngularJSSample\obj\Debug\AngularJSSample.dll
+C:\Users\Jaliya\Desktop\AngularJSSample\AngularJSSample\obj\Debug\AngularJSSample.pdb
+C:\Users\Mark\Desktop\Mark Work 2016\development\SADS\InitialApp\AngularJSSample\AngularJSSample\bin\AngularJSSample.dll.config
+C:\Users\Mark\Desktop\Mark Work 2016\development\SADS\InitialApp\AngularJSSample\AngularJSSample\bin\AngularJSSample.dll
+C:\Users\Mark\Desktop\Mark Work 2016\development\SADS\InitialApp\AngularJSSample\AngularJSSample\bin\AngularJSSample.pdb
+C:\Users\Mark\Desktop\Mark Work 2016\development\SADS\InitialApp\AngularJSSample\AngularJSSample\obj\Debug\AngularJSSample.csprojResolveAssemblyReference.cache
+C:\Users\Mark\Desktop\Mark Work 2016\development\SADS\InitialApp\AngularJSSample\AngularJSSample\obj\Debug\AngularJSSample.dll
+C:\Users\Mark\Desktop\Mark Work 2016\development\SADS\InitialApp\AngularJSSample\AngularJSSample\obj\Debug\AngularJSSample.pdb
