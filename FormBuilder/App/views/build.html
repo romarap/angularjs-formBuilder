@@ -8,13 +8,13 @@
 
     <!-- Main area with tabs and source code -->
     <div class="col-md-8">
+        <button type="button" class="btn btn-info btn-lg" ng-click="open('lg', null)">Detail</button>
         <div class="row tab-area">
             <uib-tabset active="activeJustified"  >
                 <uib-tab>
                     <uib-tab-heading>
                         <i class="glyphicon glyphicon glyphicon-plus" ng-click="addTab($event, $index)"></i>
-                        <!--<button type="button" class="btn btn-default btn-lg" ng-click="addNewTab()">Add tab</button>-->
-                    </uib-tab-heading>
+                     </uib-tab-heading>
                 </uib-tab>
 
                 <uib-tab dnd-list="list" index="{{n}}" ng-repeat="tab in models.tabs" ng-init="list=tab.controls" active="tab.active" disable="tab.disabled">
@@ -23,6 +23,7 @@
                     <div class="dropzone box box-yellow">
                         <!-- The dropzone also uses the list template -->
                         <div ng-include="'views/directive-templates/dropZone/dropZone.html'"></div>
+                        <!--<div ng-include="'dropZone.html'"></div>-->
                     </div>
                 </uib-tab>
             </uib-tabset>
@@ -50,11 +51,15 @@
             </ul>
         </div>
 
-
+      
         <div ng-if="models.selected" class="box box-grey box-padding">
             <h3>Selected</h3>
-            <strong>Type: </strong> {{models.selected.type}}<br>
-            <input type="text" ng-model="models.selected.id" class="form-control" style="margin-top: 5px" />
+            <div ng-if="models.selected" class="box box-grey box-padding">
+                <div class="field row">
+                    <div class="span2">Form ID</div>
+                    <div class="span4">{{ models.selected.id }}</div>
+                </div>
+            </div>
         </div>
 
         <div class="trashcan box box-grey box-padding">
@@ -68,6 +73,15 @@
     </div>
 </div>
 
-
+<!-- field edit dialog -->
+<div class="modal fade">
+    <script type="text/ng-template" id="fieldPropertiesDialog.html">
+        <div ng-include="'views/directive-templates/field-properties/textfield2.html'"></div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+</div>
 
 

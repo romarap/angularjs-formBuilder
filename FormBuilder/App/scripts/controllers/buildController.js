@@ -1,6 +1,9 @@
 ﻿'use strict';
 
-app.controller('buildController', function ($scope) {
+app.controller('buildController', function ($scope, $uibModal) {
+    $scope.items = ['item1', 'item2', 'item3'];
+
+
     $scope.models = {
         selected: null,
         templates: [
@@ -14,7 +17,8 @@ app.controller('buildController', function ($scope) {
                 active: true,
                 controls: [{
                     "type": "textfield",
-                    "id": "6"
+                    "id": "6",
+                    "fieldRequired" : false
                 },
                 {
                     "type": "textfield",
@@ -55,6 +59,51 @@ app.controller('buildController', function ($scope) {
         event.stopPropagation();
         $scope.models.tabs.splice(index, 1);
     };
+
+    $scope.selectItem = function (item) {
+        $scope.models.selected = item; 
+        $scope.open('lg',item);
+    }
+    
+    // Dialog open
+    $scope.open = function (size, item) {
+        $scope.models.selected = item;
+
+        var modalInstance = $uibModal.open({
+            animation: true,
+            templateUrl: 'fieldPropertiesDialog.html',
+            controller: 'ModalInstanceCtrl',
+            size: size,
+            resolve: {
+                item : function () {
+                    return angular.copy(item);
+                }
+            }
+        });
+
+
+        modalInstance.result.then(function (selectedItem) {
+            angular.copy(selectedItem, $scope.models.selected);
+        }, function () {
+            //$log.info('Modal dismissed at: ' + new Date());
+        });
+    };
         
 
+});
+
+// Please note that $uibModalInstance represents a modal window (instance) dependency.
+// It is not the same as the $uibModal service used above.
+
+app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, item) {
+
+    $scope.item = item;
+    
+    $scope.ok = function () {
+        $uibModalInstance.close($scope.item);
+    };
+
+    $scope.cancel = function () {
+        $uibModalInstance.dismiss('cancel');
+    };
 });

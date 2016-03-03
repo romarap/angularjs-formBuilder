@@ -29,7 +29,8 @@ var app = angular.module('myApp', ['ui.bootstrap', 'ngRoute', 'dndLists'])
 }])
 .controller('mainController', function ($scope) {
     
-});;
+});
+
 
 
 
