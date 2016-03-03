@@ -7,18 +7,17 @@
 
 
     <!-- Main area with tabs and source code -->
-    <div class="col-md-8">
-        <button type="button" class="btn btn-info btn-lg" ng-click="open('lg', null)">Detail</button>
-        <div class="row tab-area">
-            <uib-tabset active="activeJustified"  >
-                <uib-tab>
+    <div class="col-md-6">
+        <div class="tab-area">
+            <uib-tabset active="2"  >
+                <uib-tab ng-class="tab-no-extras" ng-click="addTab($event, $index)" ng-mouseleave="myStyle0={}" ng-mouseover="myStyle0={color:'red'}" disable="true" active="false">
                     <uib-tab-heading>
-                        <i class="glyphicon glyphicon glyphicon-plus" ng-click="addTab($event, $index)"></i>
+                        <i class="glyphicon glyphicon glyphicon-plus" ng-style="myStyle0" ></i>
                      </uib-tab-heading>
                 </uib-tab>
 
-                <uib-tab dnd-list="list" index="{{n}}" ng-repeat="tab in models.tabs" ng-init="list=tab.controls" active="tab.active" disable="tab.disabled">
-                    <uib-tab-heading>{{tab.tabLabel}} <i class="glyphicon glyphicon-remove-sign" ng-click="removeTab($event, $index)"></i>
+                <uib-tab dnd-list="list" index="{{n}}" ng-repeat="tab in models.tabs" ng-init="list=tab.controls"  >
+                    <uib-tab-heading>{{tab.properties.tabLabel}} <i class="glyphicon glyphicon-pencil" ng-click="editTab($event, $index)" ng-style="myStyle1" ng-mouseleave="myStyle1={}" ng-mouseover="myStyle1={color:'red'}" ></i><i class="glyphicon glyphicon-remove-sign" ng-click="removeTab($event, $index)" ng-style="myStyle2" ng-mouseleave="myStyle2={}" ng-mouseover="myStyle2={color:'red'}"></i>
                     </uib-tab-heading>
                     <div class="dropzone box box-yellow">
                         <!-- The dropzone also uses the list template -->
@@ -46,13 +45,13 @@
                     dnd-draggable="item"
                     dnd-effect-allowed="copy"
                     dnd-copied="item.id = item.id + 1">
-                    <button type="button" class="btn btn-default">{{item.displayName}}</button>
+                    <button type="button" class="btn btn-default">{{item.display_name}}</button>
                 </li>
             </ul>
         </div>
 
       
-        <div ng-if="models.selected" class="box box-grey box-padding">
+        <!--<div ng-if="models.selected" class="box box-grey box-padding">
             <h3>Selected</h3>
             <div ng-if="models.selected" class="box box-grey box-padding">
                 <div class="field row">
@@ -60,7 +59,7 @@
                     <div class="span4">{{ models.selected.id }}</div>
                 </div>
             </div>
-        </div>
+        </div>-->
 
         <div class="trashcan box box-grey box-padding">
             <!-- If you use [] as referenced list, the dropped elements will be lost -->
@@ -76,7 +75,18 @@
 <!-- field edit dialog -->
 <div class="modal fade">
     <script type="text/ng-template" id="fieldPropertiesDialog.html">
-        <div ng-include="'views/directive-templates/field-properties/textfield2.html'"></div>
+        <ng-include src="'views/directive-templates/field-properties/' + item.type + '.html'"></ng-include>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+</div>
+
+<!-- field edit dialog -->
+<div class="modal fade">
+    <script type="text/ng-template" id="tabPropertiesDialog.html">
+        <ng-include src="'views/directive-templates/field-properties/tab.html'"></ng-include>
         <div class="modal-footer">
             <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
             <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>

@@ -1,35 +1,42 @@
 ﻿'use strict';
 
 app.controller('buildController', function ($scope, $uibModal) {
-    $scope.items = ['item1', 'item2', 'item3'];
-
-
     $scope.models = {
+        // field
         selected: null,
         templates: [
-            { type: "textfield", id: 3, displayName: "Text Field", fieldTitle: 'textField', fieldRequired: true, fieldDisabled: false },
-            { type: "radio", id: 2, displayName: "Radio Buttons", fieldTitle: 'option', fieldRequired: true, fieldDisabled: false, fieldOptions: [{ optionValue: 0, optionTitle: "0" }, { optionValue: 1, optionTitle: "1" }] },
-            { type: "container", id: 1, displayName: "Group", fieldTitle: 'container', fieldRequired: true, fieldDisabled: false, columns: [[], []] }
+            { type: "textfield", id: 3, display_name: "Text Field", field_title: 'textField', field_required: true, field_disabled: false },
+            { type: "radio", id: 2, display_name: "Radio Buttons", field_title: 'radio', field_required: true, field_disabled: false, field_options: [{ option_value: 0, option_title: "0" }, { option_value: 1, option_title: "1" }] },
+            { type: "dropdown", id: 2, display_name: "Dropdown", field_title: 'dropdown', field_required: true, field_disabled: false, field_options: [{ option_value: 0, option_title: "option 0" }, { option_value: 1, option_title: "option 1" }] },
+            { type: "container", id: 1, display_name: "Group", field_title: 'container', field_required: true, field_disabled: false, columns: [[], []] }
         ],
          tabs: [
             {
-                tabLabel: "Tab 1",
-                active: true,
+                properties: {
+                    tabLabel: "First Tab",
+                    active: true
+                },
                 controls: [{
                     "type": "textfield",
                     "id": "6",
-                    "fieldRequired" : false
+                    "field_title" : "label 1",
+                    "field_required" : false
                 },
                 {
                     "type": "textfield",
-                    "id": "8"
+                    "id": "8",
+                    "field_title" : "label 2",
                 }]
             },
             {
-                tabLabel: "Tab 2",
+                properties: {
+                    tabLabel: "Second Tab",
+                    active: true
+                },
                 controls: [{
                     "type": "textfield",
-                    "id": "7"
+                    "id": "7",
+                    "field_title" : "label 3",
                 }]
             }
         ]
@@ -45,8 +52,10 @@ app.controller('buildController', function ($scope, $uibModal) {
         event.stopPropagation();
 
         var newTab = {
-            tabLabel: "New Tab",
-            active: true,
+            properties: {
+                tabLabel: "New Tab",
+                active: true
+            },
             controls: []
         };
 
@@ -60,10 +69,14 @@ app.controller('buildController', function ($scope, $uibModal) {
         $scope.models.tabs.splice(index, 1);
     };
 
-    $scope.selectItem = function (item) {
-        $scope.models.selected = item; 
-        $scope.open('lg',item);
-    }
+
+    // create new field button click
+    $scope.editTab = function (event, index) {
+        event.preventDefault();
+        event.stopPropagation();
+        var selectedTab = $scope.models.tabs[index];
+        $scope.openTabDlg("sm", selectedTab.properties);
+    };
     
     // Dialog open
     $scope.open = function (size, item) {
@@ -81,15 +94,32 @@ app.controller('buildController', function ($scope, $uibModal) {
             }
         });
 
-
         modalInstance.result.then(function (selectedItem) {
             angular.copy(selectedItem, $scope.models.selected);
         }, function () {
             //$log.info('Modal dismissed at: ' + new Date());
         });
     };
-        
 
+    // Dialog open
+    $scope.openTabDlg = function (size, item) {
+        
+        var modalInstance = $uibModal.open({
+            animation: true,
+            templateUrl: 'tabPropertiesDialog.html',
+            controller: 'ModalInstanceCtrl',
+            size: size,
+            resolve: {
+                item: function () {
+                    return angular.copy(item);
+                }
+            }
+        });
+
+        modalInstance.result.then(function (selectedItem) {
+            angular.copy(selectedItem, item);
+        });
+    };
 });
 
 // Please note that $uibModalInstance represents a modal window (instance) dependency.

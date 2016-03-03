@@ -1,13 +1,13 @@
 <div>
-    <div>{{item.fieldTitle}}:</div>
+    <div>{{item.field_title}}:</div>
     <div>
-        <div ng-repeat="option in item.fieldOptions" class="row-fluid">
+        <div ng-repeat="option in item.field_options" class="row-fluid">
             <label>
-                <input type="radio" value="{{option.optionValue}}" ng-model="item.fieldValue"  ng-required="item.fieldRequired" ng-disabled="item.fieldDisabled"/>
-                &nbsp;<span ng-bind="option.optionTitle"></span>
+                <input type="radio" value="{{option.option_value}}" ng-model="item.field_value"  ng-required="item.field_required" ng-disabled="item.field_disabled"/>
+                &nbsp;<span ng-bind="option.option_title"></span>
             </label>
         </div>
-        <span class="required-error" ng-show="item.fieldRequired && !item.fieldValue">* required</span>
+        <span class="required-error" ng-show="item.field_required && !item.field_value">* required</span>
     </div>
 </div>
 <br>

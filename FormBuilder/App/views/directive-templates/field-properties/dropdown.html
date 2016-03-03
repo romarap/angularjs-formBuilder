@@ -1,17 +1,13 @@
 <div class="modal-header">
-    <h3 class="modal-title">Text Field</h3>
+    <h3 class="modal-title">Dropdown</h3>
 </div>
 <div class="modal-body">
     <div>Form ID: {{ item.id }}</div>
-    <div>Label:
+    <div>
+        Label:
         <input type="text"
                ng-model="item.field_title"
                value="{{item.field_title}}" />
-    </div>
-    <div>Initial Value: 
-        <input type="text"
-               ng-model="item.initialValue"
-               value="{{item.initialValue}}" />
     </div>
     <ng-include src="'views/directive-templates/field-properties/common.html'"></ng-include>
 </div>
