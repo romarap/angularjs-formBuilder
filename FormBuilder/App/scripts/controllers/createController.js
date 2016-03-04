@@ -33,7 +33,7 @@ app.controller('createController', function ($scope, $uibModal, FormService) {
 
         var newField = {
             "field_id" : $scope.addField.lastAddedID,
-            "field_title" : "New field - " + ($scope.addField.lastAddedID),
+            "field_label" : "New field - " + ($scope.addField.lastAddedID),
             "field_type" : $scope.addField.new,
             "field_value" : "",
             "field_required" : true,

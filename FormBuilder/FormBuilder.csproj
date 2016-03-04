@@ -59,7 +59,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\images\trashcan.jpg" />
-    <Content Include="App\noddy.html" />
     <Content Include="App\scripts\controllers\buildController2.js" />
     <Content Include="App\scripts\controllers\tryItController.js" />
     <Content Include="App\scripts\controllers\createController.js" />
@@ -78,6 +77,7 @@
     <Content Include="App\views\directive-templates\field-properties\tab.html" />
     <Content Include="App\views\directive-templates\field-properties\radio.html" />
     <Content Include="App\views\directive-templates\field-properties\common.html" />
+    <Content Include="App\views\directive-templates\field-properties\container.html" />
     <Content Include="App\views\directive-templates\field-properties\tryItDialog.html" />
     <Content Include="App\views\directive-templates\field-templates\container.html" />
     <Content Include="App\views\directive-templates\field-templates\dropdown.html" />
@@ -922,7 +922,6 @@
     <Content Include="App\scripts\controllers\buildController.js" />
     <Content Include="App\scripts\controllers\homeController.js" />
     <Content Include="App\Index.html" />
-    <Content Include="App\views\about1.html" />
     <Content Include="App\views\home.html" />
     <Content Include="Web.config" />
   </ItemGroup>

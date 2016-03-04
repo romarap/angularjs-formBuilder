@@ -1,53 +1,12 @@
 ﻿<div class="formBuilder row">
-    <!-- Markup for lists inside the dropzone. It's inside a seperate template
-         because it will be used recursively. The dnd-list directive enables
-         to drop elements into the referenced array. The dnd-draggable directive
-         makes an element draggable and will transfer the object that was
-         assigned to it. If an element was dragged away, you have to remove
-         it from the original list yourself using the dnd-moved attribute -->
-    <script type="text/ng-template" id="list.html">
-        <ul dnd-list="list">
-            <li ng-repeat="item in list"
-                dnd-draggable="item"
-                dnd-effect-allowed="move"
-                dnd-moved="list.splice($index, 1)"
-                dnd-selected="models.selected = item"
-                ng-class="{selected: models.selected === item}"
-                ng-include="item.type + '.html'">
-            </li>
-        </ul>
-    </script>
-
-    <!-- This template is responsible for rendering a container element. It uses
-         the above list template to render each container column -->
-    <script type="text/ng-template" id="container.html">
-        <div class="container-element box box-small box-blue">
-            <h3>Container {{item.id}}</h3>
-            <div  ng-repeat="list in item.columns" ng-include="'list.html'"></div>
-            <div class="clearfix"></div>
-        </div>
-    </script>
-
-    <!-- Template for a normal list item -->
-    <script type="text/ng-template" id="item.html">
-        <div class="item">Item {{item.id}}:
-            <input type="text"
-                   ng-model="item.field_value"
-                   value="{{item.field_value}}"
-                   ng-required="item.field_required"
-                   ng-disabled="item.field_disabled">
-            <span class="required-error" ng-show="item.field_required && !item.field_value">* required</span>
-        </div>
-    </script>
-
-    <!-- Main area with dropzones and source code -->
+     <!-- Main area with dropzones and source code -->
     <div class="col-md-10">
         <div>
             <div ng-init="list=models.dropzones">
                 <div class="dropzone box box-yellow">
                     <!-- The dropzone also uses the list template -->
                     <h3>Dropzone</h3>
-                    <div ng-include="'list.html'"></div>
+                    <div ng-include="'views/directive-templates/dropZone/dropZone.html'"></div>
                 </div>
             </div>
         </div>
@@ -70,7 +29,7 @@
                     dnd-draggable="item"
                     dnd-effect-allowed="copy"
                     dnd-copied="item.id = item.id + 1">
-                    <button type="button" class="btn btn-default btn-lg" >{{item.type}}</button>
+                    <button type="button" class="btn btn-default btn-lg" >{{item.display_name}}</button>
                 </li>
             </ul>
         </div>
@@ -90,4 +49,15 @@
         </div>
 
     </div>
+</div>
+
+<!-- item edit dialog -->
+<div class="modal fade">
+    <script type="text/ng-template" id="fieldPropertiesDialog.html">
+        <ng-include src="'views/directive-templates/field-properties/' + item.type + '.html'"></ng-include>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
 </div>

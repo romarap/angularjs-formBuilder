@@ -1,14 +1,12 @@
 <div>
-    <div>{{item.field_title}}:</div>
-    <div>
-		<select ng-model="item.field_value" ng-required="item.field_required" ng-disabled="item.field_disabled" >
-			<option ng-repeat="option in item.field_options" 
-					ng-selected="option.option_value == item.field_value"
-					value="{{option.option_id}}">
-				{{option.option_title}}
-			</option>
-        </select>    
+    <div class="item">{{item.field_label}}:
+        <select ng-model="item.field_value" ng-required="item.field_required" ng-disabled="item.field_disabled">
+            <option ng-repeat="option in item.field_options"
+                    ng-selected="option.option_value == item.field_value"
+                    value="{{option.option_id}}">
+                {{option.option_title}}
+            </option>
+        </select>
         <span class="required-error" ng-show="item.field_required && !item.field_value">* required</span>
     </div>
 </div>
-<br>
