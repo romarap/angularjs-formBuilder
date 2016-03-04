@@ -60,6 +60,7 @@
   <ItemGroup>
     <Content Include="App\images\trashcan.jpg" />
     <Content Include="App\noddy.html" />
+    <Content Include="App\scripts\controllers\buildController2.js" />
     <Content Include="App\scripts\controllers\tryItController.js" />
     <Content Include="App\scripts\controllers\createController.js" />
     <Content Include="App\scripts\controllers\headerController.js" />
@@ -71,6 +72,7 @@
     <Content Include="App\styles\formBuilder.css" />
     <Content Include="App\styles\main.css" />
     <Content Include="App\styles\demoFramework.css" />
+    <Content Include="App\views\build2.html" />
     <Content Include="App\views\directive-templates\dropZone\dropZone.html" />
     <Content Include="App\views\directive-templates\field-properties\dropdown.html" />
     <Content Include="App\views\directive-templates\field-properties\tab.html" />

@@ -23,12 +23,16 @@ var app = angular.module('myApp', ['ui.bootstrap', 'ngRoute', 'dndLists'])
           templateUrl: 'views/build.html',
           controller: 'buildController'
       })
+      .when('/build2', {
+          templateUrl: 'views/build2.html',
+          controller: 'buildController2'
+      })
       .otherwise({
           redirectTo: '/'
       });
 }])
 .controller('mainController', function ($scope) {
-    
+
 });
 
 
