@@ -64,6 +64,7 @@
     <Content Include="App\scripts\controllers\createController.js" />
     <Content Include="App\scripts\controllers\headerController.js" />
     <Content Include="App\scripts\controllers\viewController.js" />
+    <Content Include="App\scripts\directives\field-condition-directive.js" />
     <Content Include="App\scripts\directives\field-directive.js" />
     <Content Include="App\scripts\directives\form-directive.js" />
     <Content Include="App\scripts\services\form-service.js" />
@@ -74,7 +75,6 @@
     <Content Include="App\views\build2.html" />
     <Content Include="App\views\directive-templates\dropZone\dropZone.html" />
     <Content Include="App\views\directive-templates\field-properties\dropdown.html" />
-    <Content Include="App\views\directive-templates\field-properties\common\conditions.html" />
     <Content Include="App\views\directive-templates\field-properties\tab.html" />
     <Content Include="App\views\directive-templates\field-properties\radio.html" />
     <Content Include="App\views\directive-templates\field-properties\common\commonProperties.html" />
@@ -85,6 +85,7 @@
     <Content Include="App\views\directive-templates\field-templates\radio.html" />
     <Content Include="App\views\directive-templates\field-templates\textfield.html" />
     <Content Include="App\views\directive-templates\field-properties\textfield.html" />
+    <Content Include="App\views\directive-templates\field\conditions.html" />
     <Content Include="App\views\tryIt.html" />
     <Content Include="App\views\build.html" />
     <Content Include="App\views\create.html" />
