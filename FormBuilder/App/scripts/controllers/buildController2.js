@@ -118,25 +118,5 @@ app.controller('buildController2', function ($scope, $uibModal) {
         }
         return flattenFieldList;
     }
-
-
-    $scope.remove = function (list, index) {
-        list.splice(index, 1);
-    };
 });
 
-//// Please note that $uibModalInstance represents a modal window (instance) dependency.
-//// It is not the same as the $uibModal service used above.
-
-//app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, item) {
-
-//    $scope.item = item;
-
-//    $scope.ok = function () {
-//        $uibModalInstance.close($scope.item);
-//    };
-
-//    $scope.cancel = function () {
-//        $uibModalInstance.dismiss('cancel');
-//    };
-//});

@@ -141,11 +141,4 @@ app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, item, f
     $scope.cancel = function () {
         $uibModalInstance.dismiss('cancel');
     };
-
-    $scope.addCondition = function () {
-        if (!$scope.item.conditions) {
-            $scope.item.conditions = [];
-        }
-        $scope.item.conditions.push({ field_id: 0, value: "" });
-    };
 });

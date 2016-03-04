@@ -1,0 +1,15 @@
+﻿<div class="toolbox box box-grey box-padding">
+    <h3>Conditions</h3>
+    <div ng-repeat="condition in item.conditions">
+        <select ng-model="condition.field_id">
+            <option ng-repeat="field in fields"
+                    ng-selected="field.id == condition.field_id"
+                    value="{{field.id}}">
+                {{field.label}}
+            </option>
+        </select> = <input type="text" ng-model="condition.value" value="{{item.value}}" />
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="addCondition()">Add Condition</button>
+    </div>
+</div>
