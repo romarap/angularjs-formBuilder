@@ -5,10 +5,10 @@ app.controller('buildController', function ($scope, $uibModal) {
         // field
         selected: null,
         templates: [
-            { type: "textfield", id: 3, display_name: "Text Field", field_title: 'textField', field_required: true, field_disabled: false },
-            { type: "radio", id: 2, display_name: "Radio Buttons", field_title: 'radio', field_required: true, field_disabled: false, field_options: [{ option_value: 0, option_title: "0" }, { option_value: 1, option_title: "1" }] },
-            { type: "dropdown", id: 2, display_name: "Dropdown", field_title: 'dropdown', field_required: true, field_disabled: false, field_options: [{ option_value: 0, option_title: "option 0" }, { option_value: 1, option_title: "option 1" }] },
-            { type: "container", id: 1, display_name: "Group", field_title: 'container', field_required: true, field_disabled: false, columns: [[], []] }
+            { type: "textfield", id: 3, display_name: "Text Field", field_label: 'textField', field_required: true, field_disabled: false },
+            { type: "radio", id: 2, display_name: "Radio Buttons", field_label: 'radio', field_required: true, field_disabled: false, field_options: [{ option_value: 0, option_title: "0" }, { option_value: 1, option_title: "1" }] },
+            { type: "dropdown", id: 2, display_name: "Dropdown", field_label: 'dropdown', field_required: true, field_disabled: false, field_options: [{ option_value: 0, option_title: "option 0" }, { option_value: 1, option_title: "option 1" }] },
+            { type: "container", id: 1, display_name: "Group", field_label: 'container', field_required: true, field_disabled: false, fields : [] }
         ],
          tabs: [
             {
@@ -19,13 +19,13 @@ app.controller('buildController', function ($scope, $uibModal) {
                 controls: [{
                     "type": "textfield",
                     "id": "6",
-                    "field_title" : "label 1",
+                    "field_label" : "label 1",
                     "field_required" : false
                 },
                 {
                     "type": "textfield",
                     "id": "8",
-                    "field_title" : "label 2",
+                    "field_label" : "label 2",
                 }]
             },
             {
@@ -36,7 +36,7 @@ app.controller('buildController', function ($scope, $uibModal) {
                 controls: [{
                     "type": "textfield",
                     "id": "7",
-                    "field_title" : "label 3",
+                    "field_label" : "label 3",
                 }]
             }
         ]
@@ -79,7 +79,10 @@ app.controller('buildController', function ($scope, $uibModal) {
     };
     
     // Dialog open
-    $scope.open = function (size, item) {
+    $scope.open = function ($event, size, item) {
+        event.preventDefault();
+        event.stopPropagation();
+
         $scope.models.selected = item;
 
         var modalInstance = $uibModal.open({

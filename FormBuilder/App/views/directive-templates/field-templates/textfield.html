@@ -1,11 +1,11 @@
 <div>
-    <div>{{item.field_title}}</div>
-    <div>
-		<input type="text" 
-			ng-model="item.field_value" 
-			value="{{item.field_value}}" 
-			ng-required="item.field_required"
-			ng-disabled="item.field_disabled">
+    <div class="item">
+        {{item.field_label}}:
+        <input type="text"
+               ng-model="item.field_value"
+               value="{{item.field_value}}"
+               ng-required="item.field_required"
+               ng-disabled="item.field_disabled">
         <span class="required-error" ng-show="item.field_required && !item.field_value">* required</span>
     </div>
 </div>

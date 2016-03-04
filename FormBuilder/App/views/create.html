@@ -27,7 +27,7 @@
         <hr>
         <p ng-show="form.form_fields.length == 0">No fields added yet.</p>
         <uib-accordion close-others="accordion.oneAtATime">
-            <uib-accordion-group heading="{{field.field_title}}" ng-repeat="field in form.form_fields">
+            <uib-accordion-group heading="{{field.field_label}}" ng-repeat="field in form.form_fields">
 
                 <div class="accordion-edit">
                     <button class="btn btn-danger pull-right" type="button" ng-click="deleteField(field.field_id)"><i class="icon-trash icon-white"></i> Delete</button>
@@ -45,7 +45,7 @@
 
                     <div class="row">
                         <div class="span2">Field Title:</div>
-                        <div class="span4"><input type="text" ng-model="field.field_title" value="{{field.field_title}}"></div>
+                        <div class="span4"><input type="text" ng-model="field.field_label" value="{{field.field_label}}"></div>
                     </div>
                     <div class="row">
                         <div class="span2">Field Default Value:</div>
