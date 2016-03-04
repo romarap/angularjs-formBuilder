@@ -93,7 +93,8 @@ app.controller('buildController', function ($scope, $uibModal) {
             resolve: {
                 item : function () {
                     return angular.copy(item);
-                }
+                },
+                fields : null
             }
         });
 
@@ -115,7 +116,8 @@ app.controller('buildController', function ($scope, $uibModal) {
             resolve: {
                 item: function () {
                     return angular.copy(item);
-                }
+                },
+                fields : null
             }
         });
 
@@ -128,8 +130,8 @@ app.controller('buildController', function ($scope, $uibModal) {
 // Please note that $uibModalInstance represents a modal window (instance) dependency.
 // It is not the same as the $uibModal service used above.
 
-app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, item) {
-
+app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, item, fields) {
+    $scope.fields = fields;
     $scope.item = item;
     
     $scope.ok = function () {
@@ -138,5 +140,12 @@ app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, item) {
 
     $scope.cancel = function () {
         $uibModalInstance.dismiss('cancel');
+    };
+
+    $scope.addCondition = function () {
+        if (!$scope.item.conditions) {
+            $scope.item.conditions = [];
+        }
+        $scope.item.conditions.push({ field_id: 0, value: "" });
     };
 });

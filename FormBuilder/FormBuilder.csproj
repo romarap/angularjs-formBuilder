@@ -74,9 +74,10 @@
     <Content Include="App\views\build2.html" />
     <Content Include="App\views\directive-templates\dropZone\dropZone.html" />
     <Content Include="App\views\directive-templates\field-properties\dropdown.html" />
+    <Content Include="App\views\directive-templates\field-properties\common\conditions.html" />
     <Content Include="App\views\directive-templates\field-properties\tab.html" />
     <Content Include="App\views\directive-templates\field-properties\radio.html" />
-    <Content Include="App\views\directive-templates\field-properties\common.html" />
+    <Content Include="App\views\directive-templates\field-properties\common\commonProperties.html" />
     <Content Include="App\views\directive-templates\field-properties\container.html" />
     <Content Include="App\views\directive-templates\field-properties\tryItDialog.html" />
     <Content Include="App\views\directive-templates\field-templates\container.html" />
