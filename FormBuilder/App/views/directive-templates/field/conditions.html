@@ -5,7 +5,7 @@
             <span class="col-sm-2 form-control-label"></span>
             <div class="col-sm-10" ng-class="{ 'has-error' : userFieldForm.field_id.$invalid }">
                 <!--<input type="text" class="form-control" name="field_id"  placeholder="field label" ng-model="item.field_label1" value="{{item.field_label1}}" required>-->
-                <select class="form-control col-sm-4 input-sm" name="field_id" ng-model="condition.field_id"  ng-init="condition.field_id = condition.field_id || ''" ng-options="field.id as field.label for field in fields" required>
+                <select class="form-control col-sm-4 input-sm" name="field_id" ng-model="condition.field_id"  ng-init="condition.field_id = validId(condition.field_id,fields)" ng-options="field.id as field.label for field in fields" required>
                     <option value="" selected="selected">--Please select item--</option>
                 </select>
                 <label class="form-control-static col-sm-1">=</label>

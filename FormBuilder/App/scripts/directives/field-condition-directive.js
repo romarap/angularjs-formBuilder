@@ -14,6 +14,18 @@ app.directive('fieldConditionDirective', function () {
                
                     $scope.item.conditions.splice(index,1);
             };
+
+            // check that the selected item 
+            $scope.validId = function (id, fields) {
+                if (id) {
+                    for (var j = 0; j < fields.length; j++) {
+                        if (fields[j].id == id) {
+                            return id;
+                        }
+                    }
+                }
+                return '';
+            }
         },
         templateUrl: './views/directive-templates/field/conditions.html',
         restrict: 'E',

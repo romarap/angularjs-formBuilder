@@ -9,26 +9,27 @@ app.controller('buildController2', function ($scope, $uibModal) {
         selected: null,
         templates: [
             //{ type: "item", id: 2, display_name: "Item" },
-            { type: "textfield", id: 3, display_name: "Text Field", field_label: 'textField', field_required: true, field_disabled: false },
-            { type: "radio", id: 2, display_name: "Radio Buttons", field_label: 'radio', field_required: true, field_disabled: false, field_options: [{ option_value: 0, option_title: "0" }, { option_value: 1, option_title: "1" }] },
-            { type: "dropdown", id: 2, display_name: "Dropdown", field_label: 'dropdown', field_required: true, field_disabled: false, field_options: [{ option_value: 0, option_title: "option 0" }, { option_value: 1, option_title: "option 1" }] },
-            { type: "container", id: 1, display_name: "Group", field_label: 'container', field_required: true, field_disabled: false, controls : [] }
+            { type: "textfield",  display_name: "Text Field", field_label: 'textField', field_required: true, field_disabled: false },
+            { type: "radio",  display_name: "Radio Buttons", field_label: 'radio', field_required: true, field_disabled: false, field_options: [{ option_value: 0, option_title: "0" }, { option_value: 1, option_title: "1" }] },
+            { type: "dropdown", display_name: "Dropdown", field_label: 'dropdown', field_required: true, field_disabled: false, field_options: [{ option_value: 0, option_title: "option 0" }, { option_value: 1, option_title: "option 1" }] },
+            { type: "container", display_name: "Group", field_label: 'container', field_required: true, field_disabled: false, controls : [] }
         ],
+        newId: 1,
         forms: 
              [
                 {
                     "type": "container",
-                    "id": 1,
+                    "id": "1",
                     "field_label": "container",
                     "controls": [
                             {
                                 "type": "textfield",
-                                "id": "1", 
+                                "id": "2", 
                                 "field_label": "textField"
                             },
                             {
                                 "type": "textfield",
-                                "id": "2",
+                                "id": "3",
                                 "field_label": "textField"
                             }
                         ]
@@ -51,6 +52,13 @@ app.controller('buildController2', function ($scope, $uibModal) {
             ]
  
         
+    };
+
+    $scope.dropCallback = function (event, index, item) {
+        if (!item.id) {
+            item.id = "newid-" + $scope.models.newId++;
+        }
+        return item;
     };
 
     $scope.$watch('models.forms', function (model) {
@@ -109,5 +117,31 @@ app.controller('buildController2', function ($scope, $uibModal) {
         }
         return flattenFieldList;
     }
+});
+
+// Please note that $uibModalInstance represents a modal window (instance) dependency.
+// It is not the same as the $uibModal service used above.
+
+app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, item, fields) {
+    $scope.fields = fields;
+    $scope.item = item;
+
+    // function to submit the form after all validation has occurred            
+    $scope.submitForm = function (isValid) {
+
+        // check to make sure the form is completely valid
+        if (isValid) {
+            $uibModalInstance.close($scope.item);
+        }
+
+    };
+
+    $scope.ok = function () {
+        $uibModalInstance.close($scope.item);
+    };
+
+    $scope.cancel = function () {
+        $uibModalInstance.dismiss('cancel');
+    };
 });
 

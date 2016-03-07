@@ -84,8 +84,14 @@
 
 /***************************** Element type specific styles *****************************/
 
+
 .formBuilder .dropzone .item {
     padding: 10px 15px;
+}
+
+.formBuilder .dropzone .item .tool-tip {
+    color: darkorange;
+    font-size: 75%;
 }
 
 .formBuilder .dropzone .container-element {
@@ -183,21 +189,4 @@
 .selectable {
   color: red;
   cursor: pointer;
-}
-
-.dropped_field {
-    margin-left : 20px;
-}
-
-.dropped_field_label {
-    
-}
-
-.dropped_field_sub_label {
-    
-}
-
-.dropped_field_tool_tip {
-    color: darkorange;
-    font-size: 75%;
 }

@@ -127,28 +127,3 @@ app.controller('buildController', function ($scope, $uibModal) {
     };
 });
 
-// Please note that $uibModalInstance represents a modal window (instance) dependency.
-// It is not the same as the $uibModal service used above.
-
-app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, item, fields) {
-    $scope.fields = fields;
-    $scope.item = item;
-    
-     // function to submit the form after all validation has occurred            
-    $scope.submitForm = function (isValid) {
-
-        // check to make sure the form is completely valid
-        if (isValid) {
-            $uibModalInstance.close($scope.item);
-        }
-
-    };
-
-    $scope.ok = function () {
-        $uibModalInstance.close($scope.item);
-    };
-
-    $scope.cancel = function () {
-        $uibModalInstance.dismiss('cancel');
-    };
-});
