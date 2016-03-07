@@ -1,19 +1,53 @@
 <div class="modal-header">
     <h3 class="modal-title">Text Field</h3>
 </div>
-<div class="modal-body">
-    <div>Form ID: {{ item.id }}</div>
-    <div>Label:
-        <input type="text"
-               ng-model="item.field_label"
-               value="{{item.field_label}}" />
+<div class="modal-body form-horizontal">
+    <div class="form-group row">
+        <label class="col-sm-2 control-label input-sm">Form ID</label>
+        <label class="col-sm-10 form-control-label input-sm">{{ item.id }}</label>
     </div>
-    <div>Initial Value: 
-        <input type="text"
-               ng-model="item.initialValue"
-               value="{{item.initialValue}}" />
+    <div class="form-group row" ng-class="{ 'has-error' : userForm.label.$invalid && !userForm.label.$pristine }">
+        <label for="label" class="col-sm-2 control-label input-sm">Label</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control input-sm" name="label" id="label" placeholder="field label" ng-model="item.field_label"  required>
+        </div>
     </div>
+    <div class="form-group row" >
+        <label for="subLabel" class="col-sm-2 control-label input-sm">Sub-Label</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control input-sm" name="subLabel" id="subLabel" placeholder="field sub label" ng-model="item.field_sub_label" >
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="subLabel" class="col-sm-2 control-label input-sm">Tool Tip</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control input-sm" name="toolTip" id="toolTip" placeholder="field tooltip" ng-model="item.field_tool_tip" >
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="fieldLength" class="col-sm-2 control-label input-sm">Field Length</label>
+        <div class="col-sm-2">
+            <input type="number" class="form-control input-sm" name="fieldLength" id="fieldLength" placeholder="field length" ng-model="item.field_length" >
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="fieldType" class="col-sm-2 control-label input-sm">Field Type</label>
+        <div class="col-sm-2">
+            <select class="form-control input-sm" name="fieldType" ng-model="item.field_type" >
+                <option value="text">Text</option>
+                <option value="number">Number</option>
+                <option value="email">Email</option>
+                <option value="date">Date</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="initialValue" class="col-sm-2 control-label input-sm">Initial Value</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control input-sm" id="initialValue" placeholder="initial value" ng-model="item.initialValue" >
+        </div>
+    </div>
+
     <ng-include src="'views/directive-templates/field-properties/common/commonProperties.html'"></ng-include>
-    <br />
-    <field-condition-directive item="item" fields="fields"></field-condition-directive>
+    <field-condition-directive item="item" fields="fields" form="userForm"></field-condition-directive>
 </div>

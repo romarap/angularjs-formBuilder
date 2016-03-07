@@ -54,10 +54,13 @@
 <!-- item edit dialog -->
 <div class="modal fade">
     <script type="text/ng-template" id="fieldPropertiesDialog.html">
-        <ng-include src="'views/directive-templates/field-properties/' + item.type + '.html'"></ng-include>
-        <div class="modal-footer">
-            <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
-            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
-        </div>
-    </script>
+        <form name="userForm" ng-submit="submitForm(userForm.$valid)" novalidate>
+            <ng-include src="'views/directive-templates/field-properties/' + item.type + '.html'"></ng-include>
+
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="submit" ng-disabled="userForm.$invalid">OK</button>
+                <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+            </div>
+        </form>
+</script>
 </div>

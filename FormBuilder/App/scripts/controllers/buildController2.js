@@ -81,16 +81,7 @@ app.controller('buildController2', function ($scope, $uibModal) {
         });
 
         modalInstance.result.then(function (selectedItem) {
-            // remove invalid conditions
-            if (selectedItem.conditions) {
-                var i = selectedItem.conditions.length
-                while (i--) {
-                    if (selectedItem.conditions[i].field_id == 0) {
-                        selectedItem.conditions.splice(i, 1);
-                    }
-                }
-            }
-            angular.copy(selectedItem, $scope.models.selected);
+             angular.copy(selectedItem, $scope.models.selected);
         }, function () {
             //$log.info('Modal dismissed at: ' + new Date());
         });

@@ -179,3 +179,25 @@
   background-color: white !important;
   cursor: default !important;*/
 }
+
+.selectable {
+  color: red;
+  cursor: pointer;
+}
+
+.dropped_field {
+    margin-left : 20px;
+}
+
+.dropped_field_label {
+    
+}
+
+.dropped_field_sub_label {
+    
+}
+
+.dropped_field_tool_tip {
+    color: darkorange;
+    font-size: 75%;
+}
