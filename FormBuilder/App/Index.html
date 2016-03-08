@@ -44,13 +44,14 @@
     <script src="scripts/directives/form-directive.js"></script>
     <script src="scripts/directives/field-directive.js"></script>
     <script src="scripts/directives/field-condition-directive.js"></script>
+    <script src="scripts/directives/field-options-directive.js"></script>
 </head>
 <body ng-app="myApp">
     <div class="container">
         <div class="masthead" ng-controller="HeaderCtrl">
             <ul class="nav nav-pills pull-right">
                 <li ng-class="{active: ($location.path() == '/') }"><a href="#/">Home</a></li>
-                <li ng-class="{active: ($location.path() == '/build') }"><a href="#/build">Tab Prototype</a></li>
+                <!--<li ng-class="{active: ($location.path() == '/build') }"><a href="#/build">Tab Prototype</a></li>-->
                 <li ng-class="{active: ($location.path() == '/build2') }"><a href="#/build2">Group Prototype</a></li>
                 <!--<li ng-class="{active: ($location.path() == '/create') }"><a href="#/create">Create a Form</a></li>
                 <li ng-class="{active: ($location.path() == '/1/view') }"><a href="#/1/view">View Example Form</a></li>

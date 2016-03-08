@@ -10,9 +10,11 @@ app.controller('buildController2', function ($scope, $uibModal) {
         templates: [
             //{ type: "item", id: 2, display_name: "Item" },
             { type: "textfield",  display_name: "Text Field", field_label: 'textField', field_required: true, field_disabled: false },
-            { type: "radio",  display_name: "Radio Buttons", field_label: 'radio', field_required: true, field_disabled: false, field_options: [{ option_value: 0, option_title: "0" }, { option_value: 1, option_title: "1" }] },
-            { type: "dropdown", display_name: "Dropdown", field_label: 'dropdown', field_required: true, field_disabled: false, field_options: [{ option_value: 0, option_title: "option 0" }, { option_value: 1, option_title: "option 1" }] },
-            { type: "container", display_name: "Group", field_label: 'container', field_required: true, field_disabled: false, controls : [] }
+            { type: "radio", display_name: "Radio Buttons", field_label: 'radio', field_required: true, field_disabled: false, field_options: [{ value: 0, label: "0" }, { value: 1, label: "1" }] },
+            { type: "checkbox", display_name: "Checkbox", field_label: 'checkbox', field_required: true, field_disabled: false},
+            { type: "dropdown", display_name: "Dropdown", field_label: 'dropdown', field_required: true, field_disabled: false, field_options: [{ value: 0, label: "option 0" }, { value: 1, label: "option 1" }] },
+            { type: "container", display_name: "Group", field_label: 'container', field_required: true, field_disabled: false, controls: [] },
+            { type: "pagebreak", display_name: "Page Break", field_label: 'pagebreak' }
         ],
         newId: 1,
         forms: 

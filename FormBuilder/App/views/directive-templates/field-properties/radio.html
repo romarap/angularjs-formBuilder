@@ -1,15 +1,1 @@
-<div class="modal-header">
-    <h3 class="modal-title">Radio</h3>
-</div>
-<div class="modal-body">
-    <div>Form ID: {{ item.id }}</div>
-    <div>
-        Label:
-        <input type="text"
-               ng-model="item.field_label"
-               value="{{item.field_label}}" />
-    </div>
-    <ng-include src="'views/directive-templates/field-properties/common/commonProperties.html'"></ng-include>
-    <br />
-    <field-condition-directive item="item" fields="fields"></field-condition-directive>
-</div>
+<field-options-directive item="item" form="userForm"></field-options-directive>

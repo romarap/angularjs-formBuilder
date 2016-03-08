@@ -2,15 +2,16 @@
     <div class="form-group row">
         <div>{{item.field_label}}</div>
         <div class="tool-tip">{{item.field_tool_tip}}</div>
-        
-        <div class="form-horizontal">
-            <span>{{item.field_sub_label}}</span>
-            <input type="text"
-                   ng-model="item.field_value"
-                   value="{{item.field_value}}"
-                   ng-required="item.field_required"
-                   ng-disabled="item.field_disabled">
-            <span class="required-error" ng-show="item.field_required && !item.field_value">* required</span>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">{{item.field_sub_label}}</label>
+            <div class="col-sm-8">
+                <input type="text"
+                       ng-model="item.field_value"
+                       value="{{item.field_value}}"
+                       ng-required="item.field_required"
+                       ng-disabled="item.field_disabled">
+                <span class="required-error" ng-show="item.field_required && !item.field_value">* required</span>
+            </div>
         </div>
     </div>
 </div>

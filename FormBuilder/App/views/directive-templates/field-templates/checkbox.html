@@ -1,0 +1,7 @@
+<div>
+    <div class="item">
+        {{item.field_label}}:
+            <input type="checkbox" value="{{option.value}}" ng-model="item.field_value" ng-required="item.field_required" ng-disabled="item.field_disabled" />
+        <span class="required-error" ng-show="item.field_required && !item.field_value">* required</span>
+    </div>
+</div>
