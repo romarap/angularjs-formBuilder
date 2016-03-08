@@ -3,52 +3,52 @@
 /**
  * The controller doesn't do much more than setting the initial data model
  */
-app.controller('buildController2', function ($scope, $uibModal) {
+app.controller('editController', function ($scope, $uibModal) {
 
     $scope.models = {
         selected: null,
         templates: [
             //{ type: "item", id: 2, display_name: "Item" },
-            { type: "textfield",  display_name: "Text Field", field_label: 'textField', field_required: true, field_disabled: false },
-            { type: "radio", display_name: "Radio Buttons", field_label: 'radio', field_required: true, field_disabled: false, field_options: [{ value: 0, label: "0" }, { value: 1, label: "1" }] },
-            { type: "checkbox", display_name: "Checkbox", field_label: 'checkbox', field_required: true, field_disabled: false},
-            { type: "dropdown", display_name: "Dropdown", field_label: 'dropdown', field_required: true, field_disabled: false, field_options: [{ value: 0, label: "option 0" }, { value: 1, label: "option 1" }] },
-            { type: "container", display_name: "Group", field_label: 'container', field_required: true, field_disabled: false, controls: [] },
-            { type: "pagebreak", display_name: "Page Break", field_label: 'pagebreak' }
+            { id: "", type: "textfield",  display_name: "Text Field", field_label: 'textField', field_required: true, field_disabled: false },
+            { id: "", type: "radio", display_name: "Radio Buttons", field_label: 'radio', field_required: true, field_disabled: false, field_options: [{ value: 0, label: "0" }, { value: 1, label: "1" }] },
+            { id: "", type: "checkbox", display_name: "Checkbox", field_label: 'checkbox', field_required: true, field_disabled: false },
+            { id: "", type: "dropdown", display_name: "Dropdown", field_label: 'dropdown', field_required: true, field_disabled: false, field_options: [{ value: 0, label: "option 0" }, { value: 1, label: "option 1" }] },
+            { id: "", type: "container", display_name: "Group", field_label: 'container', field_required: true, field_disabled: false, controls: [] },
+            { id: "", type: "pagebreak", display_name: "Page Break", field_label: 'pagebreak' }
         ],
         newId: 1,
         forms: 
              [
                 {
-                    "type": "container",
                     "id": "1",
+                    "type": "container",
                     "field_label": "container",
                     "controls": [
                             {
+                                "id": "2",
                                 "type": "textfield",
-                                "id": "2", 
                                 "field_label": "textField"
                             },
                             {
-                                "type": "textfield",
                                 "id": "3",
+                                "type": "textfield",
                                 "field_label": "textField"
                             }
                         ]
                 },
                 {
-                    "type": "textfield",
                     "id": "4",
+                    "type": "textfield",
                     "field_label": "textField"
                 },
                 {
-                    "type": "textfield",
                     "id": "5",
+                    "type": "textfield",
                     "field_label": "textField"
                 },
                 {
-                    "type": "textfield",
                     "id": "6",
+                    "type": "textfield",
                     "field_label": "textField"
                 }
             ]

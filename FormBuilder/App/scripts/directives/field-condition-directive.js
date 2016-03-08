@@ -27,7 +27,7 @@ app.directive('fieldConditionDirective', function () {
                 return '';
             }
         },
-        templateUrl: './views/directive-templates/field/conditions.html',
+        templateUrl: './views/directive-templates/conditions.html',
         restrict: 'E',
         scope: {
             item: '=',

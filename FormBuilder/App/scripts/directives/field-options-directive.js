@@ -15,7 +15,7 @@ app.directive('fieldOptionsDirective', function () {
                 $scope.item.field_options.splice(index, 1);
             };
         },
-        templateUrl: './views/directive-templates/field/options.html',
+        templateUrl: './views/directive-templates/options.html',
         restrict: 'E',
         scope: {
             item: '=',

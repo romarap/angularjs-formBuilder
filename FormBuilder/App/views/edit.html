@@ -8,7 +8,7 @@
                 <div class="dropzone box box-yellow">
                     <!-- The dropzone also uses the list template -->
                     <h3>Form x</h3>
-                    <div ng-include="'views/directive-templates/dropZone/dropZone.html'"></div>
+                    <div ng-include="'views/includes/dropZone/dropZone.html'"></div>
                 </div>
             </div>
         </div>
@@ -30,7 +30,7 @@
                 <li ng-repeat="item in models.templates"
                     dnd-draggable="item"
                     dnd-effect-allowed="copy">
-                    <button type="button" class="btn btn-default btn-lg" >{{item.display_name}}</button>
+                    <button type="button" class="btn btn-default btn-lg" disabled="disabled">{{item.display_name}}</button>
                 </li>
             </ul>
         </div>
@@ -55,6 +55,6 @@
 <!-- item edit dialog -->
 <div class="modal fade">
     <script type="text/ng-template" id="fieldPropertiesDialog.html">
-        <ng-include src="'views/directive-templates/field-properties/fieldPropertiesDialog.html'"></ng-include>
+        <ng-include src="'views/includes/field-properties/fieldPropertiesDialog.html'"></ng-include>
     </script>
 </div>

@@ -1,6 +1,6 @@
 ﻿<div class="form-group row">
     <label class="col-sm-2 control-label input-sm">Options</label>
-    <div class="form-inline" ng-repeat="option in item.field_options" >
+    <div class="form-inline" ng-repeat="option in item.field_options">
         <ng-form name="userFieldForm">
             <span class="col-sm-2 form-control-label"></span>
             <div class="col-sm-10" ng-class="{ 'has-error' : userFieldForm.label.$invalid || userFieldForm.value.$invalid }">
@@ -18,4 +18,3 @@
         <button class="btn btn-primary input-sm" type="button" ng-click="addOption()">Add Option</button>
     </div>
 </div>
-

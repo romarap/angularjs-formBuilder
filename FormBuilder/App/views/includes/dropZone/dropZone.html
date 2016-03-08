@@ -13,7 +13,7 @@
         dnd-moved="list.splice($index, 1)"
         dnd-selected="models.selected = item"
         ng-class="{selected: models.selected === item}"
-        ng-include="'views/directive-templates/field-templates/' + item.type + '.html'"
+        ng-include="'views/includes/field-templates/' + item.type + '.html'"
         ng-dblclick="open($event,'lg',item);">
     </li>
  </ul>

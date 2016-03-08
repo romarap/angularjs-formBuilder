@@ -125,6 +125,7 @@
     width: 123px;
     opacity: 1.0;
     font-size: 14px;
+    pointer-events: none;
 }
 
 .formBuilder .toolbox .dndDragging {
