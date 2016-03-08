@@ -30,7 +30,7 @@
  */
 .formBuilder .dropzone li {
     background-color: #fff;
-    border: 1px solid #ddd;
+    border: 1px  dashed #f9f9f9;
     display: block;
     padding: 0px;
 }
@@ -86,7 +86,7 @@
 
 
 .formBuilder .dropzone .item {
-    padding: 10px 15px;
+    padding: 0px 15px;
 }
 
 .formBuilder .dropzone .item .tool-tip {
@@ -110,6 +110,10 @@
 
 .formBuilder .dropzone .box-small  {
     margin: 2px;
+}
+
+.formBuilder .dropzone .form-group {
+    margin-bottom: 2px;
 }
 
 /***************************** Toolbox *****************************/
