@@ -4,10 +4,11 @@
         <ng-form name="userFieldForm">
             <span class="col-sm-2 form-control-label"></span>
             <div class="col-sm-10" ng-class="{ 'has-error' : userFieldForm.field_id.$invalid }">
-                <!--<input type="text" class="form-control" name="field_id"  placeholder="field label" ng-model="item.field_label1" value="{{item.field_label1}}" required>-->
-                <select class="form-control col-sm-4 input-sm" name="field_id" ng-model="condition.field_id"  ng-init="condition.field_id = validId(condition.field_id,fields)" ng-options="field.id as field.label for field in fields" required>
-                    <option value="" selected="selected">--Please select item--</option>
-                </select>
+                <!--<select class="form-control col-sm-4 input-sm" name="field_id" ng-model="condition.field_id"  ng-init="condition.field_id = validId(condition.field_id,fields)" ng-options="field.id as field.field_label for field in fields" required>-->
+                <select class="form-control col-sm-4 input-sm" name="field_id" ng-model="condition.field_id" ng-init="condition.field_id = validId(condition.field_id,fields)" ng-options="key as value.field_label for (key , value) in fields" required>
+
+                        <option value="" selected="selected">--Please select item--</option>
+                    </select>
                 <label class="form-control-static col-sm-1">=</label>
                 <input type="text" class="form-control input-sm col-sm-4" ng-model="condition.value" />
                 <i class="form-control-static glyphicon glyphicon-remove" ng-click="removeCondition($event, $index)" ng-class="{selectable: hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false"></i>

@@ -1,0 +1,198 @@
+/***************************** Required styles *****************************/
+
+/**
+ * For the correct positioning of the placeholder element, the dnd-list and
+ * it's children must have position: relative
+ */
+.formBuilder ul[dnd-list],
+.formBuilder ul[dnd-list] > li {
+	position: relative;
+}
+
+/***************************** Dropzone Styling *****************************/
+
+/**
+ * The dnd-list should always have a min-height,
+ * otherwise you can't drop to it once it's empty
+ */
+.formBuilder .dropzone ul[dnd-list] {
+    min-height: 42px;
+    margin: 0px;
+    padding-left: 0px;
+}
+
+/**
+ * The dnd-lists's child elements currently MUST have
+ * position: relative. Otherwise we can not determine
+ * whether the mouse pointer is in the upper or lower
+ * half of the element we are dragging over. In other
+ * browsers we can use event.offsetY for this.
+ */
+.formBuilder .dropzone li {
+    background-color: #fff;
+    border: 1px  dashed #f9f9f9;
+    display: block;
+    padding: 0px;
+}
+
+/**
+ * Reduce opacity of elements during the drag operation. This allows the user
+ * to see where he is dropping his element, even if the element is huge. The
+ * .dndDragging class is automatically set during the drag operation.
+ */
+.formBuilder .dropzone .dndDragging {
+    opacity: 0.7;
+}
+
+/**
+ * The dndDraggingSource class will be applied to the source element of a drag
+ * operation. It makes sense to hide it to give the user the feeling that he's
+ * actually moving it. Note that the source element has also .dndDragging class.
+ */
+.formBuilder .dropzone .dndDraggingSource {
+    display: none;
+}
+
+/**
+ * An element with .dndPlaceholder class will be added as child of the dnd-list
+ * while the user is dragging over it.
+ */
+.formBuilder .dropzone .dndPlaceholder {
+    background-color: #ddd;
+    min-height: 42px;
+    display: block;
+    position: relative;
+}
+
+/***************************** Element Selection *****************************/
+
+.formBuilder .dropzone .selected .item {
+    color: #3c763d;
+    background-color: #dff0d8;
+}
+
+.formBuilder .dropzone .selected .box {
+    border-color: #d6e9c6;
+}
+
+.formBuilder .dropzone .selected .box > h3 {
+    color: #3c763d;
+    background-color: #dff0d8;
+    background-image: linear-gradient(to bottom,#dff0d8 0,#d0e9c6 100%);
+    border-color: #d6e9c6;
+}
+
+/***************************** Element type specific styles *****************************/
+
+
+.formBuilder .dropzone .item {
+    padding: 0px 15px;
+}
+
+.formBuilder .dropzone .item .tool-tip {
+    color: darkorange;
+    font-size: 75%;
+}
+
+.formBuilder .dropzone .container-element {
+    margin: 10px;
+}
+
+.formBuilder .dropzone .container-element .column {
+    float: left;
+    width: 50%;
+}
+
+.formBuilder .dropzone .box-small > h3 {
+    font-size: 10px;
+    padding: 0px 3px;
+}
+
+.formBuilder .dropzone .box-small  {
+    margin: 2px;
+}
+
+.formBuilder .dropzone .form-group {
+    margin-bottom: 2px;
+}
+
+/***************************** Toolbox *****************************/
+
+.formBuilder .toolbox ul {
+    list-style: none;
+    padding-left: 0px;
+    cursor: move;
+}
+
+.formBuilder .toolbox button {
+    margin: 5px;
+    width: 123px;
+    opacity: 1.0;
+    font-size: 14px;
+    pointer-events: none;
+}
+
+.formBuilder .toolbox .dndDragging {
+    opacity: 0.5;
+}
+
+.formBuilder .toolbox .dndDraggingSource {
+    opacity: 1.0;
+}
+
+/***************************** Trashcan *****************************/
+
+.formBuilder .trashcan ul {
+    list-style: none;
+    padding-left: 0px;
+}
+
+.formBuilder .trashcan img {
+    width: 100%;
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
+
+.formBuilder .trashcan .dndDragover img {
+    width: 100%;
+    -webkit-filter: none;
+    -moz-filter: none;
+    filter: none;
+}
+
+.formBuilder .trashcan .dndPlaceholder {
+    display: none;
+}
+
+
+.nav-tabs > li > a {
+    border: 1px solid #000;
+}
+
+.tabset, .tab-content, .tab-pane, .tabbable {
+  height:100%;
+}
+
+.tab-content {
+        height:100%;
+        border: 1px solid #000;
+      }
+
+.tab-area {
+    min-height:300px;
+    padding-bottom:20px;
+}
+
+.tab-no-extras {
+  /*border: 1 !important;
+  box-shadow: none !important;
+  background-color: white !important;
+  cursor: default !important;*/
+}
+
+.selectable {
+  color: red;
+  cursor: pointer;
+}
+
