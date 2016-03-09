@@ -1,26 +1,45 @@
-﻿<div class="formBuilder row">
-    
-   
-     <!-- Main area with field_label and source code -->
+﻿
+<div class="formBuilder row">
+
+    <!-- Sidebar -->
+    <div class="col-md-2">
+        <div class="toolbox box box-grey box-padding">
+            <h3>Forms</h3>
+            
+            <div class="list-group">
+                <a href="" class="list-group-item">-- New Form --</a>
+                <a href="" class="list-group-item active">Car Inspection</a>
+                <a href="" class="list-group-item">Employee Interview</a>
+                <a href="" class="list-group-item">Road Survey</a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Main area with field_label and source code -->
     <div class="col-md-8">
+
+        <!--<div class="alert alert-info">
+            <strong>Info!</strong> Drag &amp; Drop items from the toolbox
+        </div>-->
         <div>
             <div ng-init="list=models.forms">
                 <div class="dropzone box box-yellow">
                     <!-- The dropzone also uses the list template -->
-                    <h3>Form x</h3>
+                    <h3>Car Inspection</h3>
                     <div ng-include="'views/includes/dropZone/dropZone.html'"></div>
                 </div>
             </div>
         </div>
 
         <uib-accordion close-others="oneAtATime">
-            <uib-accordion-group >
+            <uib-accordion-group>
                 <uib-accordion-heading>
                     Generated Model <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
                 </uib-accordion-heading>
                 <pre>{{formAsJson}}</pre>
             </uib-accordion-group>
-            <uib-accordion-group >
+            <uib-accordion-group>
                 <uib-accordion-heading>
                     Deleted <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
                 </uib-accordion-heading>
@@ -63,7 +82,8 @@
     </div>
 </div>
 
-<!-- item edit dialog -->
+
+    <!-- item edit dialog -->
 <div class="modal fade">
     <script type="text/ng-template" id="fieldPropertiesDialog.html">
         <ng-include src="'views/includes/field-properties/fieldPropertiesDialog.html'"></ng-include>

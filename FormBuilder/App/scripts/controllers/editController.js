@@ -82,6 +82,7 @@ app.controller('editController', function ($scope, $uibModal) {
         if (item) {
             var deletedItems = getFieldList(item, null, {});
             var conflicts = getDeleteConflicts(deletedItems);
+ 
             if (conflicts.length > 0) {
                 var msg = "Deleting this item will cause conflicts \n\n";
                 for (var i=0; i < conflicts.length; i++)
