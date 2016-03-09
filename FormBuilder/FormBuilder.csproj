@@ -58,6 +58,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App\images\camera_icon_black.jpg" />
     <Content Include="App\images\trashcan.jpg" />
     <Content Include="App\scripts\controllers\editController.js" />
     <Content Include="App\scripts\controllers\headerController.js" />
@@ -76,16 +77,20 @@
     <Content Include="App\views\includes\field-properties\dropdown.html" />
     <Content Include="App\views\includes\field-properties\checkbox.html" />
     <Content Include="App\views\includes\field-properties\pagebreak.html" />
+    <Content Include="App\views\includes\field-properties\photo.html" />
     <Content Include="App\views\includes\field-properties\tab.html" />
     <Content Include="App\views\includes\field-properties\radio.html" />
     <Content Include="App\views\includes\field-properties\container.html" />
     <Content Include="App\views\includes\field-properties\fieldPropertiesDialog.html" />
+    <Content Include="App\views\includes\field-properties\static.html" />
     <Content Include="App\views\includes\field-properties\tryItDialog.html" />
     <Content Include="App\views\includes\field-templates\pagebreak.html" />
     <Content Include="App\views\includes\field-templates\container.html" />
     <Content Include="App\views\includes\field-templates\dropdown.html" />
     <Content Include="App\views\includes\field-templates\checkbox.html" />
     <Content Include="App\views\includes\field-templates\radio.html" />
+    <Content Include="App\views\includes\field-templates\photo.html" />
+    <Content Include="App\views\includes\field-templates\static.html" />
     <Content Include="App\views\includes\field-templates\textfield.html" />
     <Content Include="App\views\includes\field-properties\textfield.html" />
     <Content Include="App\views\directive-templates\conditions.html" />

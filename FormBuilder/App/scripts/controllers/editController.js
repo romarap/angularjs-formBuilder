@@ -14,9 +14,11 @@ app.controller('editController', function ($scope, $uibModal) {
         templates: [
             //{ type: "item", id: 2, display_name: "Item" },
             { id: "", status: CREATED, type: "textfield", display_name: "Text Field", field_label: 'textField', field_required: true, field_disabled: false },
+            { id: "", status: CREATED, type: "static", display_name: "Static", field_label: 'static' },
             { id: "", status: CREATED, type: "radio", display_name: "Radio Buttons", field_label: 'radio', field_required: true, field_disabled: false, field_options: [{ value: 0, label: "0" }, { value: 1, label: "1" }] },
             { id: "", status: CREATED, type: "checkbox", display_name: "Checkbox", field_label: 'checkbox', field_required: true, field_disabled: false },
             { id: "", status: CREATED, type: "dropdown", display_name: "Dropdown", field_label: 'dropdown', field_required: true, field_disabled: false, field_options: [{ value: 0, label: "option 0" }, { value: 1, label: "option 1" }] },
+            { id: "", status: CREATED, type: "photo", display_name: "Photo", field_label: 'photo', field_required: true, field_disabled: false },
             { id: "", status: CREATED, type: "container", display_name: "Group", field_label: 'container', field_required: true, field_disabled: false, controls: [] },
             { id: "", status: CREATED, type: "pagebreak", display_name: "Page Break", field_label: 'pagebreak' }
         ],
@@ -82,7 +84,7 @@ app.controller('editController', function ($scope, $uibModal) {
             var conflicts = getDeleteConflicts(deletedItems);
             if (conflicts.length > 0) {
                 var msg = "Deleting this item will cause conflicts \n\n";
-                for (i=0; i < conflicts.length; i++)
+                for (var i=0; i < conflicts.length; i++)
                 {
                     msg += conflicts[i] + "\n";
                 }
@@ -90,8 +92,8 @@ app.controller('editController', function ($scope, $uibModal) {
                 return null;
             } else {
                 // place items in deleted list
-                for (var i = 0; i < deletedItems.length; i++) {
-                    $scope.models.delected.push(deletedItems[i]);
+                for (var key in deletedItems) {
+                    $scope.models.delected.push(deletedItems[key]);
                 }
                 return item;
             }
@@ -237,5 +239,29 @@ app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, item, f
     $scope.cancel = function () {
         $uibModalInstance.dismiss('cancel');
     };
+
+    $scope.CommonFieldRequired = function (field, item) {
+        switch (field)
+        {
+            case "Sub-Label":
+                if (['container', 'pagebreak'].indexOf(item.type) > -1) {
+                    return false;
+                }
+                break;
+            case "Tool Tip":
+                if (['container', 'pagebreak'].indexOf(item.type) > -1) {
+                    return false;
+                }
+                break;
+            case "Field Required":
+                if (['container', 'static', 'pagebreak'].indexOf(item.type) > -1) {
+                    return false;
+                }
+                break;
+            default:
+                return true;
+        }
+        return true;
+    }
 });
 
