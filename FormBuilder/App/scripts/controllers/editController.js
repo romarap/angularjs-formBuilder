@@ -1,69 +1,64 @@
 ﻿'use strict';
 
+//constants
+var CREATED = 'create';
+var UPDATED = 'update';
+var DELETE = 'delete';
+
 /**
  * The controller doesn't do much more than setting the initial data model
  */
-app.controller('editController', function ($scope, $uibModal) {
-    //constants
-    var CREATED = 'create';
-    var UPDATED = 'update';
-    var DELETE = 'delete';
-
+app.controller('editController', function ($scope, FormService, $routeParams, $uibModal) {
+    
     $scope.models = {
         selected: null,
-        templates: [
-            //{ type: "item", id: 2, display_name: "Item" },
-            { id: "", status: CREATED, type: "textfield", display_name: "Text Field", field_label: 'textField', field_required: true, field_disabled: false },
-            { id: "", status: CREATED, type: "static", display_name: "Static", field_label: 'static' },
-            { id: "", status: CREATED, type: "radio", display_name: "Radio Buttons", field_label: 'radio', field_required: true, field_disabled: false, field_options: [{ value: 0, label: "0" }, { value: 1, label: "1" }] },
-            { id: "", status: CREATED, type: "checkbox", display_name: "Checkbox", field_label: 'checkbox', field_required: true, field_disabled: false },
-            { id: "", status: CREATED, type: "dropdown", display_name: "Dropdown", field_label: 'dropdown', field_required: true, field_disabled: false, field_options: [{ value: 0, label: "option 0" }, { value: 1, label: "option 1" }] },
-            { id: "", status: CREATED, type: "photo", display_name: "Photo", field_label: 'photo', field_required: true, field_disabled: false },
-            { id: "", status: CREATED, type: "container", display_name: "Group", field_label: 'container', field_required: true, field_disabled: false, controls: [] },
-            { id: "", status: CREATED, type: "pagebreak", display_name: "Page Break", field_label: 'pagebreak' }
-        ],
         delected: [],
         newId: 1,
-        forms: 
-             [
-                {
-                    "id": "1",
-                    "type": "container",
-                    "field_label": "container",
-                    "controls": [
-                            {
-                                "id": "2",
-                                "type": "textfield",
-                                "field_type": "text",
-                                "field_label": "text a",
-
-                            },
-                            {
-                                "id": "3",
-                                "type": "textfield",
-                                "field_label": "text b"
-                            }
-                    ]
-                },
-                {
-                    "id": "4",
-                    "type": "textfield",
-                    "field_label": "text c"
-                },
-                {
-                    "id": "5",
-                    "type": "textfield",
-                    "field_label": "text d"
-                },
-                {
-                    "id": "6",
-                    "type": "textfield",
-                    "field_label": "text e"
-                }
-             ]
- 
-        
+        dirty: false,
+        form: {} 
     };
+
+    $scope.models.form.id = $routeParams.id;
+    if ($scope.models.form.id) {
+        // read form with given id
+	    FormService.form($routeParams.id).then(function(form) {
+		    $scope.models.form = form;
+        });
+    }
+    else
+    {
+        $scope.models.form = {
+            "name": "--New--",
+            "controls": []
+        };
+    }
+
+
+    $scope.save = function () {
+        if ($scope.models.dirty)
+        {
+            $scope.showMessage("Saving Form.....");
+
+            FormService.save($scope.models.form).then(function () {
+                $scope.hideMessage();
+            });
+        }
+    };
+
+    $scope.showMessage = function (message) {
+        var $modal = $('.message-bar'),
+            $alertinfo = $('.alert-info');
+        $alertinfo[0].innerHTML = message;
+        $modal.modal({backdrop: 'static', keyboard: false});
+    }
+
+    $scope.hideMessage = function () {
+        var $modal = $('.message-bar');
+        $modal.modal('hide');
+    }
+
+
+
 
     $scope.dropCallback = function (event, index, item) {
         if (item) {
@@ -74,6 +69,7 @@ app.controller('editController', function ($scope, $uibModal) {
             if (item.status != CREATED) {
                 item.status = UPDATED;
             }
+            $scope.models.dirty = true;
         }
         return item;
     };
@@ -96,15 +92,15 @@ app.controller('editController', function ($scope, $uibModal) {
                 for (var key in deletedItems) {
                     $scope.models.delected.push(deletedItems[key]);
                 }
-                return item;
             }
         }
+        $scope.models.dirty = true;
         return item;
     };
 
     var getDeleteConflicts = function (deletedItems) {
         var conflicts = [];
-        var remainingItems = getFieldList($scope.models.forms, deletedItems, {});
+        var remainingItems = getFieldList($scope.models.form, deletedItems, {});
         for (var key in remainingItems) {
             var item = remainingItems[key];
             if (item.conditions) {
@@ -121,7 +117,7 @@ app.controller('editController', function ($scope, $uibModal) {
 
  
 
-    $scope.$watch('models.forms', function (model) {
+    $scope.$watch('models.form', function (model) {
         $scope.formAsJson = angular.toJson(model, true);
     }, true);
 
@@ -149,7 +145,7 @@ app.controller('editController', function ($scope, $uibModal) {
                     // return all the fields on the form
                     var ignoreItem = {};
                     ignoreItem[item.id] = item;
-                    return getFieldList($scope.models.forms, ignoreItem, {});
+                    return getFieldList($scope.models.form.controls, ignoreItem, {});
                 }
             },
         });
@@ -158,7 +154,11 @@ app.controller('editController', function ($scope, $uibModal) {
             // has item changed ?
             if (JSON.stringify(selectedItem) !== JSON.stringify(angular.copy($scope.models.selected))) {
                 angular.copy(selectedItem, $scope.models.selected);
-                $scope.models.selected.status = UPDATED;
+
+                if ($scope.models.selected.status != CREATED) {
+                    $scope.models.selected.status = UPDATED;
+                }
+                $scope.models.dirty = true;
             }
         }, function () {
             //$log.info('Modal dismissed at: ' + new Date());

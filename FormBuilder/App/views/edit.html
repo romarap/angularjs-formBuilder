@@ -3,87 +3,49 @@
 
     <!-- Sidebar -->
     <div class="col-md-2">
-        <div class="toolbox box box-grey box-padding">
-            <h3>Forms</h3>
-            
-            <div class="list-group">
-                <a href="" class="list-group-item">-- New Form --</a>
-                <a href="" class="list-group-item active">Car Inspection</a>
-                <a href="" class="list-group-item">Employee Interview</a>
-                <a href="" class="list-group-item">Road Survey</a>
-            </div>
-        </div>
-
+        <forms-short-list-directive selectedid="{{models.form.id}}"></forms-short-list-directive>
     </div>
 
     <!-- Main area with field_label and source code -->
     <div class="col-md-8">
-
-        <!--<div class="alert alert-info">
-            <strong>Info!</strong> Drag &amp; Drop items from the toolbox
-        </div>-->
         <div>
-            <div ng-init="list=models.forms">
+            <div ng-init="{{list=models.form.controls}}">
                 <div class="dropzone box box-yellow">
                     <!-- The dropzone also uses the list template -->
-                    <h3>Car Inspection</h3>
-                    <div ng-include="'views/includes/dropZone/dropZone.html'"></div>
+                    <h3>
+                        {{models.form.name}}
+                        <i class="glyphicon glyphicon-save-file" title="Save form" ng-class="{selectable: models.dirty }"  ng-click="save()" ></i>
+                    </h3>
+                    <div ng-include="'views/includes/partials/dropZone.html'"></div>
                 </div>
             </div>
         </div>
-
-        <uib-accordion close-others="oneAtATime">
-            <uib-accordion-group>
-                <uib-accordion-heading>
-                    Generated Model <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
-                </uib-accordion-heading>
-                <pre>{{formAsJson}}</pre>
-            </uib-accordion-group>
-            <uib-accordion-group>
-                <uib-accordion-heading>
-                    Deleted <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
-                </uib-accordion-heading>
-                <pre>{{deletedItemsAsJson}}</pre>
-            </uib-accordion-group>
-        </uib-accordion>
+        <ng-include src="'views/includes/partials/updatedArea.html'"></ng-include>
+        
     </div>
 
     <!-- Sidebar -->
     <div class="col-md-2">
+        <toolbox-directive></toolbox-directive>
+        <ng-include src="'views/includes/partials/trashCan.html'"></ng-include>
+        <ng-include src="'views/includes/partials/selectedItemView.html'"></ng-include>
+    </div>
+</div>
 
-        <div class="toolbox box box-grey box-padding">
-            <h3>Toolbox</h3>
-            <ul>
-                <!-- The toolbox only allows to copy objects, not move it. After a new
-                     element was created, dnd-copied is invoked and we generate the next id -->
-                <li ng-repeat="item in models.templates"
-                    dnd-draggable="item"
-                    dnd-effect-allowed="copy">
-                    <button type="button" class="btn btn-default" disabled="disabled">{{item.display_name}}</button>
-                </li>
-            </ul>
-        </div>
-
-
-
-        <div class="trashcan box box-grey box-padding">
-            <!-- If you use [] as referenced list, the dropped elements will be lost -->
-            <h3>Trashcan</h3>
-            <ul dnd-list="[]"
-                dnd-drop="trashedCallback(event, index, item)">
-                <li><img src="images/trashcan.jpg"></li>
-            </ul>
-        </div>
-        <div ng-if="models.selected" class="box box-grey box-padding">
-            <h3>Selected</h3>
-            <strong>Type: </strong> {{models.selected.type}}<br>
-            <input type="text" ng-model="models.selected.id" class="form-control" style="margin-top: 5px" />
-        </div>
+<!-- status dialog/message-bar -->
+<div class="vertical-alignment-helper">
+    <div class="modal fade message-bar">
+            <div class="modal-dialog  modal-sm">
+                <div class="modal-content">
+                    <div class="alert alert-info" role="alert"></div>
+                </div>
+                <div class="modal-footer" hidden="true"></div>
+            </div>
     </div>
 </div>
 
 
-    <!-- item edit dialog -->
+<!-- item edit dialog -->
 <div class="modal fade">
     <script type="text/ng-template" id="fieldPropertiesDialog.html">
         <ng-include src="'views/includes/field-properties/fieldPropertiesDialog.html'"></ng-include>

@@ -191,8 +191,38 @@
   cursor: default !important;*/
 }
 
+h3 > i {
+    float: right;
+    cursor: default;
+}
+
 .selectable {
-  color: red;
+  color: #286090;
   cursor: pointer;
 }
+
+.modal .alert{
+    margin-bottom : 0px;
+}
+
+.vertical-alignment-helper .modal {
+  text-align: center;
+  padding: 0!important;
+}
+
+.vertical-alignment-helper .modal:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -4px;
+}
+
+.vertical-alignment-helper .modal .modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+
+
 

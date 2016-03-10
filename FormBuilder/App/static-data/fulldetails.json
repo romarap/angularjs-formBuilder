@@ -1,0 +1,201 @@
+[{
+  "id": 1,
+  "name": "Car Inspection",
+  "controls": [
+    {
+      "id": "1",
+      "type": "container",
+      "field_label": "Main details",
+      "controls": [
+        {
+          "id": "2",
+          "type": "static",
+          "display_name": "Static",
+          "field_label": "Vehicle Details",
+          "field_tool_tip": "Please enter the details of the vehicle"
+        },
+        {
+          "id": "3",
+          "type": "textfield",
+          "field_type": "text",
+          "field_label": "Make",
+          "field_required": true
+        },
+        {
+          "id": "4",
+          "type": "textfield",
+          "field_label": "Model",
+          "field_type": "text",
+          "field_required": true
+        },
+        {
+          "id": "5",
+          "type": "textfield",
+          "display_name": "Text Field",
+          "field_label": "Registration",
+          "field_required": true,
+          "field_disabled": false,
+          "field_type": "text"
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "type": "container",
+      "display_name": "Group",
+      "field_label": "container",
+      "field_required": true,
+      "field_disabled": false,
+      "controls": [
+        {
+          "id": "7",
+          "type": "radio",
+          "display_name": "Radio Buttons",
+          "field_label": "Tyres",
+          "field_required": true,
+          "field_disabled": false,
+          "field_options": [
+            {
+              "value": "1",
+              "label": "Yes"
+            },
+            {
+              "value": "0",
+              "label": "No"
+            }
+          ],
+          "field_tool_tip": "Please check tyres are correct pressure"
+        },
+        {
+          "id": "8",
+          "type": "radio",
+          "display_name": "Radio Buttons",
+          "field_label": "Windscreen",
+          "field_required": true,
+          "field_disabled": false,
+          "field_options": [
+            {
+              "value": "1",
+              "label": "Yes"
+            },
+            {
+              "value": "0",
+              "label": "No"
+            }
+          ],
+          "field_tool_tip": "Are there any issues with the windscreen"
+        }
+      ]
+    }
+  ]
+},
+
+ {
+  "id": 2,
+  "name": "Employee Interview",
+  "controls": [
+    {
+      "id": "1",
+      "type": "container",
+      "field_label": "Candidate Details",
+      "controls": [
+        {
+          "id": "2",
+          "type": "textfield",
+          "field_type": "text",
+          "field_label": "First Name"
+        },
+        {
+          "id": "3",
+          "type": "textfield",
+          "field_label": "Surname",
+          "field_type": "text"
+        },
+        {
+          "id": "4",
+          "type": "dropdown",
+          "display_name": "Dropdown",
+          "field_label": "Gender",
+          "field_required": true,
+          "field_disabled": false,
+          "field_options": [
+            {
+              "value": 0,
+              "label": "Male"
+            },
+            {
+              "value": 1,
+              "label": "Female"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "type": "container",
+      "display_name": "Group",
+      "field_label": "container",
+      "field_required": true,
+      "field_disabled": false,
+      "controls": [
+        {
+          "id": "newid-3",
+          "type": "checkbox",
+          "display_name": "Checkbox",
+          "field_label": "Smartly dressed ?",
+          "field_required": true,
+          "field_disabled": false
+        },
+        {
+          "id": "6",
+          "type": "checkbox",
+          "display_name": "Checkbox",
+          "field_label": "Talkative ?",
+          "field_required": true,
+          "field_disabled": false
+        }
+      ]
+    }
+  ]
+},
+  {
+  "id": 3,
+  "name": "Road Survey",
+  "controls": [
+    {
+      "id": "1",
+      "type": "container",
+      "field_label": "container",
+      "controls": [
+        {
+          "id": "2",
+          "type": "textfield",
+          "field_type": "text",
+          "field_label": "text a"
+        },
+        {
+          "id": "3",
+          "type": "textfield",
+          "field_label": "text b"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "type": "textfield",
+      "field_label": "text c"
+    },
+    {
+      "id": "5",
+      "type": "textfield",
+      "field_label": "text d"
+    },
+    {
+      "id": "6",
+      "type": "textfield",
+      "field_label": "text e"
+    }
+  ]
+}
+]
