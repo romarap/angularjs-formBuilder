@@ -236,6 +236,13 @@ h3 > .tools {
     display:table-cell;
 }
 
+.modal .alert .alert-footer {
+    display:block;
+    padding: 15px 0px 0px 0px;
+    text-align: right;
+    border-top: 1px solid #e5e5e5;
+}
+
 .vertical-alignment-helper .modal {
   text-align: center;
   padding: 0!important;

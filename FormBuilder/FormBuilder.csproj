@@ -69,9 +69,11 @@
     <Content Include="App\scripts\directives\field-condition-directive.js" />
     <Content Include="App\scripts\directives\field-directive.js" />
     <Content Include="App\scripts\directives\forms-short-list-directive.js" />
+    <Content Include="App\scripts\directives\message-bar-directive.js" />
     <Content Include="App\scripts\directives\trashcan-directive.js" />
     <Content Include="App\scripts\directives\toolbox-directive.js" />
     <Content Include="App\scripts\directives\form-directive.js" />
+    <Content Include="App\scripts\modules\messagePanelHelper.js" />
     <Content Include="App\scripts\modules\listHelpers.js" />
     <Content Include="App\scripts\services\form-service.js" />
     <Content Include="App\styles\bootstrap-2.3.2.min.css" />
@@ -81,6 +83,7 @@
     <Content Include="App\styles\demoFramework.css" />
     <Content Include="App\views\directive-templates\options.html" />
     <Content Include="App\views\directive-templates\formsShortList.html" />
+    <Content Include="App\views\directive-templates\messageBar.html" />
     <Content Include="App\views\directive-templates\trashcan.html" />
     <Content Include="App\views\directive-templates\toolbox.html" />
     <Content Include="App\views\forms.html" />

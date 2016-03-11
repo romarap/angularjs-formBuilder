@@ -17,23 +17,31 @@ app.controller('formsController', function ($scope, FormService, $routeParams, $
         dirty: false,
         form: {} 
     };
-    $scope.dialogform = "fieldPropertiesDialog.html";
 
-    $scope.models.form.id = $routeParams.id;
-    if ($scope.models.form.id) {
-        // read form with given id
-	    FormService.form($routeParams.id).then(function(form) {
-		    $scope.models.form = form;
-        });
+   if ($routeParams.id) {
+       // read form with given id
+       FormService.form($routeParams.id).then(function (form) {
+           $scope.models.form = form;
+       }, function myError(response) {
+           // form failed to load so clear details but set id so that the user can see the selected item in the menu
+           $scope.models.form = { "id": $routeParams.id };
+           
+           showMessage({
+               message: "Failed to load form.....<br>" + response.status + ":" + response.statusText,
+               alertStyle: "alert-danger",
+               okButton: true
+           });
+       });
     }
     else
     {
-        $scope.models.form = {
-            "id" : null,
-            "name": "--New--",
-            "controls": []
-        };
+       $scope.models.form = {
+           "id": null,
+           "name": "--New--",
+           "controls": []
+       };
     }
+
 
     $scope.editForm = function ($event) {
         event.preventDefault();
@@ -72,25 +80,28 @@ app.controller('formsController', function ($scope, FormService, $routeParams, $
     $scope.save = function () {
         if ($scope.models.dirty)
         {
-            $scope.showMessage("Saving Form.....");
+            showMessage({
+                message: "Saving Form.....",
+                alertStyle: "alert-info"
+            });
 
             FormService.save($scope.models.form).then(function () {
-                $scope.hideMessage();
+                hideMessage();
             });
         }
     };
 
-    $scope.showMessage = function (message) {
-        var $modal = $('.message-bar'),
-            $alertinfo = $('.alert-info .msg');
-            $alertinfo[0].innerHTML = message;
-        $modal.modal({backdrop: 'static', keyboard: false});
-    }
+    //$scope.showMessage = function (message) {
+    //    var $modal = $('.message-bar'),
+    //        $alertinfo = $('.alert-info .msg');
+    //        $alertinfo[0].innerHTML = message;
+    //    $modal.modal({backdrop: 'static', keyboard: false});
+    //}
 
-    $scope.hideMessage = function () {
-        var $modal = $('.message-bar');
-        $modal.modal('hide');
-    }
+    //$scope.hideMessage = function () {
+    //    var $modal = $('.message-bar');
+    //    $modal.modal('hide');
+    //}
 
         
     $scope.dropCallback = function (event, index, item) {

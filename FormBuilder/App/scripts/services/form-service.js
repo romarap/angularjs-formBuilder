@@ -1,21 +1,39 @@
 'use strict';
 
-app.service('FormService', function FormService($http, $timeout) {
+app.service('FormService', function FormService($http, $q, $timeout) {
 
     var formsJsonPath = './static-data/fulldetails.json';
     var listFormsJsonPath = './static-data/list_forms.json';
 
     return {
         
-        form:function (id) {
-            // $http returns a promise, which has a then function, which also returns a promise
-            return $http.get(formsJsonPath).then(function (response) {
-                var requestedForm = {};
-                angular.forEach(response.data, function (form) {
-                    if (form.id == id) requestedForm = form;
-                });
-                return requestedForm;
-            });
+         form: function (id) {
+            // added error injection for testing 
+            var path = formsJsonPath;
+            if (id == 3)
+            {
+                path += "00";
+            }
+            var promise = $http.get(path),
+                deferObject =  deferObject || $q.defer();
+ 
+            promise.then(
+              // OnSuccess function
+              function (response) {
+                  // This code will only run if we have a successful promise.
+                  var requestedForm = {};
+                  angular.forEach(response.data, function (form) {
+                      if (form.id == id) requestedForm = form;
+                  });
+                  deferObject.resolve(requestedForm);
+              },
+              // OnFailure function
+              function(reason){
+                  // This code will only run if we have a failed promise.
+                  deferObject.reject(reason);
+              });
+ 
+            return deferObject.promise;
         },
         forms: function() {
             //return $http.get(listFormsJsonPath).then(function (response) {

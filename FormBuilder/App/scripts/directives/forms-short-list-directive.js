@@ -9,8 +9,12 @@ app.directive('formsShortListDirective', function () {
             $scope.refresh = function () {
                 $scope.refreshSpin(true);
                 $scope.models.forms = [];
+
                 FormService.forms().then(function (forms) {
                     $scope.models.forms = forms;
+                    $scope.refreshSpin(false);
+                }, function myError(response) {
+                    // TODO:: handle error
                     $scope.refreshSpin(false);
                 });
             };

@@ -21,7 +21,7 @@
                 <div class="dropzone box box-yellow">
                     <!-- The dropzone also uses the list template -->
                     <h3>
-                        <label class="selectable-title" ng-dblclick="editForm(event)">{{models.form.name}}</label>
+                        <label class="selectable-title" ng-click="editForm(event)">{{models.form.name}}</label>
                         <span class="tools">
                             <i class="glyphicon glyphicon-save-file" title="Save form" ng-class="{selectable: models.dirty }" ng-click="save()"></i>
                             <i class="glyphicon glyphicon-info-sign selectable" data-toggle="popover" tabindex="0" data-trigger="hover" data-placement="left" title="Form Area" data-html="true" data-container="body"></i>
@@ -43,6 +43,7 @@
     </div>
 </div>
 
+
 <!-- status dialog/message-bar -->
 <div class="vertical-alignment-helper">
     <div class="modal fade message-bar">
@@ -51,9 +52,12 @@
                     <div class="alert alert-info" role="alert">
                         <div class="glyphicon glyphicon-info-sign"></div>
                         <div class="msg"></div>
+                        <div class="alert-footer"><button class="btn btn-primary" data-dismiss="modal">OK</button></div>
+                    </div>
+                    <div class="modal-footer" hidden="true">
+                       
                     </div>
                 </div>
-                <div class="modal-footer" hidden="true"></div>
             </div>
     </div>
 </div>
@@ -80,7 +84,7 @@
             <li>Drag and drop items from the Toolbox onto the form area</li>
             <li>Delete items by dragging to the Trashcan</li>
             <li>Edit items by double clicking on the item</li>
-            <li>Edit form title by double clicking on the item</li>
+            <li>Edit form title by clicking on the item</li>
         </ul>
     </div>
 </div>
