@@ -8,7 +8,7 @@
                         <option value="" selected="selected">--Please select item--</option>
                     </select>
                     <label class="form-control-static col-sm-1">=</label>
-                    <input type="text" class="form-control input-sm col-sm-4" ng-model="condition.value" />
+                    <input type="text" class="form-control input-sm col-sm-4" ng-model="condition.value" placeholder="condition"/>
                     <i class="form-control-static glyphicon glyphicon-remove" ng-click="removeCondition($event, $index)" ng-class="{selectable: hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false"></i>
                 </div>
             </ng-form>

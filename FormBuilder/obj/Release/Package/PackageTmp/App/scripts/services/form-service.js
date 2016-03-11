@@ -1,61 +1,55 @@
 'use strict';
 
-app.service('FormService', function FormService($http) {
+app.service('FormService', function FormService($http, $q, $timeout) {
 
-    var formsJsonPath = './static-data/sample_forms.json';
+    var formsJsonPath = './static-data/fulldetails.json';
+    var listFormsJsonPath = './static-data/list_forms.json';
 
     return {
-        fields:[
+        
+         form: function (id) {
+            // added error injection for testing 
+            var path = formsJsonPath;
+            if (id == 3)
             {
-                name : 'textfield',
-                value : 'Textfield'
-            },
-            {
-                name : 'email',
-                value : 'E-mail'
-            },
-            {
-                name : 'password',
-                value : 'Password'
-            },
-            {
-                name : 'radio',
-                value : 'Radio Buttons'
-            },
-            {
-                name : 'dropdown',
-                value : 'Dropdown List'
-            },
-            {
-                name : 'date',
-                value : 'Date'
-            },
-            {
-                name : 'textarea',
-                value : 'Text Area'
-            },
-            {
-                name : 'checkbox',
-                value : 'Checkbox'
-            },
-            {
-                name : 'hidden',
-                value : 'Hidden'
+                path += "00";
             }
-        ],
-        form:function (id) {
-            // $http returns a promise, which has a then function, which also returns a promise
-            return $http.get(formsJsonPath).then(function (response) {
-                var requestedForm = {};
-                angular.forEach(response.data, function (form) {
-                    if (form.form_id == id) requestedForm = form;
-                });
-                return requestedForm;
-            });
+            var promise = $http.get(path),
+                deferObject =  deferObject || $q.defer();
+ 
+            promise.then(
+              // OnSuccess function
+              function (response) {
+                  // This code will only run if we have a successful promise.
+                  var requestedForm = {};
+                  angular.forEach(response.data, function (form) {
+                      if (form.id == id) requestedForm = form;
+                  });
+                  deferObject.resolve(requestedForm);
+              },
+              // OnFailure function
+              function(reason){
+                  // This code will only run if we have a failed promise.
+                  deferObject.reject(reason);
+              });
+ 
+            return deferObject.promise;
         },
         forms: function() {
-            return $http.get(formsJsonPath).then(function (response) {
-                return response.data;
+            //return $http.get(listFormsJsonPath).then(function (response) {
+            //    return response.data;;
+            //});
+            // currently just dummy function
+            return $timeout(function () { }, 500).then(function () {
+                return $http.get(listFormsJsonPath).then(function (response) {
+                    return response.data;;
+                });
+            });
+        },
+        save: function (form) {
+            // currently just dummy function
+            return $timeout(function () { }, 2000).then(function () {
+                return;
             });
         }
     };

@@ -31,17 +31,27 @@
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/demoFramework.css">
     <link rel="stylesheet" href="styles/formBuilder.css">
+    <link rel="stylesheet" href="styles/glyphicon-animate-rotation-and-flip.css">
 
     <script src="../Scripts/angular-ui/ui-bootstrap-tpls.min.js"></script>
     <script src="../Scripts/angular-route.js"></script>
+    <script src="../Scripts/bootbox/bootbox.min.js"></script>
 
     <script src="app.js"></script>
     <script src="scripts/controllers/homeController.js"></script>
-    <script src="scripts/controllers/editController.js"></script>
- 
+    <script src="scripts/controllers/formsController.js"></script>
     <script src="scripts/controllers/headerController.js"></script>
+
     <script src="scripts/directives/field-condition-directive.js"></script>
     <script src="scripts/directives/field-options-directive.js"></script>
+    <script src="scripts/directives/toolbox-directive.js"></script>
+    <script src="scripts/directives/trashcan-directive.js"></script>
+    <script src="scripts/directives/forms-short-list-directive.js"></script>
+    <script src="scripts/directives/message-bar-directive"></script>
+    <script src="scripts/services/form-service.js"></script>
+
+    <script src="scripts/modules/listHelpers.js"></script>
+    <script src="scripts/modules/messagePanelHelper.js"></script>
 </head>
 <body ng-app="myApp">
     <div class="container">
@@ -49,7 +59,7 @@
             <ul class="nav nav-pills pull-right">
                 <li ng-class="{active: ($location.path() == '/') }"><a href="#/">Home</a></li>
                 <!--<li ng-class="{active: ($location.path() == '/build') }"><a href="#/build">Tab Prototype</a></li>-->
-                <li ng-class="{active: ($location.path() == '/edit') }"><a href="#/edit">Edit</a></li>
+                <li ng-class="{active: ($location.path() == '/forms') }"><a href="#/forms">Forms</a></li>
                 <!--<li ng-class="{active: ($location.path() == '/create') }"><a href="#/create">Create a Form</a></li>
                 <li ng-class="{active: ($location.path() == '/1/view') }"><a href="#/1/view">View Example Form</a></li>
                 <li ng-class="{active: ($location.path() == '/tryIt') }"><a href="#/tryIt">Try It</a></li>-->     

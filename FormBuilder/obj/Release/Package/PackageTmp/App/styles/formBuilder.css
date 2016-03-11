@@ -10,15 +10,22 @@
 }
 
 /***************************** Dropzone Styling *****************************/
+.formBuilder .dropzone {
+    min-height: 400px;
+}
 
 /**
  * The dnd-list should always have a min-height,
  * otherwise you can't drop to it once it's empty
  */
 .formBuilder .dropzone ul[dnd-list] {
-    min-height: 42px;
+    min-height: 400px;
     margin: 0px;
     padding-left: 0px;
+}
+
+.formBuilder .dropzone .container-element ul[dnd-list] {
+    min-height: 42px;
 }
 
 /**
@@ -58,10 +65,12 @@
  * while the user is dragging over it.
  */
 .formBuilder .dropzone .dndPlaceholder {
-    background-color: #ddd;
+    background-color: #eee;
     min-height: 42px;
     display: block;
     position: relative;
+    color: #aaa;
+    border:1px dashed #aaa;
 }
 
 /***************************** Element Selection *****************************/
@@ -191,8 +200,86 @@
   cursor: default !important;*/
 }
 
+h3 > .tools {
+    float: right;
+    cursor: default;
+}
+
 .selectable {
-  color: red;
+  color: #286090;
   cursor: pointer;
+}
+
+.selectable-title {
+  cursor: pointer;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* IE/Edge */
+  user-select: none;           /* non-prefixed version, currently
+                                  not supported by any browser */
+}
+
+
+.modal .alert{
+    margin-bottom : 0px;
+}
+
+.modal .alert .glyphicon{
+    display:table-cell;
+}
+
+.modal .alert div,
+.modal .alert span{
+    padding-left: 5px;
+    display:table-cell;
+}
+
+.modal .alert .alert-footer {
+    display:block;
+    padding: 15px 0px 0px 0px;
+    text-align: right;
+    border-top: 1px solid #e5e5e5;
+}
+
+.vertical-alignment-helper .modal {
+  text-align: center;
+  padding: 0!important;
+}
+
+.vertical-alignment-helper .modal:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -4px;
+}
+
+.vertical-alignment-helper .modal .modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+
+
+
+#helplist li {
+    display: block;
+}
+
+#helplist li:before {
+    /*Using a Bootstrap glyphicon as the bullet point*/
+    content: "\e080";
+    font-family: 'Glyphicons Halflings';
+    font-size: 9px;
+    float: left;
+    margin-top: 4px;
+    margin-left: -17px;
+    color: #AAA;
+}
+
+.popover{
+    max-width: 100%; /* Max Width of the popover (depending on the container!) */
 }
 

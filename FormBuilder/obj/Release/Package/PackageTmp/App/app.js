@@ -7,9 +7,13 @@ var app = angular.module('myApp', ['ui.bootstrap', 'ngRoute', 'dndLists'])
           templateUrl: 'views/home.html',
           controller: 'homeController'
       })
-      .when('/edit', {
-          templateUrl: 'views/edit.html',
-          controller: 'editController'
+      .when('/forms', {
+          templateUrl: 'views/forms.html',
+          controller: 'formsController'
+      })
+      .when('/forms/:id', {
+          templateUrl: 'views/forms.html',
+          controller: 'formsController'
       })
       .otherwise({
           redirectTo: '/'

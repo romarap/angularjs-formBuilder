@@ -4,9 +4,9 @@
         <div class="form-inline" ng-repeat="option in item.field_options">
             <ng-form name="userFieldForm">
                 <div ng-class="{ 'has-error' : userFieldForm.label.$invalid || userFieldForm.value.$invalid }">
-                    <input type="text" class="form-control input-sm col-sm-4" name="label" ng-model="option.label" required />
+                    <input type="text" class="form-control input-sm col-sm-4" name="label" ng-model="option.label" placeholder="display text" required />
                     <label class="form-control-static col-sm-1">=</label>
-                    <input type="text" class="form-control input-sm col-sm-4" name="value" ng-model="option.value" required />
+                    <input type="text" class="form-control input-sm col-sm-4" name="value" ng-model="option.value" placeholder="field value"  required />
                     <i class="form-control-static glyphicon glyphicon-remove" ng-click="removeOption($event, $index)" ng-class="{selectable: hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false"></i>
                 </div>
             </ng-form>
