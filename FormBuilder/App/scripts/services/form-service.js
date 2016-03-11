@@ -18,8 +18,14 @@ app.service('FormService', function FormService($http, $timeout) {
             });
         },
         forms: function() {
-            return $http.get(listFormsJsonPath).then(function (response) {
-                return response.data;;
+            //return $http.get(listFormsJsonPath).then(function (response) {
+            //    return response.data;;
+            //});
+            // currently just dummy function
+            return $timeout(function () { }, 500).then(function () {
+                return $http.get(listFormsJsonPath).then(function (response) {
+                    return response.data;;
+                });
             });
         },
         save: function (form) {

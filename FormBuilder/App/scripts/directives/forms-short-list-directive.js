@@ -5,16 +5,26 @@ app.directive('formsShortListDirective', function () {
         controller: function($scope, FormService){
             $scope.models = {};
 
-            FormService.forms().then(function (forms) {
-                $scope.models.forms = forms;
-            });
 
             $scope.refresh = function () {
+                $scope.refreshSpin(true);
                 $scope.models.forms = [];
                 FormService.forms().then(function (forms) {
                     $scope.models.forms = forms;
+                    $scope.refreshSpin(false);
                 });
             };
+
+            $scope.refreshSpin = function (flag) {
+                if (flag) {
+                    $('#refresh').addClass('gly-spin');
+                } else {
+                    $('#refresh').removeClass('gly-spin');
+                }
+            }
+
+
+            $scope.refresh();
             
         },
         templateUrl: './views/directive-templates/formsShortList.html',

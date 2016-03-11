@@ -1,4 +1,12 @@
-﻿
+﻿<script type="text/javascript">
+    $("[data-toggle=popover]").popover({
+        html: true,
+        content: function () {
+            return $('#form-help-content').html();
+        }
+    });
+</script>
+
 <div class="formBuilder row">
 
     <!-- Sidebar -->
@@ -14,20 +22,23 @@
                     <!-- The dropzone also uses the list template -->
                     <h3>
                         {{models.form.name}}
-                        <i class="glyphicon glyphicon-save-file" title="Save form" ng-class="{selectable: models.dirty }"  ng-click="save()" ></i>
+                        <span class="tools">
+                            <i class="glyphicon glyphicon-save-file" title="Save form" ng-class="{selectable: models.dirty }" ng-click="save()"></i>
+                            <i class="glyphicon glyphicon-info-sign selectable" data-toggle="popover" tabindex="0" data-trigger="focus" data-placement="left" title="Form Area" data-html="true" data-container="body"></i>
+                        </span>
                     </h3>
                     <div ng-include="'views/includes/partials/dropZone.html'"></div>
                 </div>
             </div>
         </div>
         <ng-include src="'views/includes/partials/updatedArea.html'"></ng-include>
-        
+
     </div>
 
     <!-- Sidebar -->
     <div class="col-md-2">
         <toolbox-directive></toolbox-directive>
-        <ng-include src="'views/includes/partials/trashCan.html'"></ng-include>
+        <trashcan-directive ></trashcan-directive>
         <ng-include src="'views/includes/partials/selectedItemView.html'"></ng-include>
     </div>
 </div>
@@ -37,7 +48,10 @@
     <div class="modal fade message-bar">
             <div class="modal-dialog  modal-sm">
                 <div class="modal-content">
-                    <div class="alert alert-info" role="alert"></div>
+                    <div class="alert alert-info" role="alert">
+                        <div class="glyphicon glyphicon-hourglass"></div>
+                        <div class="msg"></div>
+                    </div>
                 </div>
                 <div class="modal-footer" hidden="true"></div>
             </div>
@@ -49,5 +63,17 @@
 <div class="modal fade">
     <script type="text/ng-template" id="fieldPropertiesDialog.html">
         <ng-include src="'views/includes/field-properties/fieldPropertiesDialog.html'"></ng-include>
-    </script>
+</script>
+</div>
+
+<!-- form area help text-->
+<div id="form-help-content" class="hide">
+    <div>
+        <div>Creating and updating forms:</div>
+        <ul>
+            <li>Drag and drop items from the Toolbox onto the form area</li>
+            <li>Delete items by dragging to the Trashcan</li>
+            <li>Edit items by double clicking on the item</li>
+        </ul>
+    </div>
 </div>

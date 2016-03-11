@@ -1,9 +1,9 @@
 ﻿<div class="toolbox box box-grey box-padding">
-    <h3>Forms<i class="selectable glyphicon glyphicon-refresh  gly-spin" title="Refresh form list" ng-click="refresh()"></i>
+    <h3>Forms<i id="refresh" class="selectable tools glyphicon glyphicon-refresh" title="Refresh form list" ng-click="refresh()"></i>
     </h3>
 
     <div class="list-group" >
         <a href="#/create" class="list-group-item" >-- New Form --</a>
-        <a ng-repeat="form in models.forms" href="#/{{form.id}}/edit" class="list-group-item" ng-class="{active : form.id==selectedid}">{{form.name}}</a>
+        <a ng-repeat="form in models.forms" href="#/forms/{{form.id}}" class="list-group-item" ng-class="{active : form.id==selectedid}">{{form.name}}</a>
     </div>
 </div>

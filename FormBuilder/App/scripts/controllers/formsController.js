@@ -8,7 +8,7 @@ var DELETE = 'delete';
 /**
  * The controller doesn't do much more than setting the initial data model
  */
-app.controller('editController', function ($scope, FormService, $routeParams, $uibModal) {
+app.controller('formsController', function ($scope, FormService, $routeParams, $uibModal) {
     
     $scope.models = {
         selected: null,
@@ -47,8 +47,8 @@ app.controller('editController', function ($scope, FormService, $routeParams, $u
 
     $scope.showMessage = function (message) {
         var $modal = $('.message-bar'),
-            $alertinfo = $('.alert-info');
-        $alertinfo[0].innerHTML = message;
+            $alertinfo = $('.alert-info .msg');
+            $alertinfo[0].innerHTML = message;
         $modal.modal({backdrop: 'static', keyboard: false});
     }
 
@@ -57,9 +57,7 @@ app.controller('editController', function ($scope, FormService, $routeParams, $u
         $modal.modal('hide');
     }
 
-
-
-
+        
     $scope.dropCallback = function (event, index, item) {
         if (item) {
             if (!item.id) {
@@ -73,49 +71,7 @@ app.controller('editController', function ($scope, FormService, $routeParams, $u
         }
         return item;
     };
-
-    $scope.trashedCallback = function (event, index, item) {
-        if (item) {
-            var deletedItems = getFieldList(item, null, {});
-            var conflicts = getDeleteConflicts(deletedItems);
- 
-            if (conflicts.length > 0) {
-                var msg = "Deleting this item will cause conflicts \n\n";
-                for (var i=0; i < conflicts.length; i++)
-                {
-                    msg += conflicts[i] + "\n";
-                }
-                alert(msg);
-                return null;
-            } else {
-                // place items in deleted list
-                for (var key in deletedItems) {
-                    $scope.models.delected.push(deletedItems[key]);
-                }
-            }
-        }
-        $scope.models.dirty = true;
-        return item;
-    };
-
-    var getDeleteConflicts = function (deletedItems) {
-        var conflicts = [];
-        var remainingItems = getFieldList($scope.models.form, deletedItems, {});
-        for (var key in remainingItems) {
-            var item = remainingItems[key];
-            if (item.conditions) {
-                for (var j = 0; j < item.conditions.length; j++) {
-                    var field_id = item.conditions[j].field_id;
-                    if (field_id in deletedItems) {
-                        conflicts.push("item '" + item.field_label + "' has condition on the deleted item '" + deletedItems[field_id].field_label + "'");
-                    }
-                }
-            }
-        }
-        return conflicts;
-    }
-
- 
+     
 
     $scope.$watch('models.form', function (model) {
         $scope.formAsJson = angular.toJson(model, true);
@@ -123,6 +79,9 @@ app.controller('editController', function ($scope, FormService, $routeParams, $u
 
     $scope.$watch('models.delected', function (model) {
         $scope.deletedItemsAsJson = angular.toJson(model, true);
+        if (model.length > 0){
+            model.dirty = true;
+        }
     }, true);
 
     // Dialog open
@@ -164,55 +123,6 @@ app.controller('editController', function ($scope, FormService, $routeParams, $u
             //$log.info('Modal dismissed at: ' + new Date());
         });
     };
-
-    // get a flat list of fields but ignore fields in the ignore list
-    var getFieldList = function (root, ignoreFields, flattenFieldList) {
-        // ensure valid ignore fields - not null
-        if (!ignoreFields)
-        {
-            ignoreFields = {};
-        }
-
-        if (Array.isArray(root)) {
-            for (var i = 0; i < root.length; i++) {
-                flattenFieldList = getFieldList(root[i], ignoreFields, flattenFieldList);
-            }
-        }
-        else {
-            if (!(root.id in ignoreFields)) { 
-               flattenFieldList[root.id] = angular.copy(root);
-            }
-            // the current field 
-            if (root.controls) {
-                flattenFieldList = getFieldList(root.controls, ignoreFields, flattenFieldList);
-            }
-        }
-        return flattenFieldList;
-    };
-
-
-    //var containsItem = function (itemList, item) {
-    //    if (Array.isArray(itemList)) {
-    //        for (var i = 0; i < itemList.length; i++) {
-    //            if (item === itemList[i]) {
-    //                return true;
-    //            }
-    //        }
-    //    }
-    //    return false;
-    //}
-
-    //var containsItemById = function (itemList, id) {
-
-    //    if (Array.isArray(itemList)) {
-    //        for (var i = 0; i < itemList.length; i++) {
-    //            if (id == itemList[i].id) {
-    //                return true;
-    //            }
-    //        }
-    //    }
-    //    return false;
-    //}
 });
 
 

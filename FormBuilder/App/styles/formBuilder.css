@@ -10,15 +10,22 @@
 }
 
 /***************************** Dropzone Styling *****************************/
+.formBuilder .dropzone {
+    min-height: 400px;
+}
 
 /**
  * The dnd-list should always have a min-height,
  * otherwise you can't drop to it once it's empty
  */
 .formBuilder .dropzone ul[dnd-list] {
-    min-height: 42px;
+    min-height: 400px;
     margin: 0px;
     padding-left: 0px;
+}
+
+.formBuilder .dropzone .container-element ul[dnd-list] {
+    min-height: 42px;
 }
 
 /**
@@ -191,7 +198,7 @@
   cursor: default !important;*/
 }
 
-h3 > i {
+h3 > .tools {
     float: right;
     cursor: default;
 }
@@ -203,6 +210,16 @@ h3 > i {
 
 .modal .alert{
     margin-bottom : 0px;
+}
+
+.modal .alert .glyphicon{
+    display:table-cell;
+}
+
+.modal .alert div,
+.modal .alert span{
+    padding-left: 5px;
+    display:table-cell;
 }
 
 .vertical-alignment-helper .modal {
