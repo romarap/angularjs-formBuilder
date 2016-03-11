@@ -17,6 +17,7 @@ app.controller('formsController', function ($scope, FormService, $routeParams, $
         dirty: false,
         form: {} 
     };
+    $scope.dialogform = "fieldPropertiesDialog.html";
 
     $scope.models.form.id = $routeParams.id;
     if ($scope.models.form.id) {
@@ -28,11 +29,45 @@ app.controller('formsController', function ($scope, FormService, $routeParams, $
     else
     {
         $scope.models.form = {
+            "id" : null,
             "name": "--New--",
             "controls": []
         };
     }
 
+    $scope.editForm = function ($event) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        var formDetails = {
+            "id": $scope.models.form.id,
+            "name": $scope.models.form.name
+        };
+
+        var modalInstance = $uibModal.open({
+            animation: true,
+            templateUrl: 'formPropertiesDialog.html',
+            controller: 'ModalInstanceCtrl',
+            size: '',
+            resolve: {
+                item: function () {
+                    return angular.copy(formDetails);
+                }
+                ,
+                fields: null
+            },
+        });
+
+        modalInstance.result.then(function (item) {
+            // has item changed ?
+            if (JSON.stringify(item) !== JSON.stringify(formDetails)) {
+                angular.merge($scope.models.form, item);
+                $scope.models.dirty = true;
+            }
+        }, function () {
+            //$log.info('Modal dismissed at: ' + new Date());
+        });
+    };
 
     $scope.save = function () {
         if ($scope.models.dirty)
@@ -80,12 +115,12 @@ app.controller('formsController', function ($scope, FormService, $routeParams, $
     $scope.$watch('models.delected', function (model) {
         $scope.deletedItemsAsJson = angular.toJson(model, true);
         if (model.length > 0){
-            model.dirty = true;
+            $scope.models.dirty = true;
         }
     }, true);
 
     // Dialog open
-    $scope.open = function ($event, size, item) {
+    $scope.editItemDetails = function ($event, size, item) {
         event.preventDefault();
         event.stopPropagation();
 

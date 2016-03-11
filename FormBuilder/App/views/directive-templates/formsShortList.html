@@ -3,7 +3,7 @@
     </h3>
 
     <div class="list-group" >
-        <a href="#/create" class="list-group-item" >-- New Form --</a>
+        <a href="#/forms" class="list-group-item" >-- New Form --</a>
         <a ng-repeat="form in models.forms" href="#/forms/{{form.id}}" class="list-group-item" ng-class="{active : form.id==selectedid}">{{form.name}}</a>
     </div>
 </div>

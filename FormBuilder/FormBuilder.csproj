@@ -84,6 +84,7 @@
     <Content Include="App\views\directive-templates\trashcan.html" />
     <Content Include="App\views\directive-templates\toolbox.html" />
     <Content Include="App\views\forms.html" />
+    <Content Include="App\views\includes\field-properties\formPropertiesDialog.html" />
     <Content Include="App\views\includes\partials\selectedItemView.html" />
     <Content Include="App\views\includes\partials\updatedArea.html" />
     <Content Include="App\views\includes\partials\dropZone.html" />

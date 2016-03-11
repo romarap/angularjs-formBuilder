@@ -9,9 +9,10 @@
 
 <div class="trashcan box box-grey box-padding">
     <!-- If you use [] as referenced list, the dropped elements will be lost -->
-    <h3>Trashcan<i class="glyphicon glyphicon-info-sign selectable tools" data-toggle="popover" tabindex="0" data-trigger="focus" data-placement="left" title="Trashcan" data-html="true" data-container="body"></i></h3>
+    <h3>Trashcan<i class="glyphicon glyphicon-info-sign selectable tools" data-toggle="popover" tabindex="0" data-trigger="hover" data-placement="left" title="Trashcan" data-html="true" data-container="body"></i></h3>
     <ul dnd-list="[]"
-        dnd-drop="trashedCallback(event, index, item)">
+        dnd-drop="trashedCallback(event, index, item)"
+        dnd-allowed-types="['formitem']">
         <li><img src="images/trashcan.jpg"></li>
     </ul>
 </div>

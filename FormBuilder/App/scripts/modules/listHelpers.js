@@ -15,8 +15,13 @@ var getFieldList = function (root, ignoreFields, flattenFieldList) {
         }
     }
     else {
-        if (!(root.id in ignoreFields)) { 
-            flattenFieldList[root.id] = angular.copy(root);
+        if (!(root.id in ignoreFields)) {
+            var copy = angular.copy(root);
+            // we don't want the controls as this is a flat list
+            if (copy.controls) {
+                copy.controls = null;
+            } 
+            flattenFieldList[root.id] = copy;
         }
         // the current field 
         if (root.controls) {

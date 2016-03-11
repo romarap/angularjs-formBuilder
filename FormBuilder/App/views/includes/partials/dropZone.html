@@ -12,9 +12,13 @@
         dnd-effect-allowed="move"
         dnd-moved="list.splice($index, 1)"
         dnd-selected="models.selected = item"
+        dnd-type="'formitem'"
         ng-class="{selected: models.selected === item}"
         ng-include="'views/includes/field-templates/' + item.type + '.html'"
-        ng-dblclick="open($event,'',item);">
+        ng-dblclick="editItemDetails($event,'',item);">
+    </li>
+    <li class="dndPlaceholder">
+        Drop item here
     </li>
  </ul>
 
