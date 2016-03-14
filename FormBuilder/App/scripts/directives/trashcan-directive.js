@@ -9,11 +9,17 @@ app.directive('trashcanDirective', function () {
                     var conflicts = getDeleteConflicts(deletedItems);
 
                     if (conflicts.length > 0) {
-                        var msg = "Deleting this item will cause conflicts \n\n";
+                        var msg = "Deleting this item will cause conflicts<ul>";
                         for (var i = 0; i < conflicts.length; i++) {
-                            msg += conflicts[i] + "\n";
+                            msg += "<li>" + conflicts[i] + "</li>";
                         }
-                        alert(msg);
+                        msg += "</ul>"
+                        showMessage({
+                            message: msg,
+                            alertStyle: "alert-danger",
+                            okButton: true
+                        });
+                        //alert(msg);
                         return null;
                     } else {
                         // place items in deleted list

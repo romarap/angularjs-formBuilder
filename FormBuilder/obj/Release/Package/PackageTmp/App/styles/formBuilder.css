@@ -243,12 +243,12 @@ h3 > .tools {
     border-top: 1px solid #e5e5e5;
 }
 
-.vertical-alignment-helper .modal {
+.message-bar .modal {
   text-align: center;
   padding: 0!important;
 }
 
-.vertical-alignment-helper .modal:before {
+.message-bar .modal:before {
   content: '';
   display: inline-block;
   height: 100%;
@@ -256,10 +256,26 @@ h3 > .tools {
   margin-right: -4px;
 }
 
-.vertical-alignment-helper .modal .modal-dialog {
+.message-bar .modal .modal-dialog {
   display: inline-block;
   text-align: left;
   vertical-align: middle;
+  max-width: 100%;
+}
+
+.message-bar li {
+    display: block;
+}
+
+.message-bar li:before {
+    /*Using a Bootstrap glyphicon as the bullet point*/
+    content: "\e080";
+    font-family: 'Glyphicons Halflings';
+    font-size: 9px;
+    float: left;
+    margin-top: 4px;
+    margin-left: -17px;
+    color: #AAA;
 }
 
 

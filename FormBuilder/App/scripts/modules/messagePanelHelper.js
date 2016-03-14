@@ -10,10 +10,10 @@ var showMessage = function (params) {
     }
     angular.merge(defaults, params);
 
-    var $modal = $('.message-bar'),
-        $alert = $('.message-bar .alert'),
-        $alertFooter = $('.message-bar .alert-footer'),
-        $alertinfo = $('.message-bar .msg');
+    var $modal = $('.message-bar .modal'),
+        $alert = $('.message-bar .modal .alert'),
+        $alertFooter = $('.message-bar .modal .alert-footer'),
+        $alertinfo = $('.message-bar .modal .msg');
 
     // Styles - update styles
     $alert.removeClass();
@@ -31,6 +31,6 @@ var showMessage = function (params) {
 }
 
 var hideMessage = function () {
-    var $modal = $('.message-bar');
+    var $modal = $('.message-bar .modal');
     $modal.modal('hide');
 }
