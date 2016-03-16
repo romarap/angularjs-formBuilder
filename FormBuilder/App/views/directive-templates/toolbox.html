@@ -7,19 +7,42 @@
     });
 </script>
 
-<div class="toolbox box box-grey box-padding">
-    <h3>Toolbox<i class="glyphicon glyphicon-info-sign selectable tools" data-toggle="popover"  tabindex="0" data-trigger="hover" data-placement="left" title="Toolbox" data-html="true" data-container="body"></i></h3>
-    <ul>
-        <!-- The toolbox only allows to copy objects, not move it. After a new
+<!--<div class="toolbox box box-grey box-padding">
+    <h3>Toolbox<i class="glyphicon glyphicon-info-sign selectable tools" data-toggle="popover"  tabindex="0" data-trigger="hover" data-placement="left" title="Toolbox" data-html="true" data-container="body"></i></h3>-->
+    
+    <uib-accordion close-others="true" class="toolbox">
+        <uib-accordion-group is-open="status1.open">
+            <uib-accordion-heading>
+                General Tools<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status1.open, 'glyphicon-chevron-right': !status1.open}"></i>
+            </uib-accordion-heading>
+            <ul>
+                <!-- The toolbox only allows to copy objects, not move it. After a new
              element was created, dnd-copied is invoked and we generate the next id -->
-        <li ng-repeat="tool in models.tools"
-            dnd-draggable="tool"
-            dnd-effect-allowed="copy"
-            dnd-type="new">
-            <button type="button" class="btn btn-default" disabled="disabled">{{tool.display_name}}</button>
-        </li>
-    </ul>
-</div>
+                <li ng-repeat="tool in tools"
+                    dnd-draggable="tool"
+                    dnd-effect-allowed="copy"
+                    dnd-type="new">
+                    <button type="button" class="btn btn-default" disabled="disabled">{{tool.display_name}}</button>
+                </li>
+            </ul>
+        </uib-accordion-group>
+        <uib-accordion-group is-open="status2.open">
+            <uib-accordion-heading>
+                Custom Tools<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status2.open, 'glyphicon-chevron-right': !status2.open}"></i>
+            </uib-accordion-heading>
+            <!--<ul>
+                <li ng-repeat="tool in models.tools"
+                    dnd-draggable="tool"
+                    dnd-effect-allowed="copy"
+                    dnd-type="new">
+                    <button type="button" class="btn btn-default" disabled="disabled">{{tool.display_name}}</button>
+                </li>
+            </ul>-->
+        </uib-accordion-group>
+    </uib-accordion>
+    
+    
+<!--</div>-->
 
 <!-- form area help text-->
 <div id="toolbox-help-content" class="hide">

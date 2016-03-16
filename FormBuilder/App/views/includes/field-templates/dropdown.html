@@ -1,18 +1,14 @@
 <div class="item">
+    <watermark-directive></watermark-directive>
     <div class="form-group row">
-        <div>{{item.field_label}}</div>
-        <div class="tool-tip">{{item.field_tool_tip}}</div>
+        <div>{{item.text1}}</div>
+        <div class="tool-tip">{{item.text2}}</div>
         <div class="form-group">
-            <label class="col-sm-2 control-label">{{item.field_sub_label}}</label>
+            <label class="col-sm-2 control-label" hidden></label>
             <div class="col-sm-8">
-                <select ng-model="item.field_value" ng-required="item.field_required" ng-disabled="item.field_disabled">
-                    <option ng-repeat="option in item.field_options"
-                            ng-selected="option.value == item.field_value"
-                            value="{{option.value}}">
-                        {{option.label}}
-                    </option>
+                <select>
+                    <option value="" selected="selected">--Please select item--</option>
                 </select>
-                <span class="required-error" ng-show="item.field_required && !item.field_value">* required</span>
             </div>
         </div>
     </div>

@@ -1,25 +1,9 @@
+
 <div class="form-group row">
-    <label for="fieldLength" class="col-sm-2 control-label input-sm">Field Length</label>
-    <div class="col-sm-4">
-        <input type="number" class="form-control input-sm" name="fieldLength" id="fieldLength" placeholder="field length" ng-model="item.field_length" >
-    </div>
-</div>
-<div class="form-group row">
-    <label for="fieldType" class="col-sm-2 control-label input-sm">Field Type</label>
-    <div class="col-sm-4">
-        <select class="form-control input-sm" name="fieldType" ng-model="item.field_type" ng-init="item.field_type=item.field_type || 'text'">
-            <option value="text">Text Box</option>
-            <option value="textarea">Text Area</option>
-            <option value="number">Number</option>
-            <option value="email">Email</option>
-            <option value="date">Date</option>
-            <option value="password">Password</option>
-        </select>
-    </div>
-</div>
-<div class="form-group row">
-    <label for="initialValue" class="col-sm-2 control-label input-sm">Initial Value</label>
+    <label class="col-sm-2 control-label input-sm">Subtype</label>
     <div class="col-sm-8">
-        <input type="text" class="form-control input-sm" id="initialValue" placeholder="initial value" ng-model="item.initialValue" >
+        <select class="form-control input-sm" name="subtype" ng-model="item.type" ng-options="value.value as value.label for (key , value) in textboxSubTypes" required></select>
     </div>
 </div>
+
+

@@ -7,7 +7,6 @@ app.directive('formsShortListDirective', function () {
 
 
             $scope.refresh = function () {
-                $scope.refreshSpin(true);
                 $scope.models.forms = [];
 
                 FormService.forms().then(function (forms) {

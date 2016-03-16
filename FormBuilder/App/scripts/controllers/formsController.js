@@ -13,10 +13,12 @@ app.controller('formsController', function ($scope, FormService, $routeParams, $
     $scope.models = {
         selected: null,
         delected: [],
-        newId: 1,
         dirty: false,
         form: {} 
     };
+
+    // reset ids for new items.
+    FormService.resetNewId();
 
    if ($routeParams.id) {
        // read form with given id
@@ -36,7 +38,7 @@ app.controller('formsController', function ($scope, FormService, $routeParams, $
     else
     {
        $scope.models.form = {
-           "id": null,
+           "id": FormService.getNewId(),
            "name": "--New--",
            "controls": []
        };
@@ -107,7 +109,7 @@ app.controller('formsController', function ($scope, FormService, $routeParams, $
     $scope.dropCallback = function (event, index, item) {
         if (item) {
             if (!item.id) {
-                item.id = "newid-" + $scope.models.newId++;
+                item.id = FormService.getNewId();
                 item.status = CREATED;
             }
             if (item.status != CREATED) {
@@ -177,9 +179,16 @@ app.controller('formsController', function ($scope, FormService, $routeParams, $
 // Please note that $uibModalInstance represents a modal window (instance) dependency.
 // It is not the same as the $uibModal service used above.
 
-app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, item, fields) {
+app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, FormService, item, fields) {
     $scope.fields = fields;
     $scope.item = item;
+    $scope.textboxSubTypes = FormService.textboxSubTypes;
+    $scope.photoSubTypes = FormService.photoSubTypes;
+    $scope.conditionSubTypes = FormService.conditionSubTypes;
+    $scope.selectorSubTypes = FormService.selectorSubTypes;
+    $scope.formatSubTypes = FormService.formatSubTypes;
+    $scope.groupSubTypes = FormService.groupSubTypes;
+
 
     // function to submit the form after all validation has occurred            
     $scope.submitForm = function (isValid) {
@@ -200,18 +209,15 @@ app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, item, f
     $scope.CommonFieldRequired = function (field, item) {
         switch (field)
         {
-            case "Sub-Label":
-                if (['container', 'pagebreak'].indexOf(item.type) > -1) {
+
+            case "Muliple":
+                if (['photo'].indexOf(item.item_type) > -1) {
                     return false;
                 }
                 break;
-            case "Tool Tip":
-                if (['container', 'pagebreak'].indexOf(item.type) > -1) {
-                    return false;
-                }
-                break;
+           
             case "Field Required":
-                if (['container', 'static', 'pagebreak'].indexOf(item.type) > -1) {
+                if (['container', 'static', 'pagebreak'].indexOf(item.item_type) > -1) {
                     return false;
                 }
                 break;

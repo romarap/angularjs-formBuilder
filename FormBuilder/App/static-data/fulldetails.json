@@ -2,158 +2,219 @@
   "id": 1,
   "name": "Car Inspection",
   "controls": [
-    {
-      "id": "1",
-      "type": "container",
-      "field_label": "Main details",
-      "controls": [
+   
         {
-          "id": "2",
-          "type": "static",
-          "display_name": "Static",
-          "field_label": "Vehicle Details",
-          "field_tool_tip": "Please enter the details of the vehicle"
-        },
-        {
-          "id": "3",
-          "type": "textfield",
-          "field_type": "text",
-          "field_label": "Make",
-          "field_required": true
-        },
-        {
-          "id": "4",
-          "type": "textfield",
-          "field_label": "Model",
-          "field_type": "text",
-          "field_required": true
-        },
-        {
-          "id": "5",
-          "type": "textfield",
-          "display_name": "Text Field",
-          "field_label": "Registration",
-          "field_required": true,
-          "field_disabled": false,
-          "field_type": "text"
-        }
-      ]
-    },
-    {
-      "id": "6",
-      "type": "container",
-      "display_name": "Group",
-      "field_label": "container",
-      "field_required": true,
-      "field_disabled": false,
-      "controls": [
-        {
-          "id": "7",
-          "type": "radio",
-          "display_name": "Radio Buttons",
-          "field_label": "Tyres",
-          "field_required": true,
-          "field_disabled": false,
-          "field_options": [
+          "id": "newid-1",
+          "status": "create",
+          "type": 0,
+          "item_type": "group",
+          "display_name": "Group",
+          "label": "group",
+          "controls": [
             {
-              "value": "1",
-              "label": "Yes"
+              "id": "newid-2",
+              "status": "create",
+              "type": 336,
+              "item_type": "static",
+              "display_name": "Static",
+              "label": "static",
+              "text1": "Vehicle Details",
+              "text2": "Please enter the details of the vehicle"
             },
             {
-              "value": "0",
-              "label": "No"
+              "id": "newid-3",
+              "status": "create",
+              "type": 288,
+              "item_type": "textfield",
+              "display_name": "Text Field",
+              "label": "textField",
+              "text1": "Make"
+            },
+            {
+              "id": "newid-4",
+              "status": "create",
+              "type": 288,
+              "item_type": "textfield",
+              "display_name": "Text Field",
+              "label": "textField",
+              "text1": "Model"
+            },
+            {
+              "id": "newid-5",
+              "status": "create",
+              "type": 288,
+              "item_type": "textfield",
+              "display_name": "Text Field",
+              "label": "textField",
+              "text1": "Registration"
             }
-          ],
-          "field_tool_tip": "Please check tyres are correct pressure"
+          ]
         },
         {
-          "id": "8",
-          "type": "radio",
-          "display_name": "Radio Buttons",
-          "field_label": "Windscreen",
-          "field_required": true,
-          "field_disabled": false,
-          "field_options": [
+          "id": "newid-6",
+          "status": "create",
+          "type": 0,
+          "item_type": "group",
+          "display_name": "Group",
+          "label": "group",
+          "controls": [
             {
-              "value": "1",
-              "label": "Yes"
+              "id": "newid-7",
+              "status": "create",
+              "type": 272,
+              "item_type": "noyes",
+              "display_name": "No/Yes",
+              "label": "no/yes",
+              "text1": "Tyres",
+              "text2": "Please check tyres are ok"
             },
             {
-              "value": "0",
-              "label": "No"
-            }
-          ],
-          "field_tool_tip": "Are there any issues with the windscreen"
-        }
-      ]
-    }
-  ]
-},
-
- {
-  "id": 2,
-  "name": "Employee Interview",
-  "controls": [
-    {
-      "id": "1",
-      "type": "container",
-      "field_label": "Candidate Details",
-      "controls": [
-        {
-          "id": "2",
-          "type": "textfield",
-          "field_type": "text",
-          "field_label": "First Name"
-        },
-        {
-          "id": "3",
-          "type": "textfield",
-          "field_label": "Surname",
-          "field_type": "text"
-        },
-        {
-          "id": "4",
-          "type": "dropdown",
-          "display_name": "Dropdown",
-          "field_label": "Gender",
-          "field_required": true,
-          "field_disabled": false,
-          "field_options": [
-            {
-              "value": 0,
-              "label": "Male"
-            },
-            {
-              "value": 1,
-              "label": "Female"
+              "id": "newid-8",
+              "status": "create",
+              "type": 272,
+              "item_type": "noyes",
+              "display_name": "No/Yes",
+              "label": "no/yes",
+              "text1": "Windscreen",
+              "text2": "Are there any issues with the windscreen ?"
             }
           ]
         }
       ]
     },
+
+  {
+    "id": 2,
+    "name": "Employee Interview",
+    "controls": [
+      {
+        "id": "newid-1",
+        "status": "create",
+        "type": 0,
+        "item_type": "group",
+        "display_name": "Group",
+        "label": "group",
+        "controls": [
+          {
+            "id": "newid-2",
+            "status": "create",
+            "type": 288,
+            "item_type": "textfield",
+            "display_name": "Text Field",
+            "label": "textField",
+            "text1": "First Name"
+          },
+          {
+            "id": "newid-3",
+            "status": "create",
+            "type": 288,
+            "item_type": "textfield",
+            "display_name": "Text Field",
+            "label": "textField",
+            "text1": "Surname"
+          },
+          {
+            "id": "newid-4",
+            "status": "create",
+            "type": 304,
+            "item_type": "dropdown",
+            "display_name": "Dropdown",
+            "label": "dropdown",
+            "field_options": [
+              {
+                "value": 0,
+                "label": "option 0"
+              },
+              {
+                "value": 1,
+                "label": "option 1"
+              }
+            ],
+            "text1": "Gender"
+          }
+        ],
+        "text1": "Candidate Details"
+      },
+      {
+        "id": "newid-5",
+        "status": "create",
+        "type": 0,
+        "item_type": "group",
+        "display_name": "Group",
+        "label": "group",
+        "controls": [
+          {
+            "id": "newid-6",
+            "status": "create",
+            "type": 272,
+            "item_type": "noyes",
+            "display_name": "No/Yes",
+            "label": "no/yes",
+            "text1": "Smartly Dressed ?"
+          },
+          {
+            "id": "newid-7",
+            "status": "create",
+            "type": 272,
+            "item_type": "noyes",
+            "display_name": "No/Yes",
+            "label": "no/yes",
+            "text1": "Talkative?"
+          }
+        ]
+      },
+      {
+        "id": "newid-8",
+        "status": "create",
+        "type": 384,
+        "item_type": "photo",
+        "display_name": "Photo",
+        "label": "photo",
+        "text1": "Candidate Photo"
+      }
+    ]
+  },
+  {
+  "id": "10",
+  "name": "Nigels test form",
+  "controls": [
     {
-      "id": "5",
-      "type": "container",
+      "id": "199",
+      "status": "create",
+      "type": 16384,
+      "item_type": "group",
       "display_name": "Group",
-      "field_label": "container",
-      "field_required": true,
-      "field_disabled": false,
+      "label": "group",
       "controls": [
         {
-          "id": "newid-3",
-          "type": "checkbox",
-          "display_name": "Checkbox",
-          "field_label": "Smartly dressed ?",
-          "field_required": true,
-          "field_disabled": false
+          "id": "1000",
+          "status": "create",
+          "type": 512,
+          "item_type": "format",
+          "display_name": "Format",
+          "label": "format",
+          "text1": "Page 1",
+          "text2": "My page title"
         },
         {
-          "id": "6",
-          "type": "checkbox",
-          "display_name": "Checkbox",
-          "field_label": "Talkative ?",
-          "field_required": true,
-          "field_disabled": false
+          "id": "1010",
+          "status": "create",
+          "type": 288,
+          "item_type": "textfield",
+          "display_name": "Text Field",
+          "label": "textField",
+          "text1": "Brother's name",
+          "text2": "Whats is your brother's name ?"
+        },
+        {
+          "id": "1020",
+          "status": "create",
+          "type": 288,
+          "item_type": "textfield",
+          "display_name": "Text Field",
+          "label": "textField",
+          "text1": "Sister's name",
+          "text2": "Whats is your sister's name ?"
         }
       ]
     }
@@ -165,35 +226,35 @@
   "controls": [
     {
       "id": "1",
-      "type": "container",
+      "item_type": "container",
       "field_label": "container",
       "controls": [
         {
           "id": "2",
-          "type": "textfield",
+          "item_type": "textfield",
           "field_type": "text",
           "field_label": "text a"
         },
         {
           "id": "3",
-          "type": "textfield",
+          "item_type": "textfield",
           "field_label": "text b"
         }
       ]
     },
     {
       "id": "4",
-      "type": "textfield",
+      "item_type": "textfield",
       "field_label": "text c"
     },
     {
       "id": "5",
-      "type": "textfield",
+      "item_type": "textfield",
       "field_label": "text d"
     },
     {
       "id": "6",
-      "type": "textfield",
+      "item_type": "textfield",
       "field_label": "text e"
     }
   ]

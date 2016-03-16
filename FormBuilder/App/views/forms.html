@@ -5,7 +5,7 @@
             return $('#form-help-content').html();
         }
     });
-   
+
     //var iosDragDropShim = { enableEnterLeave: true }
 </script>
 <!--<script src="../Scripts/ios-drag-drop/ios-drag-drop.js"></script>-->
@@ -20,21 +20,32 @@
 
     <!-- Main area with field_label and source code -->
     <div class="col-md-8">
-        <div>
-            <div ng-init="{{list=models.form.controls}}">
-                <div class="dropzone box box-yellow">
-                    <!-- The dropzone also uses the list template -->
-                    <h3>
-                        <label class="selectable-title" ng-click="editForm(event)">{{models.form.name}}</label>
-                        <span class="tools">
-                            <i class="glyphicon glyphicon-save-file" title="Save form" ng-class="{selectable: models.dirty }" ng-click="save()"></i>
-                            <i class="glyphicon glyphicon-info-sign selectable" data-toggle="popover" tabindex="0" data-trigger="hover" data-placement="left" title="Form Area" data-html="true" data-container="body"></i>
-                        </span>
-                    </h3>
-                    <div ng-include="'views/includes/partials/dropZone.html'"></div>
-                </div>
-            </div>
+        <div class="box">
+            <h3>
+                <label class="selectable-title" ng-click="editForm(event)">{{models.form.name}}</label>
+                <span class="tools">
+                    <i class="glyphicon glyphicon-save-file" title="Save form" ng-class="{selectable: models.dirty }" ng-click="save()"></i>
+                    <i class="glyphicon glyphicon-info-sign selectable" data-toggle="popover" tabindex="0" data-trigger="hover" data-placement="left" title="Form Area" data-html="true" data-container="body"></i>
+                </span>
+            </h3>
         </div>
+        <uib-tabset active="active">
+            <uib-tab index="0" heading="Form Definition">
+                <div>
+                    <div ng-init="{{list=models.form.controls}}">
+                        <div class="dropzone box box-yellow">
+                            <!-- The dropzone also uses the list template -->                            
+                            <!--<dropzone-directive list="models.form.controls" new-id="models.newId" dirty="$scope.models.dirty" ondblclick="editItemDetails(item)"></dropzone-directive>-->
+                            <div ng-repeat="list in [models.form.controls]" ng-include="'views/includes/partials/dropZone.html'"></div>
+                        </div>
+                    </div>
+                </div>
+            </uib-tab>
+            
+            <uib-tab index="2" heading="Custom Controls">Form Definition</uib-tab>
+
+        </uib-tabset>
+
         <ng-include src="'views/includes/partials/updatedArea.html'"></ng-include>
 
     </div>
@@ -42,7 +53,7 @@
     <!-- Sidebar -->
     <div class="col-md-2">
         <toolbox-directive></toolbox-directive>
-        <trashcan-directive ></trashcan-directive>
+        <trashcan-directive></trashcan-directive>
         <ng-include src="'views/includes/partials/selectedItemView.html'"></ng-include>
     </div>
 </div>
@@ -51,18 +62,18 @@
 <!-- status dialog/message-bar -->
 <div class="message-bar">
     <div class="modal fade">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="alert alert-info" role="alert">
-                        <div class="glyphicon glyphicon-info-sign"></div>
-                        <div class="msg"></div>
-                        <div class="alert-footer"><button class="btn btn-primary" data-dismiss="modal">OK</button></div>
-                    </div>
-                    <div class="modal-footer" hidden="true">
-                       
-                    </div>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="alert alert-info" role="alert">
+                    <div class="glyphicon glyphicon-info-sign"></div>
+                    <div class="msg"></div>
+                    <div class="alert-footer"><button class="btn btn-primary" data-dismiss="modal">OK</button></div>
+                </div>
+                <div class="modal-footer" hidden="true">
+
                 </div>
             </div>
+        </div>
     </div>
 </div>
 
