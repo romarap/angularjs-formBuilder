@@ -22,7 +22,7 @@
                     dnd-draggable="tool"
                     dnd-effect-allowed="copy"
                     dnd-type="new">
-                    <button type="button" class="btn btn-default" disabled="disabled">{{tool.display_name}}</button>
+                    <button type="button" class="btn btn-default" disabled="disabled">{{getItemTypeDisplayName(tool.type)}}</button>
                 </li>
             </ul>
         </uib-accordion-group>

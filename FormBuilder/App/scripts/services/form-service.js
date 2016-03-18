@@ -14,17 +14,17 @@ app.service('FormService', function FormService($http, $q, $timeout) {
 
         tools: [
             //{ type: "item", id: 2, display_name: "Item" },
-            { id: "", status: CREATED, type: 0x0110, display_name: "No/Yes", label: 'no/yes' },
-            { id: "", status: CREATED, type: 0x0120, display_name: "Text Field", label: 'textField' },
-            { id: "", status: CREATED, type: 0x0130, display_name: "Dropdown", label: 'dropdown', field_options: [{ value: 0, label: "option 0" }, { value: 1, label: "option 1" }] },
-            { id: "", status: CREATED, type: 0x0140, display_name: "Reflector", label: 'reflector' },
-            { id: "", status: CREATED, type: 0x0150, display_name: "Static", label: 'static' },
-            { id: "", status: CREATED, type: 0x0180, display_name: "Photo", label: 'photo' },
-            { id: "", status: CREATED, type: 0x0400, display_name: "Condition", label: 'condition' },
-            { id: "", status: CREATED, type: 0x0500, display_name: "Selector", label: 'selector' },
-            { id: "", status: CREATED, type: 0x0800, display_name: "Data", label: 'data' },
-            { id: "", status: CREATED, type: 0x0200, display_name: "Layout", label: 'layout' },
-            { id: "", status: CREATED, type: 0x4000, display_name: "Group", label: 'group', controls: [] }
+            { id: "", status: CREATED, type: 0x0110, label: 'no/yes' },
+            { id: "", status: CREATED, type: 0x0120, label: 'textField' },
+            { id: "", status: CREATED, type: 0x0130, label: 'dropdown', field_options: [{ value: 0, label: "option 0" }, { value: 1, label: "option 1" }] },
+            { id: "", status: CREATED, type: 0x0140, label: 'reflector' },
+            { id: "", status: CREATED, type: 0x0150, label: 'static' },
+            { id: "", status: CREATED, type: 0x0180, label: 'photo' },
+            { id: "", status: CREATED, type: 0x0400, label: 'condition' },
+            { id: "", status: CREATED, type: 0x0500, label: 'selector' },
+            { id: "", status: CREATED, type: 0x0800, label: 'data' },
+            { id: "", status: CREATED, type: 0x0200, label: 'layout' },
+            { id: "", status: CREATED, type: 0x4000, label: 'group', controls: [] }
 
             //{ id: "", status: CREATED, type: 0xFF, subtype: 0x00, subsubtype: 0x00, item_type: "radio", display_name: "Radio Buttons", field_label: 'radio', field_required: true, field_disabled: false, field_options: [{ value: 0, label: "0" }, { value: 1, label: "1" }] },
             //{ id: "", status: CREATED, type: 0xFF, subtype: 0x00, subsubtype: 0x00, item_type: "checkbox", display_name: "Checkbox", field_label: 'checkbox', field_required: true, field_disabled: false },

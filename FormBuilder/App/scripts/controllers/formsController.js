@@ -166,7 +166,7 @@ app.controller('formsController', function ($scope, $http, FormService, $routePa
     $scope.getItemTypeDisplayName = function (item_type) {
         var type = FormService.tieTypeBasicTypes[item_type & BASIC_TYPE_MASK];
         if (type.subTypes != null) {
-            type = type.subTypes[item.type & BASIC_SUBTYPE_MASK];
+            type = type.subTypes[item_type & BASIC_SUBTYPE_MASK];
         }
         return type.display_name;
     }
@@ -265,7 +265,7 @@ app.controller('ItemDetailsModalInstanceCtrl', function ($scope, $uibModalInstan
     $scope.getItemTypeDisplayName = function (item_type) {
         var type = FormService.tieTypeBasicTypes[item_type & BASIC_TYPE_MASK];
         if (type.subTypes != null) {
-            type = type.subTypes[item.type & BASIC_SUBTYPE_MASK];
+            type = type.subTypes[item_type & BASIC_SUBTYPE_MASK];
         }
         return type.display_name;
     }
