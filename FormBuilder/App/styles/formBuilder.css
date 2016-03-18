@@ -96,6 +96,7 @@
 
 .formBuilder .dropzone .item {
     padding: 0px 15px;
+    min-height:20px;
 }
 
 .formBuilder .dropzone .item .tool-tip {
