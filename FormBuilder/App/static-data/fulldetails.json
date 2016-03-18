@@ -1,49 +1,45 @@
 [{
   "id": 1,
-  "name": "Car Inspection",
+  "label": "Car Inspection",
+  "type": 16,
   "controls": [
    
         {
-          "id": "newid-1",
+          "id": "1",
           "status": "create",
-          "type": 0,
-          "item_type": "group",
+          "type": 16384,
           "display_name": "Group",
           "label": "group",
           "controls": [
             {
-              "id": "newid-2",
+              "id": "2",
               "status": "create",
               "type": 336,
-              "item_type": "static",
               "display_name": "Static",
               "label": "static",
               "text1": "Vehicle Details",
               "text2": "Please enter the details of the vehicle"
             },
             {
-              "id": "newid-3",
+              "id": "3",
               "status": "create",
               "type": 288,
-              "item_type": "textfield",
               "display_name": "Text Field",
               "label": "textField",
               "text1": "Make"
             },
             {
-              "id": "newid-4",
+              "id": "4",
               "status": "create",
               "type": 288,
-              "item_type": "textfield",
               "display_name": "Text Field",
               "label": "textField",
               "text1": "Model"
             },
             {
-              "id": "newid-5",
+              "id": "5",
               "status": "create",
               "type": 288,
-              "item_type": "textfield",
               "display_name": "Text Field",
               "label": "textField",
               "text1": "Registration"
@@ -51,28 +47,25 @@
           ]
         },
         {
-          "id": "newid-6",
+          "id": "6",
           "status": "create",
-          "type": 0,
-          "item_type": "group",
+          "type": 16384,
           "display_name": "Group",
           "label": "group",
           "controls": [
             {
-              "id": "newid-7",
+              "id": "7",
               "status": "create",
               "type": 272,
-              "item_type": "noyes",
               "display_name": "No/Yes",
               "label": "no/yes",
               "text1": "Tyres",
               "text2": "Please check tyres are ok"
             },
             {
-              "id": "newid-8",
+              "id": "8",
               "status": "create",
               "type": 272,
-              "item_type": "noyes",
               "display_name": "No/Yes",
               "label": "no/yes",
               "text1": "Windscreen",
@@ -85,39 +78,36 @@
 
   {
     "id": 2,
-    "name": "Employee Interview",
+    "label": "Employee Interview",
+    "type": 16,
     "controls": [
       {
-        "id": "newid-1",
-        "status": "create",
-        "type": 0,
-        "item_type": "group",
+        "id": "1",
+        "status": "create",      
+        "type": 16384,
         "display_name": "Group",
         "label": "group",
         "controls": [
           {
-            "id": "newid-2",
+            "id": "2",
             "status": "create",
             "type": 288,
-            "item_type": "textfield",
             "display_name": "Text Field",
             "label": "textField",
             "text1": "First Name"
           },
           {
-            "id": "newid-3",
+            "id": "3",
             "status": "create",
             "type": 288,
-            "item_type": "textfield",
             "display_name": "Text Field",
             "label": "textField",
             "text1": "Surname"
           },
           {
-            "id": "newid-4",
+            "id": "4",
             "status": "create",
             "type": 304,
-            "item_type": "dropdown",
             "display_name": "Dropdown",
             "label": "dropdown",
             "field_options": [
@@ -136,27 +126,24 @@
         "text1": "Candidate Details"
       },
       {
-        "id": "newid-5",
-        "status": "create",
-        "type": 0,
-        "item_type": "group",
+        "id": "5",
+        "status": "create",     
+        "type": 16384,
         "display_name": "Group",
         "label": "group",
         "controls": [
           {
-            "id": "newid-6",
+            "id": "6",
             "status": "create",
             "type": 272,
-            "item_type": "noyes",
             "display_name": "No/Yes",
             "label": "no/yes",
             "text1": "Smartly Dressed ?"
           },
           {
-            "id": "newid-7",
+            "id": "7",
             "status": "create",
             "type": 272,
-            "item_type": "noyes",
             "display_name": "No/Yes",
             "label": "no/yes",
             "text1": "Talkative?"
@@ -164,10 +151,9 @@
         ]
       },
       {
-        "id": "newid-8",
+        "id": "8",
         "status": "create",
         "type": 384,
-        "item_type": "photo",
         "display_name": "Photo",
         "label": "photo",
         "text1": "Candidate Photo"
@@ -176,13 +162,13 @@
   },
   {
   "id": "10",
-  "name": "Nigels test form",
+  "label": "Nigels test form",
+  "type": 16,
   "controls": [
     {
       "id": "199",
       "status": "create",
       "type": 16384,
-      "item_type": "group",
       "display_name": "Group",
       "label": "group",
       "controls": [
@@ -190,7 +176,6 @@
           "id": "1000",
           "status": "create",
           "type": 512,
-          "item_type": "format",
           "display_name": "Format",
           "label": "format",
           "text1": "Page 1",
@@ -200,7 +185,6 @@
           "id": "1010",
           "status": "create",
           "type": 288,
-          "item_type": "textfield",
           "display_name": "Text Field",
           "label": "textField",
           "text1": "Brother's name",
@@ -210,7 +194,6 @@
           "id": "1020",
           "status": "create",
           "type": 288,
-          "item_type": "textfield",
           "display_name": "Text Field",
           "label": "textField",
           "text1": "Sister's name",
@@ -222,39 +205,34 @@
 },
   {
   "id": 3,
-  "name": "Road Survey",
+  "label": "Road Survey",
+  "type": 16,
   "controls": [
     {
       "id": "1",
-      "item_type": "container",
       "field_label": "container",
       "controls": [
         {
           "id": "2",
-          "item_type": "textfield",
           "field_type": "text",
           "field_label": "text a"
         },
         {
           "id": "3",
-          "item_type": "textfield",
           "field_label": "text b"
         }
       ]
     },
     {
       "id": "4",
-      "item_type": "textfield",
       "field_label": "text c"
     },
     {
       "id": "5",
-      "item_type": "textfield",
       "field_label": "text d"
     },
     {
       "id": "6",
-      "item_type": "textfield",
       "field_label": "text e"
     }
   ]

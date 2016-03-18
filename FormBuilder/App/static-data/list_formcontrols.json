@@ -1,0 +1,16 @@
+[
+  {
+    "id": "80",
+    "type": 288,
+    "label":  "siblings",
+    "text1": "siblings name",
+    "controls": [
+      {
+        "id": "81",
+        "type": 866,
+        "text1": "Name -",
+        "intValue": 100
+      }
+    ]
+  }
+]

@@ -8,17 +8,40 @@ var DELETE = 'delete';
 /**
  * The controller doesn't do much more than setting the initial data model
  */
-app.controller('formsController', function ($scope, FormService, $routeParams, $uibModal) {
+app.controller('formsController', function ($scope, $http, FormService, $routeParams, $uibModal) {
     
+    //$http({
+    //    method: "GET",
+    //    url: "http://81.109.89.222/QansMark/Anon/Services.asmx/Test"
+    //}).then(function mySucces(response) {
+    //    $scope.myWelcome = response.data;
+    //}, function myError(response) {
+    //    $scope.myWelcome = response.statusText;
+    //});
+  
     $scope.models = {
         selected: null,
         delected: [],
         dirty: false,
-        form: {} 
+        form: {},
+        controls: {}
     };
 
     // reset ids for new items.
     FormService.resetNewId();
+
+    FormService.formControls().then(function (controls) {
+        $scope.models.controls = controls
+    }, function myError(response) {
+        // controls failed to load 
+
+        showMessage({
+            message: "Failed to load form controls.....<br>" + response.status + ":" + response.statusText,
+            alertStyle: "alert-danger",
+            okButton: true
+        });
+    });
+
 
    if ($routeParams.id) {
        // read form with given id
@@ -39,7 +62,8 @@ app.controller('formsController', function ($scope, FormService, $routeParams, $
     {
        $scope.models.form = {
            "id": FormService.getNewId(),
-           "name": "--New--",
+           "label": "--New Form--",
+           "type": 16,
            "controls": []
        };
     }
@@ -51,20 +75,18 @@ app.controller('formsController', function ($scope, FormService, $routeParams, $
 
         var formDetails = {
             "id": $scope.models.form.id,
-            "name": $scope.models.form.name
+            "label": $scope.models.form.label
         };
 
         var modalInstance = $uibModal.open({
             animation: true,
             templateUrl: 'formPropertiesDialog.html',
-            controller: 'ModalInstanceCtrl',
+            controller: 'FormPropertiesModalInstanceCtrl',
             size: '',
             resolve: {
                 item: function () {
                     return angular.copy(formDetails);
                 }
-                ,
-                fields: null
             },
         });
 
@@ -132,6 +154,24 @@ app.controller('formsController', function ($scope, FormService, $routeParams, $
         }
     }, true);
 
+    $scope.getFieldTemplate = function (item) {
+        var type = FormService.tieTypeBasicTypes[item.type & BASIC_TYPE_MASK];
+        
+        if (type.subTypes != null) {
+            type = type.subTypes[item.type & BASIC_SUBTYPE_MASK];
+        }
+        return 'views/includes/field-templates/' + type.item_type + '.html';
+    }
+
+    $scope.getItemTypeDisplayName = function (item_type) {
+        var type = FormService.tieTypeBasicTypes[item_type & BASIC_TYPE_MASK];
+        if (type.subTypes != null) {
+            type = type.subTypes[item.type & BASIC_SUBTYPE_MASK];
+        }
+        return type.display_name;
+    }
+
+
     // Dialog open
     $scope.editItemDetails = function ($event, size, item) {
         event.preventDefault();
@@ -142,7 +182,7 @@ app.controller('formsController', function ($scope, FormService, $routeParams, $
         var modalInstance = $uibModal.open({
             animation: true,
             templateUrl: 'fieldPropertiesDialog.html',
-            controller: 'ModalInstanceCtrl',
+            controller: 'ItemDetailsModalInstanceCtrl',
             size: size,
             resolve: {
                 item: function () {
@@ -153,6 +193,9 @@ app.controller('formsController', function ($scope, FormService, $routeParams, $
                     var ignoreItem = {};
                     ignoreItem[item.id] = item;
                     return getFieldList($scope.models.form.controls, ignoreItem, {});
+                },
+                controls: function () {
+                    return $scope.models.controls;
                 }
             },
         });
@@ -174,21 +217,88 @@ app.controller('formsController', function ($scope, FormService, $routeParams, $
 });
 
 
-
+//////////////////////////////////////////////////////
 
 // Please note that $uibModalInstance represents a modal window (instance) dependency.
 // It is not the same as the $uibModal service used above.
 
-app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, FormService, item, fields) {
+app.controller('ItemDetailsModalInstanceCtrl', function ($scope, $uibModalInstance, FormService, item, fields, controls) {
+    $scope.formService = FormService;
     $scope.fields = fields;
     $scope.item = item;
-    $scope.textboxSubTypes = FormService.textboxSubTypes;
-    $scope.photoSubTypes = FormService.photoSubTypes;
-    $scope.conditionSubTypes = FormService.conditionSubTypes;
-    $scope.selectorSubTypes = FormService.selectorSubTypes;
-    $scope.formatSubTypes = FormService.formatSubTypes;
-    $scope.groupSubTypes = FormService.groupSubTypes;
+    $scope.controls = [];
+    
+    // only concerned with relevant controls ie. those with same type
+    var itemType = item.type & 0xFFFF;
+    for (var i = 0 ; i < controls.length; i++)
+    {
+        if ((controls[i].type & 0xFFFF) == itemType) {
+            $scope.controls.push(angular.copy(controls[i]));
+        }
+    }
 
+    $scope.dependents = [];
+    for (var key in fields) { 
+        if(fields[key].conditionSrcId == item.id)
+        {
+            $scope.dependents.push(angular.copy(fields[key]));
+        }
+    }
+
+    //$scope.multiple = (item.type & FormService.tieTypeFlags["multiple"]) > 0;
+    $scope.readonlyWriteLock = (item.type & FormService.tieTypeFlags["readonlyWriteLock"]) > 0;
+    $scope.readonlyAppendLock = (item.type & FormService.tieTypeFlags["readonlyAppendLock"]) > 0;
+    $scope.noZapd = (item.type & FormService.tieTypeFlags["noZapd"]) > 0;
+    $scope.invisibleWhenOff = (item.type & FormService.tieTypeFlags["invisibleWhenOff"]) > 0;
+    $scope.negateSrcCondition = (item.type & FormService.tieTypeFlags["negateSrcCondition"]) > 0;
+
+
+    $scope.getFieldPropertiesTemplate = function (item) {
+        var type = FormService.tieTypeBasicTypes[item.type & BASIC_TYPE_MASK];
+
+        if (type.subTypes != null) {
+            type = type.subTypes[item.type & BASIC_SUBTYPE_MASK];
+        }
+        return 'views/includes/field-properties/' + type.item_type + '.html';
+    }
+
+    $scope.getItemTypeDisplayName = function (item_type) {
+        var type = FormService.tieTypeBasicTypes[item_type & BASIC_TYPE_MASK];
+        if (type.subTypes != null) {
+            type = type.subTypes[item.type & BASIC_SUBTYPE_MASK];
+        }
+        return type.display_name;
+    }
+
+    $scope.CommonFieldRequired = function (field, item) {
+        switch (field)
+        {
+
+            case "Muliple":
+                if (['photo'].indexOf(item.item_type) > -1) {
+                    return false;
+                }
+                break;
+           
+            //case "Field Required":
+            //    if (['container', 'static', 'pagebreak'].indexOf(item.item_type) > -1) {
+            //        return false;
+            //    }
+            //    break;
+            default:
+                return true;
+        }
+        return true;
+    }
+
+    $scope.SetTypeBit = function (value, mask, setFlag) {
+        if (setFlag) {
+            value |= mask;
+        } else {
+            value &= ~mask;
+        }
+        return value;
+    }
 
     // function to submit the form after all validation has occurred            
     $scope.submitForm = function (isValid) {
@@ -206,25 +316,42 @@ app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, FormSer
         $uibModalInstance.dismiss('cancel');
     };
 
-    $scope.CommonFieldRequired = function (field, item) {
-        switch (field)
-        {
-
-            case "Muliple":
-                if (['photo'].indexOf(item.item_type) > -1) {
-                    return false;
-                }
-                break;
-           
-            case "Field Required":
-                if (['container', 'static', 'pagebreak'].indexOf(item.item_type) > -1) {
-                    return false;
-                }
-                break;
-            default:
-                return true;
-        }
-        return true;
-    }
+   
 });
+
+///////////////////////////////////////////////////////
+app.controller('FormPropertiesModalInstanceCtrl', function ($scope, $uibModalInstance, FormService, item) {
+    $scope.item = item;
+ 
+    // function to submit the form after all validation has occurred            
+    $scope.submitForm = function (isValid) {
+        // check to make sure the form is completely valid
+        if (isValid) {
+            $uibModalInstance.close($scope.item);
+        }
+    };
+
+    $scope.ok = function () {
+        $uibModalInstance.close($scope.item);
+    };
+
+    $scope.cancel = function () {
+        $uibModalInstance.dismiss('cancel');
+    };
+
+
+});
+
+app.filter('conditionSrcIdFilter', function () {
+    return function (input, id) {
+        var tmp = {};
+        angular.forEach(input, function (val, key) {
+            if(val.conditionSrcId == id)
+            {
+                tmp[key] = val;
+            }
+        });
+        return tmp;
+    };
+})
 

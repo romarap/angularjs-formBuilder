@@ -1,106 +1,134 @@
 <form name="userForm" ng-submit="submitForm(userForm.$valid)" novalidate>
     <div class="modal-header">
-        <h3 class="modal-title">Properties</h3>
+        <h3 class="modal-title">Properties - {{ item.id }}</h3>
     </div>
     <div class="modal-body form-horizontal">
-        <div class="form-group row">
-            <label class="col-sm-2 control-label input-sm">Form ID</label>
-            <label class="col-sm-8 form-control-label input-sm">{{ item.id }}</label>
-        </div>
-        <!--Field Specific-->
-        <ng-include src="'views/includes/field-properties/' + item.item_type + '.html'"></ng-include>
+         <uib-tabset active="active">
+            <uib-tab index="0" heading="Form Definition">
+                <div class="form-group row"></div>
+                <!--Field Specific-->
+                <ng-include src="getFieldPropertiesTemplate(item)"></ng-include>
 
-        <div class="form-group row" ng-class="{ 'has-error' : userForm.label.$invalid && !userForm.label.$pristine }">
-            <label for="label" class="col-sm-2 control-label input-sm">Label</label>
-            <div class="col-sm-8">
-                <input type="text" class="form-control input-sm" name="label" id="label" placeholder="field label" ng-model="item.label" required>
-            </div>
-        </div>
-        <div class="form-group row" ng-show="CommonFieldRequired('Text1', item)" >
-            <label for="subLabel" class="col-sm-2 control-label input-sm">Text1</label>
-            <div class="col-sm-8">
-                <input type="text" class="form-control input-sm" name="text1" id="text1" placeholder="field text1" ng-model="item.text1">
-            </div>
-        </div>
-        <div class="form-group row"  ng-show="CommonFieldRequired('Text2', item)" >
-            <label for="subLabel" class="col-sm-2 control-label input-sm">Text2</label>
-            <div class="col-sm-8">
-                <input type="text" class="form-control input-sm" name="text2" id="text2" placeholder="field text2" ng-model="item.text2">
-            </div>
-        </div>
-        <div class="form-group row" ng-show="CommonFieldRequired('Int Value', item)">
-            <label for="subLabel" class="col-sm-2 control-label input-sm">Int Value</label>
-            <div class="col-sm-8">
-                <input type="text" class="form-control input-sm" name="intvalue" id="intvalue" placeholder="field int value" ng-model="item.intValue">
-            </div>
-        </div>
-        <div class="form-group row" ng-show="CommonFieldRequired('Text Value', item)">
-            <label for="subLabel" class="col-sm-2 control-label input-sm">Text Value</label>
-            <div class="col-sm-8">
-                <input type="text" class="form-control input-sm" name="textvalue" id="textvalue" placeholder="field text2" ng-model="item.textValue">
-            </div>
-        </div>
-        <!--<div class="form-group row" ng-show="CommonFieldRequired('Field Required', item)">
-            <label for="required" class="col-sm-2 control-label input-sm">Required</label>
-            <div class="col-sm-8">
-                <input type="checkbox" class="input-sm" ng-model="item.field_required" ng-true-value="true" ng-false-value="false" value="{{item.field_required}}" id="required">
-            </div>
-        </div>-->
-        <div class="form-group row">
-            <label class="col-sm-2 control-label input-sm">Control</label>
-            <div class="col-sm-8">
-                <select class="form-control col-sm-4 input-sm" name="condition" ng-model="item.controlId" >
-                    <option value="" selected="selected">--Please select item--</option>
-                </select>
-            </div>
-        </div>
+                <div class="form-group row" ng-class="{ 'has-error' : userForm.label.$invalid && !userForm.label.$pristine }">
+                    <label for="label" class="col-sm-2 control-label input-sm">Label</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control input-sm" name="label" id="label" placeholder="field label" ng-model="item.label" required>
+                    </div>
+                </div>
+                <div class="form-group row" ng-show="CommonFieldRequired('Text1', item)">
+                    <label for="subLabel" class="col-sm-2 control-label input-sm">Text1</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control input-sm" name="text1" id="text1" placeholder="field text1" ng-model="item.text1">
+                    </div>
+                </div>
+                <div class="form-group row" ng-show="CommonFieldRequired('Text2', item)">
+                    <label for="subLabel" class="col-sm-2 control-label input-sm">Text2</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control input-sm" name="text2" id="text2" placeholder="field text2" ng-model="item.text2">
+                    </div>
+                </div>
+                <div class="form-group row" ng-show="CommonFieldRequired('Int Value', item)">
+                    <label for="subLabel" class="col-sm-2 control-label input-sm">Int Value</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control input-sm" name="intvalue" id="intvalue" placeholder="field int value" ng-model="item.intValue">
+                    </div>
+                </div>
+                <div class="form-group row" ng-show="CommonFieldRequired('Text Value', item)">
+                    <label for="subLabel" class="col-sm-2 control-label input-sm">Text Value</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control input-sm" name="textvalue" id="textvalue" placeholder="field text2" ng-model="item.textValue">
+                    </div>
+                </div>
+                <!--<div class="form-group row" ng-show="CommonFieldRequired('Field Required', item)">
+                    <label for="required" class="col-sm-2 control-label input-sm">Required</label>
+                    <div class="col-sm-8">
+                        <input type="checkbox" class="input-sm" ng-model="item.field_required" ng-true-value="true" ng-false-value="false" value="{{item.field_required}}" id="required">
+                    </div>
+                </div>-->
+                <div class="form-group row">
+                    <label class="col-sm-2 control-label input-sm">Control</label>
+                    <div class="col-sm-8">
+                        <select class="form-control col-sm-4 input-sm" name="condition" ng-model="item.controlId" ng-options="control.id as control.label for control in controls">
+                            <option value="" selected="selected">--Please select item--</option>
+                        </select>
+                    </div>
+                </div>
 
-        <div class="form-group row">
-            <label class="col-sm-2 control-label input-sm">Condition</label>
-            <div class="col-sm-8">
-                <select class="form-control col-sm-4 input-sm" name="condition" ng-model="item.conditionSrcId" ng-options="key as value.label for (key , value) in fields" >
-                    <option value="" selected="selected">--Please select item--</option>
-                </select>
-            </div>
-        </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 control-label input-sm">Condition</label>
+                    <div class="col-sm-8">
+                        <select class="form-control col-sm-4 input-sm" name="condition" ng-model="item.conditionSrcId" ng-options="key as value.label for (key , value) in fields">
+                            <option value="" selected="selected">--Please select item--</option>
+                        </select>
+                    </div>
+                </div>
 
-  
-        <div class="form-group row">
-            <label class="col-sm-2 control-label input-sm">&nbsp;</label>
-            <div class="col-sm-4">
-                <!--0x8000-->
-                <label class="checkbox-inline"><input type="checkbox" ng-model="item.multiple" ng-false-value="0" ng-true-value="1">Multiple</label>
-             </div>
-        </div>
-        <div class="form-group row">
-            <label class="col-sm-2 control-label input-sm">&nbsp;</label>
-            <div class="col-sm-4">
-                <!--0x01000000-->
-                <label class="checkbox-inline"><input type="checkbox" ng-model="item.readonlyWriteLock" ng-false-value="0" ng-true-value="1" />Readonly Write</label>
-            </div>
-            <div class="col-sm-4">
-                <!--0x02000000-->
-                <label class="checkbox-inline"><input type="checkbox" ng-model="item.readonlyAppendLock" ng-false-value="0" ng-true-value="1" />Readonly Append</label>
-            </div>
-        </div>
-        <div class="form-group row" >
-            <label class="col-sm-2 control-label input-sm">&nbsp;</label>
-            <div class="col-sm-4">
-                <!--0x04000000-->
-                <label class="checkbox-inline"><input type="checkbox" ng-model="item.noZapd" ng-false-value="0" ng-true-value="1" />No Zap</label>
-            </div>
-        </div>
-        <div class="form-group row">
-            <label class="col-sm-2 control-label input-sm">&nbsp;</label>
-            <div class="col-sm-4">
-                <!--0x08000000-->
-                <label class="checkbox-inline"><input type="checkbox" ng-model="item.invisibleWhenOff" ng-false-value="0" ng-true-value="1" />Invisible When Off</label>
-            </div>
-            <div class="col-sm-4">
-                <!--0x40000000-->
-                <label class="checkbox-inline"><input type="checkbox" ng-model="item.negateSrcCondition" ng-false-value="0" ng-true-value="1" />Negate Src Condition</label>
-            </div>
-        </div>
+            </uib-tab>
+
+            <uib-tab index="2" heading="Flags and Dependencies">
+                <div class="form-group row"></div>
+                <div class="form-group row">
+                    <label class="col-sm-2 control-label input-sm">Dependents:</label>
+                    <div class="col-sm-8">
+                        <table class="table table-striped" ng-show="dependents.length">
+                            <thead>
+                                <tr>
+                                    <th>id</th>
+                                    <th>Label</th>
+                                    <th>Type</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="dependent in dependents" ng-show="dependents.length">
+                                    <td>{{dependent.id}}</td>
+                                    <td>{{dependent.label}}</td>
+                                    <td>{{getItemTypeDisplayName(dependent.type)}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <label class="control-label input-sm" ng-show="!dependents.length">No Dependents</label>
+                    </div>
+                </div>
+
+                <!--<div class="form-group row">
+                    <label class="col-sm-2 control-label input-sm">&nbsp;</label>
+                    <div class="col-sm-4">
+                        !--0x8000--
+                        <label class="checkbox-inline"><input type="checkbox" ng-model="multiple" ng-change="item.type=SetTypeBit(item.type,formService.tieTypeFlags['multiple'],multiple)" >Multiple</label>
+                     </div>
+                </div>-->
+                <div class="form-group row">
+                    <label class="col-sm-2 control-label input-sm">Flags:</label>
+                    <div class="col-sm-4">
+                        <!--0x01000000-->
+                        <label class="checkbox-inline"><input type="checkbox" ng-model="readonlyWriteLock" ng-change="item.type=SetTypeBit(item.type,formService.tieTypeFlags['readonlyWriteLock'],readonlyWriteLock)" />Readonly Write</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <!--0x02000000-->
+                        <label class="checkbox-inline"><input type="checkbox" ng-model="readonlyAppendLock" ng-change="item.type=SetTypeBit(item.type,formService.tieTypeFlags['readonlyAppendLock'],readonlyAppendLock)" />Readonly Append</label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 control-label input-sm">&nbsp;</label>
+                    <div class="col-sm-4">
+                        <!--0x04000000-->
+                        <label class="checkbox-inline"><input type="checkbox" ng-model="noZapd" ng-change="item.type=SetTypeBit(item.type,formService.tieTypeFlags['noZapd'],noZapd)" />No Zap</label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 control-label input-sm">&nbsp;</label>
+                    <div class="col-sm-4">
+                        <!--0x08000000-->
+                        <label class="checkbox-inline"><input type="checkbox" ng-model="invisibleWhenOff" ng-change="item.type=SetTypeBit(item.type,formService.tieTypeFlags['invisibleWhenOff'],invisibleWhenOff)" />Invisible When Off</label>
+                    </div>
+                    <div class="col-sm-4">
+                        <!--0x40000000-->
+                        <label class="checkbox-inline"><input type="checkbox" ng-model="negateSrcCondition" ng-change="item.type=SetTypeBit(item.type,formService.tieTypeFlags['negateSrcCondition'],negateSrcCondition)" />Negate Src Condition</label>
+                    </div>
+                </div>
+            </uib-tab>
+
+        </uib-tabset>
     </div>
 
     <div class="modal-footer">

@@ -14,7 +14,7 @@
         dnd-selected="models.selected = item"
         dnd-type="'formitem'"
         ng-class="{selected: models.selected === item}"
-        ng-include="'views/includes/field-templates/' + item.item_type + '.html'"
+        ng-include="getFieldTemplate(item)"
         ng-dblclick="editItemDetails($event,'',item);">
     </li>
     <li class="dndPlaceholder">

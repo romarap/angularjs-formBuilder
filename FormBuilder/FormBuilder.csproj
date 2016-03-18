@@ -75,6 +75,7 @@
     <Content Include="App\scripts\directives\trashcan-directive.js" />
     <Content Include="App\scripts\directives\toolbox-directive.js" />
     <Content Include="App\scripts\directives\form-directive.js" />
+    <Content Include="App\scripts\modules\bitHelpers.js" />
     <Content Include="App\scripts\modules\messagePanelHelper.js" />
     <Content Include="App\scripts\modules\listHelpers.js" />
     <Content Include="App\scripts\services\form-service.js" />
@@ -96,7 +97,7 @@
     <Content Include="App\views\includes\field-properties\reflector.html" />
     <Content Include="App\views\includes\field-properties\old\old-dropdown.html" />
     <Content Include="App\views\includes\field-properties\noyes.html" />
-    <Content Include="App\views\includes\field-properties\hidden.html" />
+    <Content Include="App\views\includes\field-properties\data.html" />
     <Content Include="App\views\includes\field-properties\old\old-table.html" />
     <Content Include="App\views\includes\field-properties\formPropertiesDialog.html" />
     <Content Include="App\views\includes\field-properties\old\old-textfield.html" />
@@ -106,7 +107,7 @@
     <Content Include="App\views\includes\field-templates\reflector.html" />
     <Content Include="App\views\includes\field-templates\old\old-dropdown.html" />
     <Content Include="App\views\includes\field-templates\noyes.html" />
-    <Content Include="App\views\includes\field-templates\hidden.html" />
+    <Content Include="App\views\includes\field-templates\data.html" />
     <Content Include="App\views\includes\field-templates\old\old-table.html" />
     <Content Include="App\views\includes\field-templates\old\old-textfield.html" />
     <Content Include="App\views\includes\partials\selectedItemView.html" />
@@ -114,7 +115,7 @@
     <Content Include="App\views\includes\partials\dropZone.html" />
     <Content Include="App\views\includes\field-properties\dropdown.html" />
     <Content Include="App\views\includes\field-properties\old\old-checkbox.html" />
-    <Content Include="App\views\includes\field-properties\format.html" />
+    <Content Include="App\views\includes\field-properties\layout.html" />
     <Content Include="App\views\includes\field-properties\photo.html" />
     <Content Include="App\views\includes\field-properties\old\old-tab.html" />
     <Content Include="App\views\includes\field-properties\old\old-radio.html" />
@@ -122,7 +123,7 @@
     <Content Include="App\views\includes\field-properties\fieldPropertiesDialog.html" />
     <Content Include="App\views\includes\field-properties\static.html" />
     <Content Include="App\views\includes\field-properties\old\old-tryItDialog.html" />
-    <Content Include="App\views\includes\field-templates\format.html" />
+    <Content Include="App\views\includes\field-templates\layout.html" />
     <Content Include="App\views\includes\field-templates\group.html" />
     <Content Include="App\views\includes\field-templates\dropdown.html" />
     <Content Include="App\views\includes\field-templates\old\old-checkbox.html" />
@@ -188,6 +189,7 @@
     <Content Include="Scripts\angular-animate.min.js.map" />
     <Content Include="App\static-data\sample_forms.json" />
     <Content Include="App\static-data\fulldetails.json" />
+    <Content Include="App\static-data\list_formcontrols.json" />
     <None Include="Properties\PublishProfiles\concept-zone.pubxml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.js" />

@@ -189,7 +189,7 @@
       }
 
 .tab-area {
-    min-height:300px;
+    min-height:400px;
     padding-bottom:20px;
 }
 
@@ -220,6 +220,7 @@ h3 > .tools {
   user-select: none;           /* non-prefixed version, currently
                                   not supported by any browser */
 }
+
 
 
 .modal .alert{
