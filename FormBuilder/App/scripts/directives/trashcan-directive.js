@@ -2,10 +2,10 @@
 
 app.directive('trashcanDirective', function () {
     return {
-        controller: function($scope){
+        controller: function ($scope, modalService) {
             $scope.trashedCallback = function (event, index, item) {
                 if (item) {
-                    var deletedItems = getFieldList(item, null, {});
+                    var deletedItems = formUIHelper.getFieldList(item, null, {});
                     var conflicts = getDeleteConflicts(deletedItems);
 
                     if (conflicts.length > 0) {
@@ -14,7 +14,7 @@ app.directive('trashcanDirective', function () {
                             msg += "<li>" + conflicts[i] + "</li>";
                         }
                         msg += "</ul>"
-                        showMessage({
+                        modalService.showMessage({
                             message: msg,
                             alertStyle: "alert-danger",
                             okButton: true
@@ -33,7 +33,7 @@ app.directive('trashcanDirective', function () {
 
             var getDeleteConflicts = function (deletedItems) {
                 var conflicts = [];
-                var remainingItems = getFieldList($scope.models.form, deletedItems, {});
+                var remainingItems = formUIHelper.getFieldList($scope.models.form, deletedItems, {});
                 for (var key in remainingItems) {
                     var item = remainingItems[key];
                     if (item.conditions) {

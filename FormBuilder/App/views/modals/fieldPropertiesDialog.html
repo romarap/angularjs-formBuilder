@@ -94,36 +94,36 @@
                     <label class="col-sm-2 control-label input-sm">&nbsp;</label>
                     <div class="col-sm-4">
                         !--0x8000--
-                        <label class="checkbox-inline"><input type="checkbox" ng-model="multiple" ng-change="item.type=SetTypeBit(item.type,formService.tieTypeFlags['multiple'],multiple)" >Multiple</label>
+                        <label class="checkbox-inline"><input type="checkbox" ng-model="multiple" ng-change="item.type=SetTypeBit(item.type,formUIHelper.tieTypeFlags['multiple'],multiple)" >Multiple</label>
                      </div>
                 </div>-->
                 <div class="form-group row">
                     <label class="col-sm-2 control-label input-sm">Flags:</label>
                     <div class="col-sm-4">
                         <!--0x01000000-->
-                        <label class="checkbox-inline"><input type="checkbox" ng-model="readonlyWriteLock" ng-change="item.type=SetTypeBit(item.type,formService.tieTypeFlags['readonlyWriteLock'],readonlyWriteLock)" />Readonly Write</label>
+                        <label class="checkbox-inline"><input type="checkbox" ng-model="readonlyWriteLock" ng-change="item.type=SetTypeBit(item.type,formUIHelper.tieTypeFlags['readonlyWriteLock'],readonlyWriteLock)" />Readonly Write</label>
                     </div>
                     <div class="col-sm-4">
                         <!--0x02000000-->
-                        <label class="checkbox-inline"><input type="checkbox" ng-model="readonlyAppendLock" ng-change="item.type=SetTypeBit(item.type,formService.tieTypeFlags['readonlyAppendLock'],readonlyAppendLock)" />Readonly Append</label>
+                        <label class="checkbox-inline"><input type="checkbox" ng-model="readonlyAppendLock" ng-change="item.type=SetTypeBit(item.type,formUIHelper.tieTypeFlags['readonlyAppendLock'],readonlyAppendLock)" />Readonly Append</label>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-2 control-label input-sm">&nbsp;</label>
                     <div class="col-sm-4">
                         <!--0x04000000-->
-                        <label class="checkbox-inline"><input type="checkbox" ng-model="noZapd" ng-change="item.type=SetTypeBit(item.type,formService.tieTypeFlags['noZapd'],noZapd)" />No Zap</label>
+                        <label class="checkbox-inline"><input type="checkbox" ng-model="noZapd" ng-change="item.type=SetTypeBit(item.type,formUIHelper.tieTypeFlags['noZapd'],noZapd)" />No Zap</label>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-2 control-label input-sm">&nbsp;</label>
                     <div class="col-sm-4">
                         <!--0x08000000-->
-                        <label class="checkbox-inline"><input type="checkbox" ng-model="invisibleWhenOff" ng-change="item.type=SetTypeBit(item.type,formService.tieTypeFlags['invisibleWhenOff'],invisibleWhenOff)" />Invisible When Off</label>
+                        <label class="checkbox-inline"><input type="checkbox" ng-model="invisibleWhenOff" ng-change="item.type=SetTypeBit(item.type,formUIHelper.tieTypeFlags['invisibleWhenOff'],invisibleWhenOff)" />Invisible When Off</label>
                     </div>
                     <div class="col-sm-4">
                         <!--0x40000000-->
-                        <label class="checkbox-inline"><input type="checkbox" ng-model="negateSrcCondition" ng-change="item.type=SetTypeBit(item.type,formService.tieTypeFlags['negateSrcCondition'],negateSrcCondition)" />Negate Src Condition</label>
+                        <label class="checkbox-inline"><input type="checkbox" ng-model="negateSrcCondition" ng-change="item.type=SetTypeBit(item.type,formUIHelper.tieTypeFlags['negateSrcCondition'],negateSrcCondition)" />Negate Src Condition</label>
                     </div>
                 </div>
             </uib-tab>

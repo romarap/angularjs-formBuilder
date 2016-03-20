@@ -63,6 +63,8 @@
   <ItemGroup>
     <Content Include="App\images\camera_icon_black.jpg" />
     <Content Include="App\images\trashcan.jpg" />
+    <Content Include="App\scripts\controllers\formDetailsModalInstanceController.js" />
+    <Content Include="App\scripts\controllers\itemDetailsModalInstanceController.js" />
     <Content Include="App\scripts\controllers\formsController.js" />
     <Content Include="App\scripts\controllers\headerController.js" />
     <Content Include="App\scripts\directives\watermark-directive.js" />
@@ -75,9 +77,8 @@
     <Content Include="App\scripts\directives\trashcan-directive.js" />
     <Content Include="App\scripts\directives\toolbox-directive.js" />
     <Content Include="App\scripts\directives\form-directive.js" />
-    <Content Include="App\scripts\modules\bitHelpers.js" />
-    <Content Include="App\scripts\modules\messagePanelHelper.js" />
-    <Content Include="App\scripts\modules\listHelpers.js" />
+    <Content Include="App\scripts\modules\formUIHelper.js" />
+    <Content Include="App\scripts\services\modal-service.js" />
     <Content Include="App\scripts\services\form-service.js" />
     <Content Include="App\styles\bootstrap-2.3.2.min.css" />
     <Content Include="App\styles\formBuilder.css" />
@@ -99,7 +100,7 @@
     <Content Include="App\views\includes\field-properties\noyes.html" />
     <Content Include="App\views\includes\field-properties\data.html" />
     <Content Include="App\views\includes\field-properties\old\old-table.html" />
-    <Content Include="App\views\includes\field-properties\formPropertiesDialog.html" />
+    <Content Include="App\views\modals\formPropertiesDialog.html" />
     <Content Include="App\views\includes\field-properties\old\old-textfield.html" />
     <Content Include="App\views\includes\field-templates\old\old-format.html" />
     <Content Include="App\views\includes\field-templates\selector.html" />
@@ -110,6 +111,7 @@
     <Content Include="App\views\includes\field-templates\data.html" />
     <Content Include="App\views\includes\field-templates\old\old-table.html" />
     <Content Include="App\views\includes\field-templates\old\old-textfield.html" />
+    <Content Include="App\views\modals\modal.html" />
     <Content Include="App\views\includes\partials\selectedItemView.html" />
     <Content Include="App\views\includes\partials\updatedArea.html" />
     <Content Include="App\views\includes\partials\dropZone.html" />
@@ -120,7 +122,7 @@
     <Content Include="App\views\includes\field-properties\old\old-tab.html" />
     <Content Include="App\views\includes\field-properties\old\old-radio.html" />
     <Content Include="App\views\includes\field-properties\group.html" />
-    <Content Include="App\views\includes\field-properties\fieldPropertiesDialog.html" />
+    <Content Include="App\views\modals\fieldPropertiesDialog.html" />
     <Content Include="App\views\includes\field-properties\static.html" />
     <Content Include="App\views\includes\field-properties\old\old-tryItDialog.html" />
     <Content Include="App\views\includes\field-templates\layout.html" />

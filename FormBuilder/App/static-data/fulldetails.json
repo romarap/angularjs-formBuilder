@@ -1,89 +1,102 @@
-[{
-  "id": 1,
-  "label": "Car Inspection",
-  "type": 16,
-  "controls": [
-   
-        {
-          "id": "1",
-          "status": "create",
-          "type": 16384,
-          "display_name": "Group",
-          "label": "group",
-          "controls": [
-            {
-              "id": "2",
-              "status": "create",
-              "type": 336,
-              "display_name": "Static",
-              "label": "static",
-              "text1": "Vehicle Details",
-              "text2": "Please enter the details of the vehicle"
-            },
-            {
-              "id": "3",
-              "status": "create",
-              "type": 288,
-              "display_name": "Text Field",
-              "label": "textField",
-              "text1": "Make"
-            },
-            {
-              "id": "4",
-              "status": "create",
-              "type": 288,
-              "display_name": "Text Field",
-              "label": "textField",
-              "text1": "Model"
-            },
-            {
-              "id": "5",
-              "status": "create",
-              "type": 288,
-              "display_name": "Text Field",
-              "label": "textField",
-              "text1": "Registration"
-            }
-          ]
-        },
-        {
-          "id": "6",
-          "status": "create",
-          "type": 16384,
-          "display_name": "Group",
-          "label": "group",
-          "controls": [
-            {
-              "id": "7",
-              "status": "create",
-              "type": 272,
-              "display_name": "No/Yes",
-              "label": "no/yes",
-              "text1": "Tyres",
-              "text2": "Please check tyres are ok"
-            },
-            {
-              "id": "8",
-              "status": "create",
-              "type": 272,
-              "display_name": "No/Yes",
-              "label": "no/yes",
-              "text1": "Windscreen",
-              "text2": "Are there any issues with the windscreen ?"
-            }
-          ]
-        }
-      ]
-    },
+[
+  {
+    "id": 1,
+    "label": "Car Inspection",
+    "type": 16400,
+    "text1": "_GROUP",
+    "text2": null,
+    "intValue": null,
+    "textValue": null,
+    "conditionSrcId": null,
+    "controlId": null,
+    "controls": [
+
+      {
+        "id": "1",
+        "status": "create",
+        "type": 16384,
+        "display_name": "Group",
+        "label": "group",
+        "controls": [
+          {
+            "id": "2",
+            "status": "create",
+            "type": 336,
+            "display_name": "Static",
+            "label": "static",
+            "text1": "Vehicle Details",
+            "text2": "Please enter the details of the vehicle"
+          },
+          {
+            "id": "3",
+            "status": "create",
+            "type": 288,
+            "display_name": "Text Field",
+            "label": "textField",
+            "text1": "Make"
+          },
+          {
+            "id": "4",
+            "status": "create",
+            "type": 288,
+            "display_name": "Text Field",
+            "label": "textField",
+            "text1": "Model"
+          },
+          {
+            "id": "5",
+            "status": "create",
+            "type": 288,
+            "display_name": "Text Field",
+            "label": "textField",
+            "text1": "Registration"
+          }
+        ]
+      },
+      {
+        "id": "6",
+        "status": "create",
+        "type": 16384,
+        "display_name": "Group",
+        "label": "group",
+        "controls": [
+          {
+            "id": "7",
+            "status": "create",
+            "type": 272,
+            "display_name": "No/Yes",
+            "label": "no/yes",
+            "text1": "Tyres",
+            "text2": "Please check tyres are ok"
+          },
+          {
+            "id": "8",
+            "status": "create",
+            "type": 272,
+            "display_name": "No/Yes",
+            "label": "no/yes",
+            "text1": "Windscreen",
+            "text2": "Are there any issues with the windscreen ?"
+          }
+        ]
+      }
+    ]
+  },
 
   {
     "id": 2,
     "label": "Employee Interview",
-    "type": 16,
+    "type": 16400,
+    "text1": "_GROUP",
+    "text2": null,
+    "intValue": null,
+    "textValue": null,
+    "conditionSrcId": null,
+    "controlId": null,
     "controls": [
       {
         "id": "1",
-        "status": "create",      
+        "status": "create",
         "type": 16384,
         "display_name": "Group",
         "label": "group",
@@ -127,7 +140,7 @@
       },
       {
         "id": "5",
-        "status": "create",     
+        "status": "create",
         "type": 16384,
         "display_name": "Group",
         "label": "group",
@@ -161,80 +174,92 @@
     ]
   },
   {
-  "id": "10",
-  "label": "Nigels test form",
-  "type": 16,
-  "controls": [
-    {
-      "id": "199",
-      "status": "create",
-      "type": 16384,
-      "display_name": "Group",
-      "label": "group",
-      "controls": [
-        {
-          "id": "1000",
-          "status": "create",
-          "type": 512,
-          "display_name": "Format",
-          "label": "format",
-          "text1": "Page 1",
-          "text2": "My page title"
-        },
-        {
-          "id": "1010",
-          "status": "create",
-          "type": 288,
-          "display_name": "Text Field",
-          "label": "textField",
-          "text1": "Brother's name",
-          "text2": "Whats is your brother's name ?"
-        },
-        {
-          "id": "1020",
-          "status": "create",
-          "type": 288,
-          "display_name": "Text Field",
-          "label": "textField",
-          "text1": "Sister's name",
-          "text2": "Whats is your sister's name ?"
-        }
-      ]
-    }
-  ]
-},
+    "id": "10",
+    "label": "Nigels test form",
+    "type": 16400,
+    "text1": "_GROUP",
+    "text2": null,
+    "intValue": null,
+    "textValue": null,
+    "conditionSrcId": null,
+    "controlId": null,
+    "controls": [
+      {
+        "id": "199",
+        "status": "create",
+        "type": 16384,
+        "display_name": "Group",
+        "label": "group",
+        "controls": [
+          {
+            "id": "1000",
+            "status": "create",
+            "type": 512,
+            "display_name": "Format",
+            "label": "format",
+            "text1": "Page 1",
+            "text2": "My page title"
+          },
+          {
+            "id": "1010",
+            "status": "create",
+            "type": 288,
+            "display_name": "Text Field",
+            "label": "textField",
+            "text1": "Brother's name",
+            "text2": "Whats is your brother's name ?"
+          },
+          {
+            "id": "1020",
+            "status": "create",
+            "type": 288,
+            "display_name": "Text Field",
+            "label": "textField",
+            "text1": "Sister's name",
+            "text2": "Whats is your sister's name ?"
+          }
+        ]
+      }
+    ]
+  },
   {
-  "id": 3,
-  "label": "Road Survey",
-  "type": 16,
-  "controls": [
-    {
-      "id": "1",
-      "field_label": "container",
-      "controls": [
-        {
-          "id": "2",
-          "field_type": "text",
-          "field_label": "text a"
-        },
-        {
-          "id": "3",
-          "field_label": "text b"
-        }
-      ]
-    },
-    {
-      "id": "4",
-      "field_label": "text c"
-    },
-    {
-      "id": "5",
-      "field_label": "text d"
-    },
-    {
-      "id": "6",
-      "field_label": "text e"
-    }
-  ]
-}
+    "id": 3,
+    "label": "Road Survey",
+    "type": 16400,
+    "text1": "_GROUP",
+    "text2": null,
+    "intValue": null,
+    "textValue": null,
+    "conditionSrcId": null,
+    "controlId": null,
+    "controls": [
+      {
+        "id": "1",
+        "field_label": "container",
+        "controls": [
+          {
+            "id": "2",
+            "field_type": "text",
+            "field_label": "text a"
+          },
+          {
+            "id": "3",
+            "field_label": "text b"
+          }
+        ]
+      },
+      {
+        "id": "4",
+        "field_label": "text c"
+      },
+      {
+        "id": "5",
+        "field_label": "text d"
+      },
+      {
+        "id": "6",
+        "field_label": "text e"
+      }
+    ]
+  }
 ]
