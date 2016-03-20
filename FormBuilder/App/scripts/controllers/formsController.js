@@ -8,7 +8,7 @@ var DELETE = 'delete';
 /**
  * The controller doesn't do much more than setting the initial data model
  */
-app.controller('formsController', function ($scope, $http, $location, FormService, $routeParams, modalService) {
+app.controller('formsController', function ($scope, $http, $location, $sessionStorage,$localStorage,FormService, $routeParams, modalService) {
 
     //$http({
     //    method: "GET",
@@ -18,6 +18,8 @@ app.controller('formsController', function ($scope, $http, $location, FormServic
     //}, function myError(response) {
     //    $scope.myWelcome = response.statusText;
     //});
+
+    $scope.$storage = $sessionStorage;
 
     $scope.models = {
         selected: null,
@@ -45,6 +47,10 @@ app.controller('formsController', function ($scope, $http, $location, FormServic
         });
     });
 
+    if ($routeParams.debug != null)
+    {
+        $scope.$storage.debug = $routeParams.debug;
+    }
 
     if ($routeParams.id) {
         // read form with given id
@@ -73,7 +79,7 @@ app.controller('formsController', function ($scope, $http, $location, FormServic
 
         var modalOptions = {
             closeButtonText: 'Cancel',
-            actionButtonText: 'Ignore Changes',
+            actionButtonText: 'OK',
             headerText: 'Unsaved Changes',
             bodyText: 'You have unsaved changes. Leave the page?'
         };

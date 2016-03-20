@@ -28,12 +28,12 @@
                 </div>
             </uib-tab>
             
-            <uib-tab index="2" heading="Custom Controls">
+            <uib-tab index="2" heading="Control Definitions">
                 <div>
                         <div class="dropzone box box-yellow">
-                            <h3>
+                            <!--<h3>
                                 <label class="selectable-title" >Custom Controls</label>
-                            </h3>
+                            </h3>-->
                             <div class="tab-area"></div>
                         </div>
                 </div>
@@ -41,7 +41,7 @@
 
         </uib-tabset>
 
-        <ng-include src="'views/includes/partials/updatedArea.html'"></ng-include>
+        <ng-include ng-show="$storage.debug=='true'" src="'views/includes/partials/updatedArea.html'"></ng-include>
 
     </div>
 
