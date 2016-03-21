@@ -17,7 +17,7 @@ app.directive('toolboxDirective', function () {
         templateUrl: './views/directive-templates/toolbox.html',
         restrict: 'E',
         scope: {
-            form:'='
+            controls:'='
         }
     };
   });

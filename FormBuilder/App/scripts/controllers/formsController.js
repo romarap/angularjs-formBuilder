@@ -29,6 +29,11 @@ app.controller('formsController', function ($scope, $http, $location, $sessionSt
         controls: {}
     };
 
+    //$scope.$on('$viewContentLoaded', function () {
+    //    $scope.msg = $route.current.templateUrl + ' is loaded !!';
+    //});
+
+
     //$scope.$on('$locationChangeStart', routeChange);
     var onRouteChangeOff = $scope.$on('$locationChangeStart', routeChange);
 
@@ -156,18 +161,26 @@ app.controller('formsController', function ($scope, $http, $location, $sessionSt
     //}
 
 
-    $scope.dropCallback = function (event, index, item) {
-        if (item) {
-            if (!item.id) {
-                item.id = FormService.getNewId();
-                item.status = CREATED;
+    $scope.dropCallback = function (event, index, item, external, type) {
+        var itemToDrop = item;
+        if (itemToDrop) {
+            if (type == "new-control") {
+                // this is a control so need to convert to a tool
+                var control = item;
+                itemToDrop = formUIHelper.tools[control.type & 0xFF0];
+                itemToDrop.controlId = control.id;
+                itemToDrop.label = control.label;
             }
-            if (item.status != CREATED) {
-                item.status = UPDATED;
+            if (!itemToDrop.id) {
+                itemToDrop.id = FormService.getNewId();
+                itemToDrop.status = CREATED;
+            }
+            if (itemToDrop.status != CREATED) {
+                itemToDrop.status = UPDATED;
             }
             $scope.models.dirty = true;
         }
-        return item;
+        return itemToDrop;
     };
 
 
@@ -247,8 +260,8 @@ app.controller('formsController', function ($scope, $http, $location, $sessionSt
         });
 
     };
-
 });
+
 
 
 app.filter('conditionSrcIdFilter', function () {

@@ -6,7 +6,7 @@
      it from the original list yourself using the dnd-moved attribute -->
 
 <ul dnd-list="list" 
-    dnd-drop="dropCallback(event, index, item)">
+    dnd-drop="dropCallback(event, index, item, external, type)">
     <li ng-repeat="item in list"
         dnd-draggable="item"
         dnd-effect-allowed="move"

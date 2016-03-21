@@ -2,13 +2,27 @@
   {
     "id": "80",
     "type": 288,
-    "label":  "siblings",
+    "label": "siblings",
     "text1": "siblings name",
     "controls": [
       {
         "id": "81",
         "type": 866,
         "text1": "Name -",
+        "intValue": 100
+      }
+    ]
+  },
+  {
+    "id": "100",
+    "type": 288,
+    "label":  "cars",
+    "text1": "car make",
+    "controls": [
+      {
+        "id": "101",
+        "type": 866,
+        "text1": "make -",
         "intValue": 100
       }
     ]

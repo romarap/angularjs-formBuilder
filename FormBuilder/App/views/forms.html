@@ -7,7 +7,7 @@
 
     <!-- Main area with field_label and source code -->
     <div class="col-md-8">
-        
+
         <uib-tabset active="active">
             <uib-tab index="0" heading="Form Definition">
                 <div>
@@ -18,7 +18,7 @@
                                 <span class="tools">
                                     <i class="glyphicon glyphicon-save-file" title="Save form" ng-class="{selectable: models.dirty }" ng-click="save()"></i>
                                     <i class="glyphicon glyphicon-info-sign selectable" data-toggle="popover" tabindex="0" data-trigger="hover" data-placement="left" help-template="form-help-content" title="Form Area" data-html="true" data-container="body"></i>
-                                 </span>
+                                </span>
                             </h3>
                             <!-- The dropzone also uses the list template -->
                             <!--<dropzone-directive list="models.form.controls" new-id="models.newId" dirty="$scope.models.dirty" ondblclick="editItemDetails(item)"></dropzone-directive>-->
@@ -27,15 +27,41 @@
                     </div>
                 </div>
             </uib-tab>
-            
+
             <uib-tab index="2" heading="Control Definitions">
-                <div>
-                        <div class="dropzone box box-yellow">
-                            <!--<h3>
-                                <label class="selectable-title" >Custom Controls</label>
-                            </h3>-->
-                            <div class="tab-area"></div>
+                <div ng-controller="controlsController">
+                    <div class="dropzone box box-yellow">
+                        <h3>
+                            <label class="selectable-title" >Controls</label>
+                            <span class="tools">
+                                <i class="glyphicon glyphicon-plus selectable" title="Create New Control" ng-click="newControl()"></i>
+                                <i class="glyphicon glyphicon-refresh selectable" title="Refresh Controls" ng-click="refreshControls()"></i>
+                            </span>
+                        </h3>
+                        <div class="tab-area" >
+
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>id</th>
+                                        <th>Label</th>
+                                        <th>Type</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="control in models.controls" >
+                                        <td class="col-md-1">{{control.id}}</td>
+                                        <td>{{control.label}}</td>
+                                        <td>{{getItemTypeDisplayName(control.type)}}</td>
+                                        <td class="col-md-1">
+                                            <i class="glyphicon glyphicon-edit selectable" title="Edit Control" ng-click="editControlDetails(control)"></i>
+                                            <i class="glyphicon glyphicon-trash selectable" title="Delete Control"></i>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
+                    </div>
                 </div>
             </uib-tab>
 
@@ -47,7 +73,7 @@
 
     <!-- Sidebar -->
     <div class="col-md-2">
-        <toolbox-directive></toolbox-directive>
+        <toolbox-directive controls="models.controls"></toolbox-directive>
         <trashcan-directive></trashcan-directive>
         <ng-include src="'views/includes/partials/selectedItemView.html'"></ng-include>
     </div>
@@ -55,22 +81,8 @@
 
 
 <!-- status dialog/message-bar -->
-<div class="message-bar">
-    <div class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="alert alert-info" role="alert">
-                    <div class="glyphicon glyphicon-info-sign"></div>
-                    <div class="msg"></div>
-                    <div class="alert-footer"><button class="btn btn-primary" data-dismiss="modal">OK</button></div>
-                </div>
-                <div class="modal-footer" hidden="true">
+<ng-include src="'views/includes/partials/messagePanel.html'"></ng-include>
 
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 
 <!-- form area help text-->

@@ -11,7 +11,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="App/app.js">
-      <publishTime>03/11/2016 10:35:28</publishTime>
+      <publishTime>03/20/2016 22:26:04</publishTime>
     </File>
     <File Include="App/images/camera_icon_black.jpg">
       <publishTime>03/09/2016 15:02:47</publishTime>
@@ -20,7 +20,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/29/2016 18:35:31</publishTime>
     </File>
     <File Include="App/Index.html">
-      <publishTime>03/20/2016 18:35:35</publishTime>
+      <publishTime>03/20/2016 22:26:04</publishTime>
     </File>
     <File Include="App/scripts/controllers/buildController.js">
       <publishTime>03/07/2016 20:49:11</publishTime>
@@ -38,7 +38,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/20/2016 19:01:48</publishTime>
     </File>
     <File Include="App/scripts/controllers/formsController.js">
-      <publishTime>03/20/2016 21:14:15</publishTime>
+      <publishTime>03/20/2016 22:26:54</publishTime>
     </File>
     <File Include="App/scripts/controllers/headerController.js">
       <publishTime>02/25/2016 14:29:40</publishTime>
@@ -236,7 +236,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/11/2016 18:16:31</publishTime>
     </File>
     <File Include="App/views/directive-templates/toolbox.html">
-      <publishTime>03/18/2016 20:46:35</publishTime>
+      <publishTime>03/20/2016 22:50:19</publishTime>
     </File>
     <File Include="App/views/directive-templates/trashcan.html">
       <publishTime>03/18/2016 20:39:22</publishTime>
@@ -245,7 +245,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/03/2016 16:41:11</publishTime>
     </File>
     <File Include="App/views/forms.html">
-      <publishTime>03/19/2016 16:56:24</publishTime>
+      <publishTime>03/20/2016 22:51:55</publishTime>
     </File>
     <File Include="App/views/home.html">
       <publishTime>03/02/2016 12:44:05</publishTime>
