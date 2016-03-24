@@ -1,16 +1,20 @@
 ﻿'use strict';
 
 
-app.controller('ControlEditModalInstanceCtrl', function ($scope, $uibModalInstance, modalOptions, item) {
+app.controller('ControlEditModalInstanceCtrl', function ($scope, $uibModalInstance, modalOptions, item, isNew) {
 
     $scope.models = {
             attributes: {},
             item: item,
             controls: {},
+            selectOptions: [],
+            selectOptionsType: "0x0381",
             types: formUIHelper.getControlTypesList(),
-            modalOptions: modalOptions
+            modalOptions: modalOptions,
+            isNew: isNew
         }
 
+  
     $scope.hideAttributes = function () {
         var flag = jQuery.isEmptyObject($scope.models.attributes);
         return flag;
@@ -30,10 +34,10 @@ app.controller('ControlEditModalInstanceCtrl', function ($scope, $uibModalInstan
     $scope.setupAttributes = function () {
         $scope.models.attributes = {};
 
-        if (item.controls) {
+        if (item.theAttributes) {
             // add existing attributes
-            for (var i = 0 ; i < item.controls.length; i++) {
-                $scope.addAttribute(item.controls[i], true);
+            for (var i = 0 ; i < item.theAttributes.length; i++) {
+                $scope.addAttribute(item.theAttributes[i], true);
             }
         }
 
@@ -87,16 +91,25 @@ app.controller('ControlEditModalInstanceCtrl', function ($scope, $uibModalInstan
     $scope.typeChanged = function () {
         $scope.setupAttributes();
     }
+
+    $scope.addSelectOption = function () {
+        $scope.models.selectOptions.push({ type: $scope.models.selectOptionsType, text1: '', text2: '' });
+    }
+
+    $scope.removeSelectOption = function (event, index) {
+        $scope.models.selectOptions.splice(index, 1);
+    };
+
  
     // function to submit the form after all validation has occurred            
     $scope.submitForm = function (isValid) {
         // check to make sure the form is completely valid
         if (isValid) {
-            $scope.models.item.controls = [];
+            $scope.models.item.theAttributes = [];
             for (var key in $scope.models.attributes)
             {
                 if ($scope.models.attributes[key].enabled) {
-                    $scope.models.item.controls.push(angular.copy($scope.models.attributes[key].settings));
+                    $scope.models.item.theAttributes.push(angular.copy($scope.models.attributes[key].settings));
                 }
             }
             $uibModalInstance.close($scope.models.item);

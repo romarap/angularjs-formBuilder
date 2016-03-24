@@ -4,7 +4,7 @@
     "type": 288,
     "label": "siblings",
     "text1": "siblings name",
-    "controls": [
+    "theAttributes": [
       {
         "id": "81",
         "type": 866,
@@ -18,7 +18,7 @@
     "type": 288,
     "label":  "cars",
     "text1": "car make",
-    "controls": [
+    "theAttributes": [
       {
         "id": "101",
         "type": 866,

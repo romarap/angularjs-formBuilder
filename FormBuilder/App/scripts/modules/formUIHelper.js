@@ -44,7 +44,12 @@ var formUIHelper = new function () {
         0x800: { type: 0x800, item_type: "data", display_name: "Data" }
     };
 
-    this.tieTypeFlags= {
+    this.mask = {
+        "subtype": 0xFFF,
+        "group": 0x4FFF
+    };
+
+    this.tieTypeFlags = {
         "grp": 0x4000,
         "multiple": 0x8000,
         "readonlyWriteLock": 0x01000000,
@@ -108,11 +113,11 @@ var formUIHelper = new function () {
     ];
 
     this.groupSubTypes = [
-        { value: 0x4000, label: "Basic Group" },
-        { value: 0x4022, label: "Validator Save" },
-        { value: 0x4023, label: "Validator Save List" },
-        { value: 0x4040, label: "Table" },
-        { value: 0x4080, label: "Score" }
+        { value: 0x000, label: "Basic Group" },
+        { value: 0x022, label: "Validator Save" },
+        { value: 0x023, label: "Validator Save List" },
+        { value: 0x040, label: "Table" },
+        { value: 0x080, label: "Score" }
     ];
 
     // get a flat list of fields but ignore fields in the ignore list

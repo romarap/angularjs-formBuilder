@@ -23,14 +23,15 @@ app.controller('ItemDetailsModalInstanceCtrl', function ($scope, $uibModalInstan
         }
     }
 
-    //$scope.multiple = (item.type & formUIHelper.tieTypeFlags["multiple"]) > 0;
+    $scope.subType = item.type & formUIHelper.mask["subtype"];
+    $scope.multiple = (item.type & formUIHelper.tieTypeFlags["multiple"]) > 0;
     $scope.readonlyWriteLock = (item.type & formUIHelper.tieTypeFlags["readonlyWriteLock"]) > 0;
     $scope.readonlyAppendLock = (item.type & formUIHelper.tieTypeFlags["readonlyAppendLock"]) > 0;
     $scope.noZapd = (item.type & formUIHelper.tieTypeFlags["noZapd"]) > 0;
     $scope.invisibleWhenOff = (item.type & formUIHelper.tieTypeFlags["invisibleWhenOff"]) > 0;
     $scope.negateSrcCondition = (item.type & formUIHelper.tieTypeFlags["negateSrcCondition"]) > 0;
 
-
+ 
     $scope.getFieldPropertiesTemplate = function (item) {
         var type = formUIHelper.tieTypeBasicTypes[item.type & BASIC_TYPE_MASK];
 
@@ -76,6 +77,11 @@ app.controller('ItemDetailsModalInstanceCtrl', function ($scope, $uibModalInstan
             value &= ~mask;
         }
         return value;
+    }
+
+    $scope.SetSubType = function (subType , mask) {
+        $scope.item.type &= ~mask;
+        $scope.item.type |= subType;
     }
 
     // function to submit the form after all validation has occurred            

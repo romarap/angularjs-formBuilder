@@ -2,93 +2,113 @@
     <div class="modal-header">
         <h3 class="modal-title">Control Definition</h3>
     </div>
-    <div class="spacer"></div>
-    <uib-tabset active="active">
-        <uib-tab index="0" heading="Properties">
-            <div class="tab-area form-horizontal">
-                <div class="form-group row">
-                    <label for="subLabel" class="col-sm-3 control-label input-sm">Id</label>
-                    <div class="col-sm-8">
-                        <label for="label" class="control-label input-sm">{{models.item.id}}</label>
+    <div class="spacer">
+        <uib-tabset active="active">
+            <uib-tab index="0" heading="Properties">
+                <div class="tab-area form-horizontal">
+                    <div class="form-group row">
+                        <label for="subLabel" class="col-sm-3 control-label input-sm">Id</label>
+                        <div class="col-sm-8">
+                            <label for="label" class="control-label input-sm">{{models.item.id}}</label>
+                        </div>
+                    </div>
+                    <div class="form-group row" ng-class="{ 'has-error' : userForm.type.$invalid && !userForm.type.$pristine }">
+                        <label class="col-sm-3 control-label input-sm">Type</label>
+                        <div class="col-sm-8">
+                            <select class="form-control col-sm-4 input-sm" name="type" ng-model="models.item.type" ng-change="typeChanged()" ng-options="value.value as value.label for (key , value) in models.types" ng-disabled="!models.isNew" required>
+                                <option value="" selected="selected">--Select required type--</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row" ng-class="{ 'has-error' : userForm.label.$invalid && !userForm.label.$pristine }">
+                        <label for="label" class="col-sm-3 control-label input-sm">Label</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control input-sm" name="label" id="label" placeholder="field label" ng-model="models.item.label" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="subLabel" class="col-sm-3 control-label input-sm">Text1</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control input-sm" name="text1" id="text1" placeholder="field text1" ng-model="models.item.text1">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="subLabel" class="col-sm-3 control-label input-sm">Text2</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control input-sm" name="text2" id="text2" placeholder="field text2" ng-model="models.item.text2">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="subLabel" class="col-sm-3 control-label input-sm">Int Value</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control input-sm" name="intvalue" id="intvalue" placeholder="field int value" ng-model="models.item.intValue">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 control-label input-sm">Inherited Control</label>
+                        <div class="col-sm-8">
+                            <select class="form-control col-sm-4 input-sm" name="inherited" ng-model="models.item.inheritId" ng-options="control.id as control.label for control in models.controls">
+                                <option value="" selected="selected">--Select control to inherit--</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
-                <div class="form-group row" ng-class="{ 'has-error' : userForm.type.$invalid && !userForm.type.$pristine }">
-                    <label class="col-sm-3 control-label input-sm">Type</label>
-                    <div class="col-sm-8">
-                        <select class="form-control col-sm-4 input-sm" name="type" ng-model="models.item.type" ng-change="typeChanged()" ng-options="value.value as value.label for (key , value) in models.types" required>
-                            <option value="" selected="selected">--Please select item--</option>
-                        </select>
+            </uib-tab>
+            <uib-tab index="1" heading="Attributes" ng-hide="hideAttributes()">
+                <div class="tab-area">
+                    <table class="table table-condensed table-striped">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Set</th>
+                                <th>Attribute</th>
+                                <th>Value</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr attribute-directive ng-repeat="(key, attr) in models.attributes" attribute="attr.settings" enabled="attr.enabled"></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </uib-tab>
+            <uib-tab index="2" heading="Values" ng-hide="hideValues()">
+                <div class="tab-area scrollable form-horizontal">
+                    <div class="form-group row">
+                        <label class="col-sm-2 control-label input-sm">Option Type</label>
+                        <div class="col-sm-3">
+                            <select class="form-control col-sm-4 input-sm" name="selectOptionsType" ng-model="models.selectOptionsType" ng-disabled="models.selectOptions.length>0" required>
+                                <option value="0x0381">Standard Item</option>
+                                <option value="0x0383">String Value</option>
+                                <option value="0x0384">Integer Value</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 control-label input-sm">Options</label>
+                        <div class="col-sm-10">
+                            <div class="form-inline" ng-repeat="option in models.selectOptions">
+                                <ng-form name="userFieldForm">
+                                    <div ng-class="{ 'has-error' : userFieldForm.label.$invalid || userFieldForm.value.$invalid }">
+                                        <input type="text" class="form-control input-sm col-sm-4" name="label" ng-model="option.text1" placeholder="display text" required />
+                                        <label class="form-control-static col-sm-1" ng-hide="models.selectOptionsType=='0x0381'">=</label>
+                                        <input type="text" class="form-control input-sm col-sm-4" name="value" ng-model="option.text2" placeholder="text value" ng-hide="models.selectOptionsType!='0x0383'" required />
+                                        <input type="number" class="form-control input-sm col-sm-4" name="value" ng-model="option.intValue" placeholder="numeric value" ng-hide="models.selectOptionsType!='0x0384'" required />
+                                        <i class="form-control-static glyphicon glyphicon-remove" ng-click="removeSelectOption($event, $index)" ng-class="{selectable: hover}" ng-mouseenter="hover = true" ng-mouseleave="hover = false" title="Remove option"></i>
+                                    </div>
+                                </ng-form>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-8">
+                                    <button class="btn btn-primary input-sm" type="button" ng-click="addSelectOption()">Add Option</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="form-group row" ng-class="{ 'has-error' : userForm.label.$invalid && !userForm.label.$pristine }">
-                    <label for="label" class="col-sm-3 control-label input-sm">Label</label>
-                    <div class="col-sm-8">
-                        <input type="text" class="form-control input-sm" name="label" id="label" placeholder="field label" ng-model="models.item.label" required>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="subLabel" class="col-sm-3 control-label input-sm">Text1</label>
-                    <div class="col-sm-8">
-                        <input type="text" class="form-control input-sm" name="text1" id="text1" placeholder="field text1" ng-model="models.item.text1">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="subLabel" class="col-sm-3 control-label input-sm">Text2</label>
-                    <div class="col-sm-8">
-                        <input type="text" class="form-control input-sm" name="text2" id="text2" placeholder="field text2" ng-model="models.item.text2">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="subLabel" class="col-sm-3 control-label input-sm">Int Value</label>
-                    <div class="col-sm-8">
-                        <input type="text" class="form-control input-sm" name="intvalue" id="intvalue" placeholder="field int value" ng-model="models.item.intValue">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-3 control-label input-sm">Inherited Control</label>
-                    <div class="col-sm-8">
-                        <select class="form-control col-sm-4 input-sm" name="inherited" ng-model="models.item.inheritId" ng-options="control.id as control.label for control in models.controls">
-                            <option value="" selected="selected">--Please select item--</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-        </uib-tab>
-        <uib-tab index="1" heading="Attributes" ng-hide="hideAttributes()">
-            <div class="tab-area">
-                <table class="table table-condensed table-striped">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Set</th>
-                            <th>Attribute</th>
-                            <th>Value</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr attribute-directive ng-repeat="(key, attr) in models.attributes" attribute="attr.settings" enabled="attr.enabled"></tr>
-                    </tbody>
-                </table>
-            </div>
-        </uib-tab>
-        <uib-tab index="2" heading="Values" ng-hide="hideValues()">
-            <div class="tab-area">
-            </div>
-        </uib-tab>
-    </uib-tabset>
-    <!--<div class="modal-body form-horizontal">
-        <div class="form-group row">
-            <label class="col-sm-2 control-label input-sm">Form ID</label>
-            <label class="col-sm-8 form-control-label input-sm">{{ item.id }}</label>
-        </div>
-        <div class="form-group row" ng-class="{ 'has-error' : userForm.label.$invalid && !userForm.label.$pristine }">
-            <label for="label" class="col-sm-2 control-label input-sm">Form Name</label>
-            <div class="col-sm-8">
-                <input type="text" class="form-control input-sm" name="name" id="name" placeholder="form name" ng-model="item.label" required>
-            </div>
-        </div>
-    </div>-->
+            </uib-tab>
+        </uib-tabset>
+    </div>
     <div class="modal-footer">
         <button class="btn btn-primary" type="submit" ng-disabled="userForm.$invalid">{{models.modalOptions.actionButtonText}}</button>
         <button class="btn btn-warning" type="button" ng-click="cancel()">{{models.modalOptions.closeButtonText}}</button>

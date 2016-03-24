@@ -168,7 +168,7 @@ app.controller('formsController', function ($scope, $http, $location, $sessionSt
                 // this is a control so need to convert to a tool
                 var control = item;
                 itemToDrop = formUIHelper.tools[control.type & 0xFF0];
-                itemToDrop.controlId = control.tieId;
+                itemToDrop.controlId = control.id;
                 itemToDrop.label = control.label;
             }
             if (!itemToDrop.tieId) {

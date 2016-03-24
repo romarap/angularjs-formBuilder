@@ -52,7 +52,8 @@ app.controller('controlsController', function ($scope,FormService, $routeParams,
             resolve: {
                 item: function () {
                     return angular.copy(item);
-                }
+                },
+                isNew: false
             },
         };
         modalService.showModal(modalDefaults, modalOptions).then(function (item) { 
@@ -74,8 +75,9 @@ app.controller('controlsController', function ($scope,FormService, $routeParams,
             controller: 'ControlEditModalInstanceCtrl',
             resolve: {
                 item: {
-                    id : FormService.getNewId()
-                }
+                    id: FormService.getNewId()
+                },
+                isNew: true
             },
         };
 
