@@ -20,13 +20,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/29/2016 18:35:31</publishTime>
     </File>
     <File Include="App/Index.html">
-      <publishTime>03/20/2016 22:26:04</publishTime>
+      <publishTime>03/21/2016 21:45:54</publishTime>
     </File>
     <File Include="App/scripts/controllers/buildController.js">
       <publishTime>03/07/2016 20:49:11</publishTime>
     </File>
     <File Include="App/scripts/controllers/buildController2.js">
       <publishTime>03/07/2016 22:27:34</publishTime>
+    </File>
+    <File Include="App/scripts/controllers/controlEditModalInstanceController.js">
+      <publishTime>03/21/2016 21:45:54</publishTime>
+    </File>
+    <File Include="App/scripts/controllers/controlsController.js">
+      <publishTime>03/21/2016 22:01:36</publishTime>
     </File>
     <File Include="App/scripts/controllers/createController.js">
       <publishTime>03/04/2016 13:20:04</publishTime>
@@ -38,7 +44,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/20/2016 19:01:48</publishTime>
     </File>
     <File Include="App/scripts/controllers/formsController.js">
-      <publishTime>03/20/2016 22:26:54</publishTime>
+      <publishTime>03/21/2016 21:45:54</publishTime>
     </File>
     <File Include="App/scripts/controllers/headerController.js">
       <publishTime>02/25/2016 14:29:40</publishTime>
@@ -80,7 +86,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/16/2016 11:44:48</publishTime>
     </File>
     <File Include="App/scripts/directives/toolbox-directive.js">
-      <publishTime>03/20/2016 18:43:33</publishTime>
+      <publishTime>03/21/2016 18:47:45</publishTime>
     </File>
     <File Include="App/scripts/directives/trashcan-directive.js">
       <publishTime>03/20/2016 18:33:25</publishTime>
@@ -92,7 +98,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="App/scripts/modules/formUIHelper.js">
-      <publishTime>03/20/2016 20:22:14</publishTime>
+      <publishTime>03/21/2016 19:53:50</publishTime>
     </File>
     <File Include="App/scripts/modules/listHelpers.js">
       <publishTime>11/03/2016 11:15:07</publishTime>
@@ -110,7 +116,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/20/2016 20:34:24</publishTime>
     </File>
     <File Include="App/static-data/list_formcontrols.json">
-      <publishTime>03/17/2016 16:13:40</publishTime>
+      <publishTime>03/21/2016 18:47:45</publishTime>
     </File>
     <File Include="App/static-data/list_forms.json">
       <publishTime>03/16/2016 18:54:37</publishTime>
@@ -236,7 +242,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/11/2016 18:16:31</publishTime>
     </File>
     <File Include="App/views/directive-templates/toolbox.html">
-      <publishTime>03/20/2016 22:50:19</publishTime>
+      <publishTime>03/21/2016 19:53:50</publishTime>
     </File>
     <File Include="App/views/directive-templates/trashcan.html">
       <publishTime>03/18/2016 20:39:22</publishTime>
@@ -245,7 +251,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/03/2016 16:41:11</publishTime>
     </File>
     <File Include="App/views/forms.html">
-      <publishTime>03/20/2016 22:51:55</publishTime>
+      <publishTime>03/21/2016 22:01:36</publishTime>
     </File>
     <File Include="App/views/home.html">
       <publishTime>03/02/2016 12:44:05</publishTime>
@@ -395,19 +401,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/03/2016 18:01:59</publishTime>
     </File>
     <File Include="App/views/includes/field-templates/reflector.html">
-      <publishTime>03/16/2016 14:46:28</publishTime>
+      <publishTime>03/21/2016 22:09:22</publishTime>
     </File>
     <File Include="App/views/includes/field-templates/selector.html">
       <publishTime>03/16/2016 14:48:49</publishTime>
     </File>
     <File Include="App/views/includes/field-templates/static.html">
-      <publishTime>03/16/2016 18:07:29</publishTime>
+      <publishTime>03/21/2016 22:08:03</publishTime>
     </File>
     <File Include="App/views/includes/field-templates/textfield.html">
       <publishTime>03/16/2016 14:46:55</publishTime>
     </File>
     <File Include="App/views/includes/partials/dropZone.html">
-      <publishTime>03/17/2016 13:04:22</publishTime>
+      <publishTime>03/21/2016 19:30:45</publishTime>
+    </File>
+    <File Include="App/views/includes/partials/messagePanel.html">
+      <publishTime>03/21/2016 21:36:43</publishTime>
     </File>
     <File Include="App/views/includes/partials/selectedItemView.html">
       <publishTime>03/10/2016 10:43:03</publishTime>
@@ -417,6 +426,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="App/views/includes/partials/updatedArea.html">
       <publishTime>03/14/2016 20:00:54</publishTime>
+    </File>
+    <File Include="App/views/modals/controlEditDialog.html">
+      <publishTime>03/21/2016 21:45:54</publishTime>
     </File>
     <File Include="App/views/modals/fieldPropertiesDialog.html">
       <publishTime>03/20/2016 19:01:48</publishTime>

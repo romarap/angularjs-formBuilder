@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    "tieId": 1,
     "label": "Car Inspection",
     "type": 16400,
     "text1": "_GROUP",
@@ -9,17 +9,17 @@
     "textValue": null,
     "conditionSrcId": null,
     "controlId": null,
-    "controls": [
+    "theChildren": [
 
       {
-        "id": "1",
+        "tieId": "1",
         "status": "create",
         "type": 16384,
         "display_name": "Group",
         "label": "group",
-        "controls": [
+        "theChildren": [
           {
-            "id": "2",
+            "tieId": "2",
             "status": "create",
             "type": 336,
             "display_name": "Static",
@@ -28,7 +28,7 @@
             "text2": "Please enter the details of the vehicle"
           },
           {
-            "id": "3",
+            "tieId": "3",
             "status": "create",
             "type": 288,
             "display_name": "Text Field",
@@ -36,7 +36,7 @@
             "text1": "Make"
           },
           {
-            "id": "4",
+            "tieId": "4",
             "status": "create",
             "type": 288,
             "display_name": "Text Field",
@@ -44,7 +44,7 @@
             "text1": "Model"
           },
           {
-            "id": "5",
+            "tieId": "5",
             "status": "create",
             "type": 288,
             "display_name": "Text Field",
@@ -54,14 +54,14 @@
         ]
       },
       {
-        "id": "6",
+        "tieId": "6",
         "status": "create",
         "type": 16384,
         "display_name": "Group",
         "label": "group",
-        "controls": [
+        "theChildren": [
           {
-            "id": "7",
+            "tieId": "7",
             "status": "create",
             "type": 272,
             "display_name": "No/Yes",
@@ -70,7 +70,7 @@
             "text2": "Please check tyres are ok"
           },
           {
-            "id": "8",
+            "tieId": "8",
             "status": "create",
             "type": 272,
             "display_name": "No/Yes",
@@ -84,7 +84,7 @@
   },
 
   {
-    "id": 2,
+    "tieId": 2,
     "label": "Employee Interview",
     "type": 16400,
     "text1": "_GROUP",
@@ -93,16 +93,16 @@
     "textValue": null,
     "conditionSrcId": null,
     "controlId": null,
-    "controls": [
+    "theChildren": [
       {
-        "id": "1",
+        "tieId": "1",
         "status": "create",
         "type": 16384,
         "display_name": "Group",
         "label": "group",
-        "controls": [
+        "theChildren": [
           {
-            "id": "2",
+            "tieId": "2",
             "status": "create",
             "type": 288,
             "display_name": "Text Field",
@@ -110,7 +110,7 @@
             "text1": "First Name"
           },
           {
-            "id": "3",
+            "tieId": "3",
             "status": "create",
             "type": 288,
             "display_name": "Text Field",
@@ -118,7 +118,7 @@
             "text1": "Surname"
           },
           {
-            "id": "4",
+            "tieId": "4",
             "status": "create",
             "type": 304,
             "display_name": "Dropdown",
@@ -139,14 +139,14 @@
         "text1": "Candidate Details"
       },
       {
-        "id": "5",
+        "tieId": "5",
         "status": "create",
         "type": 16384,
         "display_name": "Group",
         "label": "group",
-        "controls": [
+        "theChildren": [
           {
-            "id": "6",
+            "tieId": "6",
             "status": "create",
             "type": 272,
             "display_name": "No/Yes",
@@ -154,7 +154,7 @@
             "text1": "Smartly Dressed ?"
           },
           {
-            "id": "7",
+            "tieId": "7",
             "status": "create",
             "type": 272,
             "display_name": "No/Yes",
@@ -164,7 +164,7 @@
         ]
       },
       {
-        "id": "8",
+        "tieId": "8",
         "status": "create",
         "type": 384,
         "display_name": "Photo",
@@ -174,7 +174,7 @@
     ]
   },
   {
-    "id": "10",
+    "tieId": "10",
     "label": "Nigels test form",
     "type": 16400,
     "text1": "_GROUP",
@@ -183,16 +183,16 @@
     "textValue": null,
     "conditionSrcId": null,
     "controlId": null,
-    "controls": [
+    "theChildren": [
       {
-        "id": "199",
+        "tieId": "199",
         "status": "create",
         "type": 16384,
         "display_name": "Group",
         "label": "group",
-        "controls": [
+        "theChildren": [
           {
-            "id": "1000",
+            "tieId": "1000",
             "status": "create",
             "type": 512,
             "display_name": "Format",
@@ -201,7 +201,7 @@
             "text2": "My page title"
           },
           {
-            "id": "1010",
+            "tieId": "1010",
             "status": "create",
             "type": 288,
             "display_name": "Text Field",
@@ -210,7 +210,7 @@
             "text2": "Whats is your brother's name ?"
           },
           {
-            "id": "1020",
+            "tieId": "1020",
             "status": "create",
             "type": 288,
             "display_name": "Text Field",
@@ -223,7 +223,7 @@
     ]
   },
   {
-    "id": 3,
+    "tieId": 3,
     "label": "Road Survey",
     "type": 16400,
     "text1": "_GROUP",
@@ -232,34 +232,169 @@
     "textValue": null,
     "conditionSrcId": null,
     "controlId": null,
-    "controls": [
+    "theChildren": [
       {
-        "id": "1",
+        "tieId": "1",
         "field_label": "container",
-        "controls": [
+        "theChildren": [
           {
-            "id": "2",
+            "tieId": "2",
             "field_type": "text",
             "field_label": "text a"
           },
           {
-            "id": "3",
+            "tieId": "3",
             "field_label": "text b"
           }
         ]
       },
       {
-        "id": "4",
+        "tieId": "4",
         "field_label": "text c"
       },
       {
-        "id": "5",
+        "tieId": "5",
         "field_label": "text d"
       },
       {
-        "id": "6",
+        "tieId": "6",
         "field_label": "text e"
       }
     ]
+  },
+  {
+    "tieId": 11,
+    "parentId": 0,
+    "type": 49168,
+    "controlId": 0,
+    "conditionSrcId": 0,
+    "text1": "Test simple report",
+    "text2": null,
+    "intValue": 0,
+    "textValue": null,
+    "label": "testReport",
+    "theChildren": [
+      {
+        "tieId": 199,
+        "parentId": 10,
+        "type": 49152,
+        "controlId": 0,
+        "conditionSrcId": 0,
+        "text1": "__GROUP",
+        "text2": null,
+        "intValue": 0,
+        "textValue": null,
+        "label": "tab",
+        "theChildren": [
+          {
+            "tieId": 1010,
+            "parentId": 199,
+            "type": 288,
+            "controlId": 80,
+            "conditionSrcId": 0,
+            "text1": null,
+            "text2": "What is your brother\u0027s name?",
+            "intValue": 0,
+            "textValue": null,
+            "label": "p1",
+            "theChildren": null
+          },
+          {
+            "tieId": 1000,
+            "parentId": 199,
+            "type": 512,
+            "controlId": 0,
+            "conditionSrcId": 0,
+            "text1": "Page 1",
+            "text2": "My page title",
+            "intValue": 0,
+            "textValue": null,
+            "label": null,
+            "theChildren": null
+          },
+          {
+            "tieId": 1100,
+            "parentId": 199,
+            "type": 16384,
+            "controlId": 0,
+            "conditionSrcId": 0,
+            "text1": "__GROUP",
+            "text2": null,
+            "intValue": 0,
+            "textValue": null,
+            "label": "group1",
+            "theChildren": [
+              {
+                "tieId": 1110,
+                "parentId": 1100,
+                "type": 272,
+                "controlId": 0,
+                "conditionSrcId": 0,
+                "text1": null,
+                "text2": "Yes no",
+                "intValue": 0,
+                "textValue": null,
+                "label": "p2",
+                "theChildren": null
+              },
+              {
+                "tieId": 1120,
+                "parentId": 1100,
+                "type": 33152,
+                "controlId": 0,
+                "conditionSrcId": 0,
+                "text1": "PLAINS",
+                "text2": null,
+                "intValue": 0,
+                "textValue": null,
+                "label": "p3",
+                "theChildren": null
+              },
+              {
+                "tieId": 1200,
+                "parentId": 1100,
+                "type": 16384,
+                "controlId": 0,
+                "conditionSrcId": 0,
+                "text1": "_GROUP",
+                "text2": null,
+                "intValue": 0,
+                "textValue": null,
+                "label": "group2",
+                "theChildren": [
+                  {
+                    "tieId": 1210,
+                    "parentId": 1200,
+                    "type": 272,
+                    "controlId": 0,
+                    "conditionSrcId": 0,
+                    "text1": null,
+                    "text2": "Yes no 2",
+                    "intValue": 0,
+                    "textValue": null,
+                    "label": "p4",
+                    "theChildren": null
+                  },
+                  {
+                    "tieId": 1220,
+                    "parentId": 1200,
+                    "type": 33153,
+                    "controlId": 0,
+                    "conditionSrcId": 0,
+                    "text1": "THUMBS",
+                    "text2": null,
+                    "intValue": 0,
+                    "textValue": null,
+                    "label": "p5",
+                    "theChildren": null
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
   }
+
 ]

@@ -74,7 +74,7 @@ app.controller('formsController', function ($scope, $http, $location, $sessionSt
     }
     else {
         angular.copy(formUIHelper.newForm, $scope.models.form);
-        $scope.models.form.id = FormService.getNewId();
+        $scope.models.form.tieId = FormService.getNewId();
     }
 
     function routeChange(event, newUrl) {
@@ -168,11 +168,11 @@ app.controller('formsController', function ($scope, $http, $location, $sessionSt
                 // this is a control so need to convert to a tool
                 var control = item;
                 itemToDrop = formUIHelper.tools[control.type & 0xFF0];
-                itemToDrop.controlId = control.id;
+                itemToDrop.controlId = control.tieId;
                 itemToDrop.label = control.label;
             }
-            if (!itemToDrop.id) {
-                itemToDrop.id = FormService.getNewId();
+            if (!itemToDrop.tieId) {
+                itemToDrop.tieId = FormService.getNewId();
                 itemToDrop.status = CREATED;
             }
             if (itemToDrop.status != CREATED) {
@@ -238,8 +238,8 @@ app.controller('formsController', function ($scope, $http, $location, $sessionSt
                 fields: function () {
                     // return all the fields on the form
                     var ignoreItem = {};
-                    ignoreItem[item.id] = item;
-                    return formUIHelper.getFieldList($scope.models.form.controls, ignoreItem, {});
+                    ignoreItem[item.tieId] = item;
+                    return formUIHelper.getFieldList($scope.models.form.theChildren, ignoreItem, {});
                 },
                 controls: function () {
                     return $scope.models.controls;
@@ -263,12 +263,22 @@ app.controller('formsController', function ($scope, $http, $location, $sessionSt
 });
 
 
+//app.filter('dictoryOrder', function () {
+//    return function (object, reverse) {
+//        var keys = Object.keys(object || {}).sort();
+//        if (reverse) keys.reverse();
+//        for (var ordered = {}, i = 0; keys[i]; i++) {
+//            ordered[keys[i]] = object[keys[i]];
+//        }
+//        return ordered;
+//    }
+//})
 
 app.filter('conditionSrcIdFilter', function () {
-    return function (input, id) {
+    return function (input, tieId) {
         var tmp = {};
         angular.forEach(input, function (val, key) {
-            if(val.conditionSrcId == id)
+            if (val.conditionSrcId == tieId)
             {
                 tmp[key] = val;
             }

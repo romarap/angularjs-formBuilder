@@ -1,18 +1,22 @@
 [
       {
-          "id": 1,
-          "name": "Car Inspection"
+          "tieId": 1,
+          "label": "Car Inspection"
       },
       {
-          "id": 2,
-          "name": "Employee Interview"
+          "tieId": 2,
+          "label": "Employee Interview"
       },
       {
-          "id": 10,
-          "name": "Nigels Example"
+          "tieId": 10,
+          "label": "Nigels Example"
       },
-      {
-          "id": 3,
-          "name": "Road Survey"
-      }
+  {
+    "tieId": 3,
+    "label": "Road Survey"
+  },
+  {
+    "tieId": 11,
+    "label": "testReport"
+  }
 ]

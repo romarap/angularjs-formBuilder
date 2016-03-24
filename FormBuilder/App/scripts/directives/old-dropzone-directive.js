@@ -6,8 +6,8 @@ app.directive('dropzoneDirective', function () {
 
             $scope.dropCallback = function (event, index, item) {
                 if (item) {
-                    if (!item.id) {
-                        item.id = "newid-" + $scope.newId++;
+                    if (!item.tieId) {
+                        item.tieId = "newid-" + $scope.newId++;
                         item.status = CREATED;
                     }
                     if (item.status != CREATED) {

@@ -17,7 +17,7 @@ app.controller('ItemDetailsModalInstanceCtrl', function ($scope, $uibModalInstan
 
     $scope.dependents = [];
     for (var key in fields) { 
-        if(fields[key].conditionSrcId == item.id)
+        if (fields[key].conditionSrcId == item.tieId)
         {
             $scope.dependents.push(angular.copy(fields[key]));
         }

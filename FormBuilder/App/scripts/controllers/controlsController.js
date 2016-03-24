@@ -40,7 +40,7 @@ app.controller('controlsController', function ($scope,FormService, $routeParams,
 
         var modalOptions = {
             closeButtonText: 'Cancel',
-            actionButtonText: 'OK'
+            actionButtonText: 'Save'
         };
 
         var modalDefaults = {
@@ -55,18 +55,15 @@ app.controller('controlsController', function ($scope,FormService, $routeParams,
                 }
             },
         };
-
-        modalService.showModal(modalDefaults, modalOptions).then(function (item) {
-           
+        modalService.showModal(modalDefaults, modalOptions).then(function (item) { 
         });
-
     };
 
     $scope.newControl = function () {
 
         var modalOptions = {
             closeButtonText: 'Cancel',
-            actionButtonText: 'OK'
+            actionButtonText: 'Create'
         };
 
         var modalDefaults = {
@@ -76,7 +73,9 @@ app.controller('controlsController', function ($scope,FormService, $routeParams,
             templateUrl: 'views/modals/controlEditDialog.html',
             controller: 'ControlEditModalInstanceCtrl',
             resolve: {
-                item: null
+                item: {
+                    id : FormService.getNewId()
+                }
             },
         };
 

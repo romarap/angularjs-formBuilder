@@ -45,6 +45,9 @@ app.service('modalService', function modalService($uibModal) {
                 };
             }
         }
+        else {
+            angular.extend(tempModalDefaults.resolve, { modalOptions: tempModalOptions });
+        }
 
         return $uibModal.open(tempModalDefaults).result;
     };

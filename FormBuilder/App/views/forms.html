@@ -2,7 +2,7 @@
 
     <!-- Sidebar -->
     <div class="col-md-2">
-        <forms-short-list-directive selectedid="{{models.form.id}}"></forms-short-list-directive>
+        <forms-short-list-directive selectedid="{{models.form.tieId}}"></forms-short-list-directive>
     </div>
 
     <!-- Main area with field_label and source code -->
@@ -21,8 +21,8 @@
                                 </span>
                             </h3>
                             <!-- The dropzone also uses the list template -->
-                            <!--<dropzone-directive list="models.form.controls" new-id="models.newId" dirty="$scope.models.dirty" ondblclick="editItemDetails(item)"></dropzone-directive>-->
-                            <div ng-repeat="list in [models.form.controls]" ng-include="'views/includes/partials/dropZone.html'"></div>
+                            <!--<dropzone-directive list="models.form.theChildren" new-id="models.newId" dirty="$scope.models.dirty" ondblclick="editItemDetails(item)"></dropzone-directive>-->
+                            <div ng-repeat="list in [models.form.theChildren]" ng-include="'views/includes/partials/dropZone.html'"></div>
                         </div>
                     </div>
                 </div>

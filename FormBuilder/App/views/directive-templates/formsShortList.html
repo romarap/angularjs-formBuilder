@@ -4,6 +4,6 @@
 
     <div class="list-group" >
         <a href="#/forms/" class="list-group-item" ng-class="{active : selectedid.indexOf('new')==0}" >-- New Form --</a>
-        <a ng-repeat="form in models.forms" href="#/forms/{{form.id}}" class="list-group-item" ng-class="{active : form.id==selectedid}">{{form.name}}</a>
+        <a ng-repeat="form in models.forms" href="#/forms/{{form.tieId}}" class="list-group-item" ng-class="{active : form.tieId==selectedid}">{{form.label}}</a>
     </div>
 </div>

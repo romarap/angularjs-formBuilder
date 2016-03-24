@@ -69,6 +69,7 @@
     <Content Include="App\scripts\controllers\itemDetailsModalInstanceController.js" />
     <Content Include="App\scripts\controllers\formsController.js" />
     <Content Include="App\scripts\controllers\headerController.js" />
+    <Content Include="App\scripts\directives\attribute-directive.js" />
     <Content Include="App\scripts\directives\watermark-directive.js" />
     <Content Include="App\scripts\directives\old-field-condition-directive.js" />
     <Content Include="App\scripts\directives\field-options-directive.js" />
@@ -87,6 +88,17 @@
     <Content Include="App\styles\glyphicon-animate-rotation-and-flip.css" />
     <Content Include="App\styles\main.css" />
     <Content Include="App\styles\demoFramework.css" />
+    <Content Include="App\views\directive-templates\attributes\leftPrompt.html" />
+    <Content Include="App\views\directive-templates\attributes\fontStyle1.html" />
+    <Content Include="App\views\directive-templates\attributes\emptiness.html" />
+    <Content Include="App\views\directive-templates\attributes\title.html" />
+    <Content Include="App\views\directive-templates\attributes\footerRule.html" />
+    <Content Include="App\views\directive-templates\attributes\width.html" />
+    <Content Include="App\views\directive-templates\attributes\maxValue.html" />
+    <Content Include="App\views\directive-templates\attributes\text.html" />
+    <Content Include="App\views\directive-templates\attributes\rightPrompt.html" />
+    <Content Include="App\views\directive-templates\attributes\topMargin.html" />
+    <Content Include="App\views\directive-templates\attributes\hint.html" />
     <Content Include="App\views\directive-templates\old-conditions.html" />
     <Content Include="App\views\directive-templates\options.html" />
     <Content Include="App\views\directive-templates\formsShortList.html" />

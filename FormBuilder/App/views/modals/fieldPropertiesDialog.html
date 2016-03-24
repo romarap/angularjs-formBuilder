@@ -1,6 +1,6 @@
 <form name="userForm" ng-submit="submitForm(userForm.$valid)" novalidate>
     <div class="modal-header">
-        <h3 class="modal-title">Properties - {{ item.id }}</h3>
+        <h3 class="modal-title">Properties - {{ item.tieId }}</h3>
     </div>
     <div class="modal-body form-horizontal">
          <uib-tabset active="active">
@@ -80,7 +80,7 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="dependent in dependents" ng-show="dependents.length">
-                                    <td>{{dependent.id}}</td>
+                                    <td>{{dependent.tieId}}</td>
                                     <td>{{dependent.label}}</td>
                                     <td>{{getItemTypeDisplayName(dependent.type)}}</td>
                                 </tr>
@@ -101,8 +101,8 @@
                     <label class="col-sm-2 control-label input-sm">Flags:</label>
                     <div class="col-sm-4">
                         <!--0x01000000-->
-                        <label class="checkbox-inline"><input type="checkbox" ng-model="readonlyWriteLock" ng-change="item.type=SetTypeBit(item.type,formUIHelper.tieTypeFlags['readonlyWriteLock'],readonlyWriteLock)" />Readonly Write</label>
-                    </div>
+                        <label class="checkbox-inline"> </div><input type="checkbox" ng-model="readonlyWriteLock" ng-change="item.type=SetTypeBit(item.type,formUIHelper.tieTypeFlags['readonlyWriteLock'],readonlyWriteLock)" />Readonly Write</label>
+
                     <div class="col-sm-4">
                         <!--0x02000000-->
                         <label class="checkbox-inline"><input type="checkbox" ng-model="readonlyAppendLock" ng-change="item.type=SetTypeBit(item.type,formUIHelper.tieTypeFlags['readonlyAppendLock'],readonlyAppendLock)" />Readonly Append</label>

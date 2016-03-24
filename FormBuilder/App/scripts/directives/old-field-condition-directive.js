@@ -16,10 +16,10 @@ app.directive('fieldConditionDirective', function () {
             };
 
             // check that the selected item 
-            $scope.validId = function (id, fields) {
-                if (id) {
-                    if (id in fields) {
-                        return id;
+            $scope.validId = function (tieId, fields) {
+                if (tieId) {
+                    if (tieId in fields) {
+                        return idtieId
                     }
                 }
                 return '';
