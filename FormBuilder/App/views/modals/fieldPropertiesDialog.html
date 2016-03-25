@@ -9,7 +9,7 @@
                 <!--Field Specific-->
                 <ng-include src="getFieldPropertiesTemplate(item)"></ng-include>
 
-                <div class="form-group row" ng-class="{ 'has-error' : userForm.label.$invalid && !userForm.label.$pristine }">
+                <div class="form-group row" ng-class="{ 'has-error' : userForm.label.$invalid }">
                     <label for="label" class="col-sm-2 control-label input-sm">Label</label>
                     <div class="col-sm-8">
                         <input type="text" class="form-control input-sm" name="label" id="label" placeholder="field label" ng-model="item.label" required>
@@ -48,7 +48,7 @@
                 <div class="form-group row">
                     <label class="col-sm-2 control-label input-sm">Control</label>
                     <div class="col-sm-8">
-                        <select class="form-control col-sm-4 input-sm" name="condition" ng-model="item.controlId" ng-options="control.id as control.label for control in controls" ng-disabled="controls.length==0">
+                        <select class="form-control col-sm-4 input-sm" name="condition" ng-model="item.controlId" ng-options="control.controlId as (control.label == null ? 'control -' + control.controlId : control.label) for control in controls" ng-disabled="controls.length==0">
                             <option value="" selected="selected">{{controls.length > 0 ? '--Select control--' : '--No controls available for this type--'}}</option>
                         </select>
                     </div>
@@ -57,7 +57,7 @@
                 <div class="form-group row">
                     <label class="col-sm-2 control-label input-sm">Condition</label>
                     <div class="col-sm-8">
-                        <select class="form-control col-sm-4 input-sm" name="condition" ng-model="item.conditionSrcId" ng-options="key as value.label for (key , value) in fields">
+                        <select class="form-control col-sm-4 input-sm" name="condition" ng-model="item.conditionSrcId" ng-options="key as (value.label == null ? 'control -' + value.tieId : value.label) for (key , value) in fields">
                             <option value="" selected="selected">--Select condition--</option>
                         </select>
                     </div>

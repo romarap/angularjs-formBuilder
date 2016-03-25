@@ -50,8 +50,8 @@
                                 </thead>
                                 <tbody>
                                     <tr ng-repeat="control in models.controls" >
-                                        <td class="col-md-1">{{control.id}}</td>
-                                        <td>{{control.label}}</td>
+                                        <td class="col-md-1">{{control.controlId}}</td>
+                                        <td>{{control.label == null ? 'control -' + control.controlId : control.label}}</td>
                                         <td>{{getItemTypeDisplayName(control.type)}}</td>
                                         <td class="col-md-1">
                                             <i class="glyphicon glyphicon-edit selectable" title="Edit Control" ng-click="editControlDetails(control)"></i>

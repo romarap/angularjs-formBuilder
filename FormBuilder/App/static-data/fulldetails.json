@@ -1,6 +1,6 @@
 [
   {
-    "tieId": 1,
+    "tieId": -1,
     "label": "Car Inspection",
     "type": 16400,
     "text1": "_GROUP",
@@ -84,7 +84,7 @@
   },
 
   {
-    "tieId": 2,
+    "tieId": -2,
     "label": "Employee Interview",
     "type": 16400,
     "text1": "_GROUP",
@@ -174,7 +174,7 @@
     ]
   },
   {
-    "tieId": "10",
+    "tieId": "-4",
     "label": "Nigels test form",
     "type": 16400,
     "text1": "_GROUP",
@@ -223,7 +223,7 @@
     ]
   },
   {
-    "tieId": 3,
+    "tieId": -3,
     "label": "Road Survey",
     "type": 16400,
     "text1": "_GROUP",
@@ -263,7 +263,7 @@
     ]
   },
   {
-    "tieId": 11,
+    "tieId": -5,
     "parentId": 0,
     "type": 49168,
     "controlId": 0,

@@ -40,16 +40,16 @@ app.controller('formsController', function ($scope, $http, $location, $sessionSt
     // reset ids for new items.
     FormService.resetNewId();
 
-    FormService.formControls().then(function (controls) {
-        $scope.models.controls = controls
+    FormService.formControls().then(function (response) {
+        if (response.status == 200) {
+            $scope.models.controls = response.data;
+        }
+        else {
+            reportControlsLoadFailure(response);
+        }
     }, function myError(response) {
         // controls failed to load 
-
-        modalService.showMessage({
-            message: "Failed to load form controls.....<br>" + response.status + ":" + response.statusText,
-            alertStyle: "alert-danger",
-            okButton: true
-        });
+        reportControlsLoadFailure(response);
     });
 
     if ($routeParams.debug != null)
@@ -59,22 +59,43 @@ app.controller('formsController', function ($scope, $http, $location, $sessionSt
 
     if ($routeParams.id) {
         // read form with given id
-        FormService.form($routeParams.id).then(function (form) {
-            $scope.models.form = form;
+        FormService.form($routeParams.id).then(function (response) {
+            if (response.status == 200) {
+                $scope.models.form = response.data;
+            }
+            else {
+                reportFormLoadFailure(response);
+            }
         }, function myError(response) {
-            // form failed to load so clear details but set id so that the user can see the selected item in the menu
-            $scope.models.form = { "id": $routeParams.id };
-
-            modalService.showMessage({
-                message: "Failed to load form.....<br>" + response.status + ":" + response.statusText,
-                alertStyle: "alert-danger",
-                okButton: true
-            });
+            reportFormLoadFailure(response);
         });
     }
     else {
         angular.copy(formUIHelper.newForm, $scope.models.form);
         $scope.models.form.tieId = FormService.getNewId();
+    }
+
+    function reportFormLoadFailure(response)
+    {
+        // form failed to load so clear details but set id so that the user can see the selected item in the menu
+        $scope.models.form = { "tieId": $routeParams.id };
+
+        modalService.showMessage({
+            message: "Failed to load form.....<br>" + response.status + ":" + response.statusText,
+            alertStyle: "alert-danger",
+            okButton: true
+        });
+    }
+
+    function reportControlsLoadFailure(response) {
+        $scope.models.controls = {};
+
+
+        modalService.showMessage({
+            message: "Failed to load form controls.....<br>" + response.status + ":" + response.statusText,
+            alertStyle: "alert-danger",
+            okButton: true
+        });
     }
 
     function routeChange(event, newUrl) {
@@ -168,7 +189,7 @@ app.controller('formsController', function ($scope, $http, $location, $sessionSt
                 // this is a control so need to convert to a tool
                 var control = item;
                 itemToDrop = formUIHelper.tools[control.type & 0xFF0];
-                itemToDrop.controlId = control.id;
+                itemToDrop.controlId = control.controlId;
                 itemToDrop.label = control.label;
             }
             if (!itemToDrop.tieId) {
