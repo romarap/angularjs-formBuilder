@@ -5,7 +5,10 @@ const BASIC_SUBTYPE_MASK = 0xFF0;
 
 var formUIHelper = new function () {
 
-    this.newForm = { tieId: "", status: CREATED, type: 0x4010, label: '--New Form--', text1: '_GROUP', text2: null, intValue: null, textValue: null, conditionSrcId: null, controlId: null, theChildren: [] };
+    this.newForm = {
+        formId: "", label: "--New Form--", status: CREATED,
+        rootTie: { tieId: "", status: CREATED, type: 0xC010, label: '--Root--', text1: null, text2: null, intValue: null, textValue: null, conditionSrcId: null, controlId: null, theChildren: [] }
+    };
     this.tools = {
         //{ type: "item", id: 2, display_name: "Item" },
         0x0110: { tieId: "", status: CREATED, type: 0x0110, label: 'no/yes', text1: null, text2: null, intValue: null, textValue: null, conditionSrcId: null, controlId: null },
@@ -20,28 +23,37 @@ var formUIHelper = new function () {
         0x0200: { tieId: "", status: CREATED, type: 0x0200, label: 'layout', text1: null, text2: null, intValue: null, textValue: null, conditionSrcId: null, controlId: null },
         0x4000: { tieId: "", status: CREATED, type: 0x4000, label: 'group', text1: null, text2: null, intValue: null, textValue: null, conditionSrcId: null, controlId: null, theChildren: [] }
 
-    //{ id: "", status: CREATED, type: 0xFF, subtype: 0x00, subsubtype: 0x00, item_type: "radio", display_name: "Radio Buttons", field_label: 'radio', field_required: true, field_disabled: false, field_options: [{ value: 0, label: "0" }, { value: 1, label: "1" }] },
-    //{ id: "", status: CREATED, type: 0xFF, subtype: 0x00, subsubtype: 0x00, item_type: "checkbox", display_name: "Checkbox", field_label: 'checkbox', field_required: true, field_disabled: false },
-    //{ id: "", status: CREATED, type: 0xFF, subtype: 0x00, subsubtype: 0x00, item_type: "container", display_name: "Group", field_label: 'container', field_required: true, field_disabled: false, controls: [] },
-    //{ id: "", status: CREATED, type: 0xFF, subtype: 0x00, subsubtype: 0x00, item_type: "table", display_name: "Table", field_label: 'table', field_required: true, field_disabled: false, controls: [] },
-};
+        //{ id: "", status: CREATED, type: 0xFF, subtype: 0x00, subsubtype: 0x00, item_type: "radio", display_name: "Radio Buttons", field_label: 'radio', field_required: true, field_disabled: false, field_options: [{ value: 0, label: "0" }, { value: 1, label: "1" }] },
+        //{ id: "", status: CREATED, type: 0xFF, subtype: 0x00, subsubtype: 0x00, item_type: "checkbox", display_name: "Checkbox", field_label: 'checkbox', field_required: true, field_disabled: false },
+        //{ id: "", status: CREATED, type: 0xFF, subtype: 0x00, subsubtype: 0x00, item_type: "container", display_name: "Group", field_label: 'container', field_required: true, field_disabled: false, controls: [] },
+        //{ id: "", status: CREATED, type: 0xFF, subtype: 0x00, subsubtype: 0x00, item_type: "table", display_name: "Table", field_label: 'table', field_required: true, field_disabled: false, controls: [] },
+    };
 
     this.tieTypeBasicTypes = {
-        0x000: { type: 0x000, item_type: "group", display_name: "Group" },
-        0x100: {
-            type: 0x100, item_type: "control", subTypes: {
-                0x0110: { type: 0x0110, item_type: "noyes", display_name: "No/Yes" },
-                0x0120: { type: 0x0120, item_type: "textfield", display_name: "Text Field" },
-                0x0130: { type: 0x0130, item_type: "dropdown", display_name: "Dropdown" },
-                0x0140: { type: 0x0140, item_type: "reflector", display_name: "Reflector" },
-                0x0150: { type: 0x0150, item_type: "static", display_name: "Static" },
-                0x0180: { type: 0x0180, item_type: "photo", display_name: "Photo" }
+        0x000: {
+            type: 0x000, item_type: "group", display_name: "Group", subTypes: {
+                0x0000: { type: 0x000, item_type: "group", display_name: "Group", properties_template: "group" },
+                0x0010: { type: 0x010, item_type: "reportheader", display_name: "Report Header", properties_template: "reportheader" },
+                0x0022: { type: 0x022, item_type: "validatorsave", display_name: "Validator Save", properties_template: "group" },
+                0x0023: { type: 0x023, item_type: "validatorsavelist", display_name: "Validator Save List", properties_template: "group" },
+                0x0040: { type: 0x040, item_type: "table", display_name: "Table", properties_template: "group" },
+                0x0080: { type: 0x080, item_type: "Score", display_name: "Score", properties_template: "group" }
             }
         },
-        0x200: { type: 0x200, item_type: "layout", display_name: "Layout" },
-        0x400: { type: 0x400, item_type: "condition", display_name: "Condition" },
-        0x500: { type: 0x500, item_type: "selector", display_name: "Selector" },
-        0x800: { type: 0x800, item_type: "data", display_name: "Data" }
+        0x100: {
+            type: 0x100, item_type: "control", subTypes: {
+                0x0110: { type: 0x0110, item_type: "noyes", display_name: "No/Yes", properties_template: "noyes" },
+                0x0120: { type: 0x0120, item_type: "textfield", display_name: "Text Field", properties_template: "textfield" },
+                0x0130: { type: 0x0130, item_type: "dropdown", display_name: "Dropdown", properties_template: "dropdown" },
+                0x0140: { type: 0x0140, item_type: "reflector", display_name: "Reflector", properties_template: "reflector" },
+                0x0150: { type: 0x0150, item_type: "static", display_name: "Static", properties_template: "static" },
+                0x0180: { type: 0x0180, item_type: "photo", display_name: "Photo", properties_template: "photo" }
+            }
+        },
+        0x200: { type: 0x200, item_type: "layout", display_name: "Layout", properties_template: "layout" },
+        0x400: { type: 0x400, item_type: "condition", display_name: "Condition", properties_template: "condition" },
+        0x500: { type: 0x500, item_type: "selector", display_name: "Selector", properties_template: "selector" },
+        0x800: { type: 0x800, item_type: "data", display_name: "Data", properties_template: "data" }
     };
 
     this.mask = {
@@ -77,7 +89,7 @@ var formUIHelper = new function () {
         { value: 0x200, label: "pageBreak" }
     ];
 
-    this.textboxSubTypes= [
+    this.textboxSubTypes = [
         { value: 0x120, label: "Textbox Alpha" },
         { value: 0x121, label: "Textbox Multi-line" },
         { value: 0x122, label: "Textbox Auto Complete" },
@@ -91,19 +103,19 @@ var formUIHelper = new function () {
        { value: 0x130, label: "Dropdown" }
     ];
 
-    this.photoSubTypes= [
+    this.photoSubTypes = [
         { value: 0x180, label: "Photo" },
         { value: 0x181, label: "Photo (with Thumbs)" }
     ];
 
-    this.conditionSubTypes= [
+    this.conditionSubTypes = [
         { value: 0x400, label: "Non-Zero" },
         { value: 0x401, label: "Equal" },
         { value: 0x402, label: "Less Than" },
         { value: 0x403, label: "Greater Than" }
     ];
 
-    this.selectorSubTypes= [
+    this.selectorSubTypes = [
         { value: 0x500, label: "Selector" },
         { value: 0x510, label: "Selector with child" }
     ];

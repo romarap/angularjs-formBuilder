@@ -24,7 +24,7 @@ app.directive('trashcanDirective', function () {
                     } else {
                         // place items in deleted list
                         for (var key in deletedItems) {
-                            $scope.models.delected.push(deletedItems[key]);
+                            $scope.models.deleted.push(deletedItems[key]);
                         }
                     }
                 }

@@ -32,7 +32,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/24/2016 17:06:11</publishTime>
     </File>
     <File Include="App/scripts/controllers/controlsController.js">
-      <publishTime>03/24/2016 16:28:02</publishTime>
+      <publishTime>03/25/2016 20:30:45</publishTime>
     </File>
     <File Include="App/scripts/controllers/createController.js">
       <publishTime>04/03/2016 13:20:04</publishTime>
@@ -44,7 +44,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/20/2016 19:01:48</publishTime>
     </File>
     <File Include="App/scripts/controllers/formsController.js">
-      <publishTime>03/24/2016 16:13:12</publishTime>
+      <publishTime>03/25/2016 20:55:52</publishTime>
     </File>
     <File Include="App/scripts/controllers/headerController.js">
       <publishTime>02/25/2016 14:29:40</publishTime>
@@ -77,7 +77,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/25/2016 14:56:08</publishTime>
     </File>
     <File Include="App/scripts/directives/forms-short-list-directive.js">
-      <publishTime>03/16/2016 18:40:19</publishTime>
+      <publishTime>03/25/2016 21:00:14</publishTime>
     </File>
     <File Include="App/scripts/directives/message-bar-directive.js">
       <publishTime>03/11/2016 15:07:19</publishTime>
@@ -110,19 +110,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="App/scripts/services/form-service.js">
-      <publishTime>03/23/2016 19:37:17</publishTime>
+      <publishTime>03/25/2016 20:26:08</publishTime>
     </File>
     <File Include="App/scripts/services/modal-service.js">
       <publishTime>03/23/2016 21:42:17</publishTime>
     </File>
     <File Include="App/static-data/fulldetails.json">
-      <publishTime>03/22/2016 18:01:25</publishTime>
+      <publishTime>03/25/2016 18:51:33</publishTime>
     </File>
     <File Include="App/static-data/list_formcontrols.json">
       <publishTime>03/24/2016 15:58:26</publishTime>
     </File>
     <File Include="App/static-data/list_forms.json">
-      <publishTime>03/22/2016 18:01:25</publishTime>
+      <publishTime>03/25/2016 18:51:33</publishTime>
     </File>
     <File Include="App/static-data/sample_forms.json">
       <publishTime>03/10/2016 12:25:46</publishTime>
@@ -263,7 +263,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/03/2016 13:20:04</publishTime>
     </File>
     <File Include="App/views/directive-templates/formsShortList.html">
-      <publishTime>03/22/2016 18:01:25</publishTime>
+      <publishTime>03/25/2016 21:09:39</publishTime>
     </File>
     <File Include="App/views/directive-templates/messageBar.html">
       <publishTime>03/11/2016 15:06:08</publishTime>
@@ -278,7 +278,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/11/2016 18:16:31</publishTime>
     </File>
     <File Include="App/views/directive-templates/toolbox.html">
-      <publishTime>03/21/2016 19:53:50</publishTime>
+      <publishTime>03/25/2016 20:06:52</publishTime>
     </File>
     <File Include="App/views/directive-templates/trashcan.html">
       <publishTime>03/18/2016 20:39:22</publishTime>
@@ -287,7 +287,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/10/2016 16:41:11</publishTime>
     </File>
     <File Include="App/views/forms.html">
-      <publishTime>03/22/2016 18:01:25</publishTime>
+      <publishTime>03/25/2016 20:55:52</publishTime>
     </File>
     <File Include="App/views/home.html">
       <publishTime>03/24/2016 11:01:05</publishTime>
@@ -464,13 +464,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/14/2016 20:00:54</publishTime>
     </File>
     <File Include="App/views/modals/controlEditDialog.html">
-      <publishTime>03/24/2016 17:33:38</publishTime>
+      <publishTime>03/25/2016 20:35:56</publishTime>
     </File>
     <File Include="App/views/modals/fieldPropertiesDialog.html">
-      <publishTime>03/24/2016 19:34:53</publishTime>
+      <publishTime>03/25/2016 20:43:45</publishTime>
     </File>
     <File Include="App/views/modals/formPropertiesDialog.html">
-      <publishTime>03/22/2016 18:01:25</publishTime>
+      <publishTime>03/25/2016 20:38:57</publishTime>
     </File>
     <File Include="App/views/modals/modal.html">
       <publishTime>03/20/2016 21:14:15</publishTime>

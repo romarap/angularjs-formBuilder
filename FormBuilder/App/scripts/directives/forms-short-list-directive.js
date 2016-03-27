@@ -2,7 +2,7 @@
 
 app.directive('formsShortListDirective', function () {
     return {
-        controller: function($scope, FormService){
+        controller: function ($scope, FormService, modalService) {
             $scope.models = {};
 
          
@@ -18,10 +18,10 @@ app.directive('formsShortListDirective', function () {
                         $scope.refreshSpin(false);
                     }
                     else {
-                        reportFormsListFailure(response);
+                        $scope.reportFormsListFailure(response);
                     }
                 }, function myError(response) {
-                    reportFormsListFailure(response);
+                    $scope.reportFormsListFailure(response);
                 });
             };
 
@@ -33,7 +33,7 @@ app.directive('formsShortListDirective', function () {
                 }
             }
 
-            function reportFormsListFailure(response) {
+            $scope.reportFormsListFailure = function (response) {
                 $scope.refreshSpin(false);
 
                 modalService.showMessage({

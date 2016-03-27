@@ -6,130 +6,35 @@ app.service('FormService', function FormService($http, $q, $timeout) {
     var formsJsonPath = './static-data/fulldetails.json';
     var listFormsJsonPath = './static-data/list_forms.json';
     var listFormControlsJsonPath = './static-data/list_formcontrols.json';
-    var getForm = "http://81.109.89.222/QansMark/Anon/EditorSvc.asmx/FetchTieTree?formId=";
+   // var getForm = "http://81.109.89.222/QansMark/Anon/EditorSvc.asmx/FetchTieTree?formId=";
+    var getForm = "http://81.109.89.222/QansMark/Anon/EditorSvc.asmx/FetchForm?formId=";
     var listForms = "http://81.109.89.222/QansMark/Anon/EditorSvc.asmx/FetchForms";
-    var listControls = "http://81.109.89.222/QansMark/Anon/EditorSvc.asmx/FetchControlsBig";
-    var getControl = "http://81.109.89.222/QansMark/Anon/EditorSvc.asmx/FetchControl?controlId=";
+    var saveForm = "http://81.109.89.222/QansMark/Anon/EditorSvc.asmx/SaveForm";
 
     return {
-        formControls: function () {
-            ////////////return $http.get(listFormsJsonPath).then(function (response) {
-            ////////////    return response.data;;
-            ////////////});
-            //////////// currently just dummy function
-            //////////return $timeout(function () { }, 500).then(function () {
-            //////////    return $http.get(listFormControlsJsonPath).then(function (response) {
-            //////////        return response.data;;
-            //////////    });
-            //////////});
-            var api = listControls;
+        sendAPI: function (api) {
+            var self = this;
             return $http({
                 method: "GET",
                 url: api,
                 data: '',
+                timeout : 5000,
                 headers: {
                     "Content-Type": "application/json"
                 }
             }).then(function mySuccess(response) {
-                try {
-                    if (response.data == null || response.data.d == null) {
-                        return {
-                            status: 404,
-                            statusText: "Not Found",
-                            data: null
-                        };
-                    }
-                    return {
-                        status: 200,
-                        statusText: "ok",
-                        data: response.data.d
-                    };
-                }
-                catch (e) {
-                    return {
-                        status: 500,
-                        statusText: e.message,
-                        data: null
-                    };
-                }
-                return response.data;
+                return apiHelper.processResponse(response);
             }, function myError(reason) {
                 return reason;
             });
         },
-        formControl: function (id) {
-            var api = getControl + id;
-            return $http({
-                method: "GET",
-                url: api,
-                data: '',
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            }).then(function mySuccess(response) {
-                try {
-                    if (response.data == null || response.data.d == null) {
-                        return {
-                            status: 404,
-                            statusText: "Not Found",
-                            data: null
-                        };
-                    }
-                    return {
-                        status: 200,
-                        statusText: "ok",
-                        data: response.data.d
-                    };
-                }
-                catch (e) {
-                    return {
-                        status: 500,
-                        statusText: e.message,
-                        data: null
-                    };
-                }
-                return response.data;
-            }, function myError(reason) {
-                return reason;
-            });
-        },
+
         form: function (tieId) {
 
             if (tieId > 0) {
                 var api = getForm + tieId;
-                return $http({
-                    method: "GET",
-                    url: api,
-                    data: '',
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                }).then(function mySuccess(response) {
-                    try {
-                        if (response.data == null || response.data.d == null) {
-                            return {
-                                status: 404,
-                                statusText: "Not Found",
-                                data: null
-                            };
-                        }
-                        return {
-                            status: 200,
-                            statusText: "ok",
-                            data: response.data.d
-                        };
-                    }
-                    catch (e) {
-                        return {
-                            status: 500,
-                            statusText: e.message,
-                            data: null
-                        };
-                    }
-                    return response.data;
-                }, function myError(reason) {
-                    return reason;
-                });
+
+                return this.sendAPI(api);
             }
 
             // added error injection for testing 
@@ -158,7 +63,8 @@ app.service('FormService', function FormService($http, $q, $timeout) {
                   deferObject.reject({
                       status: 404,
                       statusText: reason,
-                      data: null});
+                      data: null
+                  });
               });
 
             return deferObject.promise;
@@ -174,45 +80,19 @@ app.service('FormService', function FormService($http, $q, $timeout) {
             ////////    });
             ////////});
             var api = listForms;
-            return $http({
-                method: "GET",
-                url: api,
-                data: '',
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            }).then(function mySuccess(response) {
-                try {
-                    if (response.data == null || response.data.d == null) {
-                        return {
-                            status: 404,
-                            statusText: "Not Found",
-                            data: null
-                        };
-                    }
-                    return {
-                        status: 200,
-                        statusText: "ok",
-                        data: response.data.d
-                    };
-                }
-                catch (e) {
-                    return {
-                        status: 500,
-                        statusText: e.message,
-                        data: null
-                    };
-                }
-                return response.data;
-            }, function myError(reason) {
-                return reason;
-            });
+            return this.sendAPI(api);
         },
 
         save: function (form) {
-            // currently just dummy function
-            return $timeout(function () { }, 2000).then(function () {
-                return;
+            var api = saveForm;
+            return $http({
+                method: "POST",
+                url: api,
+                timeout: 5000,
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                data: JSON.stringify({ form: form })
             });
         }
         ,

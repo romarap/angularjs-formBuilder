@@ -8,22 +8,12 @@ var DELETE = 'delete';
 /**
  * The controller doesn't do much more than setting the initial data model
  */
-app.controller('formsController', function ($scope, $http, $location, $sessionStorage,$localStorage,FormService, $routeParams, modalService) {
-
-    //$http({
-    //    method: "GET",
-    //    url: "http://81.109.89.222/QansMark/Anon/Services.asmx/Test"
-    //}).then(function mySucces(response) {
-    //    $scope.myWelcome = response.data;
-    //}, function myError(response) {
-    //    $scope.myWelcome = response.statusText;
-    //});
-
+app.controller('formsController', function ($scope, $http, $location, $sessionStorage, $localStorage, FormService, controlsService, $routeParams, modalService) {
     $scope.$storage = $sessionStorage;
 
     $scope.models = {
         selected: null,
-        delected: [],
+        deleted: [],
         dirty: false,
         form: {},
         controls: {}
@@ -40,7 +30,7 @@ app.controller('formsController', function ($scope, $http, $location, $sessionSt
     // reset ids for new items.
     FormService.resetNewId();
 
-    FormService.formControls().then(function (response) {
+    controlsService.formControls(true).then(function (response) {
         if (response.status == 200) {
             $scope.models.controls = response.data;
         }
@@ -69,10 +59,12 @@ app.controller('formsController', function ($scope, $http, $location, $sessionSt
         }, function myError(response) {
             reportFormLoadFailure(response);
         });
+
     }
     else {
         angular.copy(formUIHelper.newForm, $scope.models.form);
-        $scope.models.form.tieId = FormService.getNewId();
+        $scope.models.form.formId = FormService.getNewId();
+        $scope.models.form.rootTie.tieId = FormService.getNewId();
     }
 
     function reportFormLoadFailure(response)
@@ -89,7 +81,6 @@ app.controller('formsController', function ($scope, $http, $location, $sessionSt
 
     function reportControlsLoadFailure(response) {
         $scope.models.controls = {};
-
 
         modalService.showMessage({
             message: "Failed to load form controls.....<br>" + response.status + ":" + response.statusText,
@@ -163,24 +154,18 @@ app.controller('formsController', function ($scope, $http, $location, $sessionSt
                 alertStyle: "alert-info"
             });
 
-            FormService.save($scope.models.form).then(function () {
+            FormService.save($scope.models.form).then(function (response) {
                 modalService.hideMessage();
+            }, function myError(response) {
+               // modalService.hideMessage();
+                modalService.showMessage({
+                    message: "Failed to load form controls.....<br>" + response.status + ":" + response.statusText,
+                    alertStyle: "alert-danger",
+                    okButton: true
+                });
             });
         }
     };
-
-    //$scope.showMessage = function (message) {
-    //    var $modal = $('.message-bar'),
-    //        $alertinfo = $('.alert-info .msg');
-    //        $alertinfo[0].innerHTML = message;
-    //    $modal.modal({backdrop: 'static', keyboard: false});
-    //}
-
-    //$scope.hideMessage = function () {
-    //    var $modal = $('.message-bar');
-    //    $modal.modal('hide');
-    //}
-
 
     $scope.dropCallback = function (event, index, item, external, type) {
         var itemToDrop = item;
@@ -209,7 +194,7 @@ app.controller('formsController', function ($scope, $http, $location, $sessionSt
         $scope.formAsJson = angular.toJson(model, true);
     }, true);
 
-    $scope.$watch('models.delected', function (model) {
+    $scope.$watch('models.deleted', function (model) {
         $scope.deletedItemsAsJson = angular.toJson(model, true);
         if (model.length > 0) {
             $scope.models.dirty = true;
@@ -217,8 +202,16 @@ app.controller('formsController', function ($scope, $http, $location, $sessionSt
     }, true);
 
     $scope.getFieldTemplate = function (item) {
-        var type = formUIHelper.tieTypeBasicTypes[item.type & BASIC_TYPE_MASK];
+        //var type = formUIHelper.tieTypeBasicTypes[item.type & BASIC_TYPE_MASK];
 
+        //if (type.type == 0x000)
+        //{
+        //    return 'views/includes/field-templates/' + type.item_type + '.html';
+        //}
+        //return 'views/includes/field-templates/droppedItem.html';
+
+
+        var type = formUIHelper.tieTypeBasicTypes[item.type & BASIC_TYPE_MASK];
         if (type.subTypes != null) {
             type = type.subTypes[item.type & BASIC_SUBTYPE_MASK];
         }
@@ -260,7 +253,7 @@ app.controller('formsController', function ($scope, $http, $location, $sessionSt
                     // return all the fields on the form
                     var ignoreItem = {};
                     ignoreItem[item.tieId] = item;
-                    return formUIHelper.getFieldList($scope.models.form.theChildren, ignoreItem, {});
+                    return formUIHelper.getFieldList($scope.models.form.rootTie.theChildren, ignoreItem, {});
                 },
                 controls: function () {
                     return $scope.models.controls;

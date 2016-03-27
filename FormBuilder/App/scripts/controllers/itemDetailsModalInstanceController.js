@@ -8,10 +8,9 @@ app.controller('ItemDetailsModalInstanceCtrl', function ($scope, $uibModalInstan
     
     // only concerned with relevant controls ie. those with same type
     var itemType = item.type & 0xFFFF;
-    for (var i = 0 ; i < controls.length; i++)
-    {
-        if ((controls[i].type & 0xFFFF) == itemType) {
-            $scope.controls.push(angular.copy(controls[i]));
+    for (var key in controls) {
+        if ((controls[key].type & 0xFFFF) == itemType) {
+            $scope.controls.push(angular.copy(controls[key]));
         }
     }
 
@@ -38,7 +37,7 @@ app.controller('ItemDetailsModalInstanceCtrl', function ($scope, $uibModalInstan
         if (type.subTypes != null) {
             type = type.subTypes[item.type & BASIC_SUBTYPE_MASK];
         }
-        return 'views/includes/field-properties/' + type.item_type + '.html';
+        return 'views/includes/field-properties/' + type.properties_template + '.html';
     }
 
     $scope.getItemTypeDisplayName = function (item_type) {

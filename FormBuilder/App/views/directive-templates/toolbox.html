@@ -31,7 +31,7 @@
                 Controls<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status2.open, 'glyphicon-chevron-right': !status2.open}"></i>
             </uib-accordion-heading>
             <ul>
-                <li ng-repeat="control in controls"
+                <li ng-repeat="(key,control) in controls"
                     dnd-draggable="control"
                     dnd-effect-allowed="copy"
                     dnd-type="'new-control'">

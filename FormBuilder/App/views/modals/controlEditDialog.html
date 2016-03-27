@@ -47,7 +47,7 @@
                     <div class="form-group row">
                         <label class="col-sm-3 control-label input-sm">Inherited Control</label>
                         <div class="col-sm-8">
-                            <select class="form-control col-sm-4 input-sm" name="inherited" ng-model="models.item.inheritId" ng-options="control.id as control.label for control in models.controls">
+                            <select class="form-control col-sm-4 input-sm" name="inherited" ng-model="models.item.inheritId" ng-options="control.id as control.label for (key , control) in models.controls">
                                 <option value="" selected="selected">--Select control to inherit--</option>
                             </select>
                         </div>

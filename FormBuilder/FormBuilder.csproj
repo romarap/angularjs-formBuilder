@@ -64,11 +64,13 @@
     <Content Include="App\images\camera_icon_black.jpg" />
     <Content Include="App\images\trashcan.jpg" />
     <Content Include="App\scripts\controllers\controlEditModalInstanceController.js" />
+    <Content Include="App\scripts\controllers\textFieldTemplateController.js" />
     <Content Include="App\scripts\controllers\formDetailsModalInstanceController.js" />
     <Content Include="App\scripts\controllers\controlsController.js" />
     <Content Include="App\scripts\controllers\itemDetailsModalInstanceController.js" />
     <Content Include="App\scripts\controllers\formsController.js" />
     <Content Include="App\scripts\controllers\headerController.js" />
+    <Content Include="App\scripts\directives\dropped-item-directive.js" />
     <Content Include="App\scripts\directives\attribute-directive.js" />
     <Content Include="App\scripts\directives\watermark-directive.js" />
     <Content Include="App\scripts\directives\old-field-condition-directive.js" />
@@ -80,6 +82,8 @@
     <Content Include="App\scripts\directives\trashcan-directive.js" />
     <Content Include="App\scripts\directives\toolbox-directive.js" />
     <Content Include="App\scripts\directives\form-directive.js" />
+    <Content Include="App\scripts\modules\apiHelper.js" />
+    <Content Include="App\scripts\services\controls-service.js" />
     <Content Include="App\scripts\modules\formUIHelper.js" />
     <Content Include="App\scripts\services\modal-service.js" />
     <Content Include="App\scripts\services\form-service.js" />
@@ -99,6 +103,17 @@
     <Content Include="App\views\directive-templates\attributes\rightPrompt.html" />
     <Content Include="App\views\directive-templates\attributes\topMargin.html" />
     <Content Include="App\views\directive-templates\attributes\hint.html" />
+    <Content Include="App\views\directive-templates\fields\condition.html" />
+    <Content Include="App\views\directive-templates\fields\data.html" />
+    <Content Include="App\views\directive-templates\fields\dropdown.html" />
+    <Content Include="App\views\directive-templates\fields\group.html" />
+    <Content Include="App\views\directive-templates\fields\layout.html" />
+    <Content Include="App\views\directive-templates\fields\noyes.html" />
+    <Content Include="App\views\directive-templates\fields\photo.html" />
+    <Content Include="App\views\directive-templates\fields\reflector.html" />
+    <Content Include="App\views\directive-templates\fields\selector.html" />
+    <Content Include="App\views\directive-templates\fields\static.html" />
+    <Content Include="App\views\directive-templates\fields\textfield.html" />
     <Content Include="App\views\directive-templates\old-conditions.html" />
     <Content Include="App\views\directive-templates\options.html" />
     <Content Include="App\views\directive-templates\formsShortList.html" />
@@ -107,6 +122,7 @@
     <Content Include="App\views\directive-templates\trashcan.html" />
     <Content Include="App\views\directive-templates\toolbox.html" />
     <Content Include="App\views\forms.html" />
+    <Content Include="App\views\includes\field-properties\reportheader.html" />
     <Content Include="App\views\includes\field-properties\selector.html" />
     <Content Include="App\views\includes\field-properties\condition.html" />
     <Content Include="App\views\includes\field-properties\reflector.html" />
@@ -114,6 +130,7 @@
     <Content Include="App\views\includes\field-properties\noyes.html" />
     <Content Include="App\views\includes\field-properties\data.html" />
     <Content Include="App\views\includes\field-properties\old\old-table.html" />
+    <Content Include="App\views\includes\field-templates\droppedItem.html" />
     <Content Include="App\views\includes\partials\messagePanel.html" />
     <Content Include="App\views\modals\controlEditDialog.html" />
     <Content Include="App\views\modals\formPropertiesDialog.html" />

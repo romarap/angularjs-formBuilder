@@ -2,7 +2,7 @@
 
     <!-- Sidebar -->
     <div class="col-md-2">
-        <forms-short-list-directive selectedid="{{models.form.tieId}}"></forms-short-list-directive>
+        <forms-short-list-directive selectedid="{{models.form.formId}}"></forms-short-list-directive>
     </div>
 
     <!-- Main area with field_label and source code -->
@@ -20,9 +20,12 @@
                                     <i class="glyphicon glyphicon-info-sign selectable" data-toggle="popover" tabindex="0" data-trigger="hover" data-placement="left" help-template="form-help-content" title="Form Area" data-html="true" data-container="body"></i>
                                 </span>
                             </h3>
-                            <!-- The dropzone also uses the list template -->
-                            <!--<dropzone-directive list="models.form.theChildren" new-id="models.newId" dirty="$scope.models.dirty" ondblclick="editItemDetails(item)"></dropzone-directive>-->
-                            <div ng-repeat="list in [models.form.theChildren]" ng-include="'views/includes/partials/dropZone.html'"></div>
+                            <div class="box box-small box-blue">
+                                <h3 ng-dblclick="editItemDetails($event,'',models.form.rootTie);">{{models.form.rootTie.label + " (" + models.form.rootTie.tieId + ")"}}</h3>
+                                <!-- The dropzone also uses the list template -->
+                                <!--<dropzone-directive list="models.form.theChildren" new-id="models.newId" dirty="$scope.models.dirty" ondblclick="editItemDetails(item)"></dropzone-directive>-->
+                                <div ng-repeat="list in [models.form.rootTie.theChildren]" ng-include="'views/includes/partials/dropZone.html'"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -35,7 +38,7 @@
                             <label class="selectable-title" >Controls</label>
                             <span class="tools">
                                 <i class="glyphicon glyphicon-plus selectable" title="Create New Control" ng-click="newControl()"></i>
-                                <i class="glyphicon glyphicon-refresh selectable" title="Refresh Controls" ng-click="refreshControls()"></i>
+                                <i id="refreshControls" class="glyphicon glyphicon-refresh selectable" title="Refresh Controls" ng-click="refreshControls(true)"></i>
                             </span>
                         </h3>
                         <div class="tab-area" >
@@ -49,7 +52,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr ng-repeat="control in models.controls" >
+                                    <tr ng-repeat="(key,control) in models.controls" >
                                         <td class="col-md-1">{{control.controlId}}</td>
                                         <td>{{control.label == null ? 'control -' + control.controlId : control.label}}</td>
                                         <td>{{getItemTypeDisplayName(control.type)}}</td>
@@ -67,7 +70,8 @@
 
         </uib-tabset>
 
-        <ng-include ng-show="$storage.debug=='true'" src="'views/includes/partials/updatedArea.html'"></ng-include>
+        <!--<ng-include ng-show="$storage.debug=='true'" src="'views/includes/partials/updatedArea.html'"></ng-include>-->
+        <ng-include src="'views/includes/partials/updatedArea.html'"></ng-include>
 
     </div>
 

@@ -3,45 +3,47 @@
 /**
  * The controller doesn't do much more than setting the initial data model
  */
-app.controller('controlsController', function ($scope,FormService, $routeParams, modalService) {
+app.controller('controlsController', function ($scope, controlsService, $routeParams, modalService) {
 
     $scope.models = {
-        controls: {}
+        controls: controlsService.controls
     };
 
+    $scope.refreshControls = function (refresh) {
+        $scope.refreshSpin(true);
+        var useCache = !refresh;
+        controlsService.formControls(useCache).then(function (response) {
 
-    FormService.formControls().then(function (response) {
-        if (response.status == 200) {
-            $scope.models.controls = response.data;
-        }
-        else {
-            reportControlsLoadFailure(response);
-        }
-    }, function myError(response) {
-        // controls failed to load 
-        reportControlsLoadFailure(response);
-    });
+            if (response.status == 200) {
+                $scope.models.controls = response.data;
+                $scope.refreshSpin(false);
+            }
+            else {
 
-
-    $scope.refreshControls = function () {
-        FormService.formControls().then(function (controls) {
-            $scope.models.controls = controls
+                $scope.refreshSpin(false);
+                $scope.reportControlsLoadFailure(response);
+            }
         }, function myError(response) {
             // controls failed to load 
 
-            modalService.showMessage({
-                message: "Failed to load form controls.....<br>" + response.status + ":" + response.statusText,
-                alertStyle: "alert-danger",
-                okButton: true
-            });
+            $scope.refreshSpin(false);
+            $scope.reportControlsLoadFailure(response);
         });
+    }
+
+    $scope.refreshSpin = function (flag) {
+        if (flag) {
+            $('#refreshControls').addClass('gly-spin');
+        } else {
+            $('#refreshControls').removeClass('gly-spin');
+        }
     }
 
 
 
     // Dialog open
     $scope.editControlDetails = function (control) {
-        FormService.formControl(control.controlId).then(function (response) {
+        controlsService.formControl(control.controlId).then(function (response) {
             if (response.status == 200) {
                 var modalOptions = {
                     closeButtonText: 'Cancel',
@@ -100,28 +102,17 @@ app.controller('controlsController', function ($scope,FormService, $routeParams,
 
     };
 
-    function reportControlLoadFailure(response) {
+    $scope.reportControlsLoadFailure = function (response) {
         $scope.models.controls = {};
 
 
         modalService.showMessage({
-            message: "Failed to load control.....<br>" + response.status + ":" + response.statusText,
-            alertStyle: "alert-danger",
-            okButton: true
-        });
-    }
-    
-    function reportControlsLoadFailure(response) {
-        $scope.models.controls = {};
-
-
-        modalService.showMessage({
-            message: "Failed to load form controls.....<br>" + response.status + ":" + response.statusText,
+            message: "Failed to load controls.....<br>" + response.status + ":" + response.statusText,
             alertStyle: "alert-danger",
             okButton: true
         });
     }
 
-
+    $scope.refreshControls(false);
 });
 
