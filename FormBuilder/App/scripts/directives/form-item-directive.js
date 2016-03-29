@@ -1,6 +1,6 @@
 'use strict';
 
-app.directive('droppedItemDirective', function ($http, $compile, controlsService) {
+app.directive('formItemDirective', function ($http, $compile, controlsService) {
 
 
     var getTemplateUrl = function (item) {
@@ -9,7 +9,7 @@ app.directive('droppedItemDirective', function ($http, $compile, controlsService
         if (type.subTypes != null) {
             type = type.subTypes[item.type & BASIC_SUBTYPE_MASK];
         }
-        return 'views/directive-templates/fields/' + type.item_type + '.html';
+        return 'views/directive-templates/form-items/' + type.item_type + '.html';
 
     }
 

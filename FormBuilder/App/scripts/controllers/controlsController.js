@@ -3,7 +3,7 @@
 /**
  * The controller doesn't do much more than setting the initial data model
  */
-app.controller('controlsController', function ($scope, controlsService, $routeParams, modalService) {
+app.controller('controlsController', function ($scope, FormService, controlsService, $routeParams, modalService) {
 
     $scope.models = {
         controls: controlsService.controls
@@ -89,8 +89,10 @@ app.controller('controlsController', function ($scope, controlsService, $routePa
             templateUrl: 'views/modals/controlEditDialog.html',
             controller: 'ControlEditModalInstanceCtrl',
             resolve: {
-                item: {
-                    controlId: FormService.getNewId()
+                item: function () {
+                    return {
+                        controlId: FormService.getNewId()
+                    }
                 },
                 isNew: true
             },

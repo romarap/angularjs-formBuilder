@@ -15,7 +15,7 @@
                     <div class="form-group row" ng-class="{ 'has-error' : userForm.type.$invalid && !userForm.type.$pristine }">
                         <label class="col-sm-3 control-label input-sm">Type</label>
                         <div class="col-sm-8">
-                            <select class="form-control col-sm-4 input-sm" name="type" ng-model="models.item.type" ng-change="typeChanged()" ng-options="value.value as value.label for (key , value) in models.types" ng-disabled="!models.isNew" required>
+                            <select class="form-control col-sm-4 input-sm" name="type" ng-model="models.item.type" ng-change="typeChanged()" ng-options="value.value.toString() as value.label for (key , value) in models.types" ng-disabled="!models.isNew" required>
                                 <option value="" selected="selected">--Select required type--</option>
                             </select>
                         </div>

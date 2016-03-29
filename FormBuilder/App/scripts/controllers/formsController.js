@@ -154,10 +154,11 @@ app.controller('formsController', function ($scope, $http, $location, $sessionSt
 
             FormService.save($scope.models.form).then(function (response) {
                 modalService.hideMessage();
+                $scope.models.dirty = false;
             }, function myError(response) {
                 // modalService.hideMessage();
                 modalService.showMessage({
-                    message: "Failed to load form controls.....<br>" + response.status + ":" + response.statusText,
+                    message: "Failed to save form.....<br>" + response.status + ":" + response.statusText,
                     alertStyle: "alert-danger",
                     okButton: true
                 });
@@ -208,7 +209,7 @@ app.controller('formsController', function ($scope, $http, $location, $sessionSt
             }
             return 'views/includes/field-templates/' + type.item_type + '.html';
         }
-        return 'views/includes/field-templates/droppedItem.html';
+        return 'views/includes/field-templates/formItem.html';
 
 
         //var type = formUIHelper.tieTypeBasicTypes[item.type & BASIC_TYPE_MASK];
