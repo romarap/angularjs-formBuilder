@@ -42,8 +42,7 @@ app.controller('formsController', function ($scope, $http, $location, $sessionSt
         reportControlsLoadFailure(response);
     });
 
-    if ($routeParams.debug != null)
-    {
+    if ($routeParams.debug != null) {
         $scope.$storage.debug = $routeParams.debug;
     }
 
@@ -67,8 +66,7 @@ app.controller('formsController', function ($scope, $http, $location, $sessionSt
         $scope.models.form.rootTie.tieId = FormService.getNewId();
     }
 
-    function reportFormLoadFailure(response)
-    {
+    function reportFormLoadFailure(response) {
         // form failed to load so clear details but set id so that the user can see the selected item in the menu
         $scope.models.form = { "tieId": $routeParams.id };
 
@@ -157,7 +155,7 @@ app.controller('formsController', function ($scope, $http, $location, $sessionSt
             FormService.save($scope.models.form).then(function (response) {
                 modalService.hideMessage();
             }, function myError(response) {
-               // modalService.hideMessage();
+                // modalService.hideMessage();
                 modalService.showMessage({
                     message: "Failed to load form controls.....<br>" + response.status + ":" + response.statusText,
                     alertStyle: "alert-danger",
@@ -173,7 +171,7 @@ app.controller('formsController', function ($scope, $http, $location, $sessionSt
             if (type == "new-control") {
                 // this is a control so need to convert to a tool
                 var control = item;
-                itemToDrop = formUIHelper.tools[control.type & 0xFF0];
+                itemToDrop = angular.copy(formUIHelper.tools[control.type & 0xFF0]);
                 itemToDrop.controlId = control.controlId;
                 itemToDrop.label = control.label;
             }
@@ -202,20 +200,22 @@ app.controller('formsController', function ($scope, $http, $location, $sessionSt
     }, true);
 
     $scope.getFieldTemplate = function (item) {
-        //var type = formUIHelper.tieTypeBasicTypes[item.type & BASIC_TYPE_MASK];
-
-        //if (type.type == 0x000)
-        //{
-        //    return 'views/includes/field-templates/' + type.item_type + '.html';
-        //}
-        //return 'views/includes/field-templates/droppedItem.html';
-
-
         var type = formUIHelper.tieTypeBasicTypes[item.type & BASIC_TYPE_MASK];
-        if (type.subTypes != null) {
-            type = type.subTypes[item.type & BASIC_SUBTYPE_MASK];
+
+        if (type.type == 0x000) {
+            if (type.subTypes != null) {
+                type = type.subTypes[item.type & BASIC_SUBTYPE_MASK];
+            }
+            return 'views/includes/field-templates/' + type.item_type + '.html';
         }
-        return 'views/includes/field-templates/' + type.item_type + '.html';
+        return 'views/includes/field-templates/droppedItem.html';
+
+
+        //var type = formUIHelper.tieTypeBasicTypes[item.type & BASIC_TYPE_MASK];
+        //if (type.subTypes != null) {
+        //    type = type.subTypes[item.type & BASIC_SUBTYPE_MASK];
+        //}
+        //return 'views/includes/field-templates/' + type.item_type + '.html';
     }
 
     $scope.getItemTypeDisplayName = function (item_type) {
@@ -292,8 +292,7 @@ app.filter('conditionSrcIdFilter', function () {
     return function (input, tieId) {
         var tmp = {};
         angular.forEach(input, function (val, key) {
-            if (val.conditionSrcId == tieId)
-            {
+            if (val.conditionSrcId == tieId) {
                 tmp[key] = val;
             }
         });
