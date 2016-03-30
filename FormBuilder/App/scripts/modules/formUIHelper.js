@@ -2,6 +2,7 @@
 const BASIC_CONTROL = 0x100;
 const BASIC_TYPE_MASK = 0xF00;
 const BASIC_SUBTYPE_MASK = 0xFF0;
+//const BASIC_FULLTYPE_MASK = 0xFFF;
 
 var formUIHelper = new function () {
 
@@ -32,28 +33,32 @@ var formUIHelper = new function () {
     this.tieTypeBasicTypes = {
         0x000: {
             type: 0x000, item_type: "group", display_name: "Group", subTypes: {
-                0x0000: { type: 0x000, item_type: "group", display_name: "Group", properties_template: "group" },
-                0x0010: { type: 0x010, item_type: "reportheader", display_name: "Report Header", properties_template: "reportheader" },
-                0x0022: { type: 0x022, item_type: "validatorsave", display_name: "Validator Save", properties_template: "group" },
-                0x0023: { type: 0x023, item_type: "validatorsavelist", display_name: "Validator Save List", properties_template: "group" },
-                0x0040: { type: 0x040, item_type: "table", display_name: "Table", properties_template: "group" },
-                0x0080: { type: 0x080, item_type: "Score", display_name: "Score", properties_template: "group" }
+                0x0000: { type: 0x000, item_type: "group", display_name: "Group", properties_template: "group", field_template: "group" },
+                // we only want the subtype not the subsubtype
+                //0x0001: { type: 0x001, item_type: "group", display_name: "Group (OR)", properties_template: "group", field_template: "group" },
+                0x0010: { type: 0x010, item_type: "reportheader", display_name: "Report Header", properties_template: "reportheader", field_template: "group" },
+                0x0020: { type: 0x022, item_type: "validatorsave", display_name: "Validator Save", properties_template: "group", field_template: "group" },
+                // we only want the subtype not the subsubtype
+                //0x0022: { type: 0x022, item_type: "validatorsave", display_name: "Validator Save", properties_template: "group", field_template: "group" },
+                //0x0023: { type: 0x023, item_type: "validatorsavelist", display_name: "Validator Save List", properties_template: "group", field_template: "group" },
+                0x0040: { type: 0x040, item_type: "table", display_name: "Table", properties_template: "group", field_template: "group" },
+                0x0080: { type: 0x080, item_type: "Score", display_name: "Score", properties_template: "group", field_template: "group" }
             }
         },
         0x100: {
             type: 0x100, item_type: "control", subTypes: {
-                0x0110: { type: 0x0110, item_type: "noyes", display_name: "No/Yes", properties_template: "noyes" },
-                0x0120: { type: 0x0120, item_type: "textfield", display_name: "Text Field", properties_template: "textfield" },
-                0x0130: { type: 0x0130, item_type: "dropdown", display_name: "Dropdown", properties_template: "dropdown" },
-                0x0140: { type: 0x0140, item_type: "reflector", display_name: "Reflector", properties_template: "reflector" },
-                0x0150: { type: 0x0150, item_type: "static", display_name: "Static", properties_template: "static" },
-                0x0180: { type: 0x0180, item_type: "photo", display_name: "Photo", properties_template: "photo" }
+                0x0110: { type: 0x0110, item_type: "noyes", display_name: "No/Yes", properties_template: "noyes", field_template: "noyes" },
+                0x0120: { type: 0x0120, item_type: "textfield", display_name: "Text Field", properties_template: "textfield", field_template: "textfield" },
+                0x0130: { type: 0x0130, item_type: "dropdown", display_name: "Dropdown", properties_template: "dropdown", field_template: "dropdown" },
+                0x0140: { type: 0x0140, item_type: "reflector", display_name: "Reflector", properties_template: "reflector", field_template: "reflector" },
+                0x0150: { type: 0x0150, item_type: "static", display_name: "Static", properties_template: "static", field_template: "static" },
+                0x0180: { type: 0x0180, item_type: "photo", display_name: "Photo", properties_template: "photo", field_template: "photo" }
             }
         },
-        0x200: { type: 0x200, item_type: "layout", display_name: "Layout", properties_template: "layout" },
-        0x400: { type: 0x400, item_type: "condition", display_name: "Condition", properties_template: "condition" },
-        0x500: { type: 0x500, item_type: "selector", display_name: "Selector", properties_template: "selector" },
-        0x800: { type: 0x800, item_type: "data", display_name: "Data", properties_template: "data" }
+        0x200: { type: 0x200, item_type: "layout", display_name: "Layout", properties_template: "layout", field_template: "layout" },
+        0x400: { type: 0x400, item_type: "condition", display_name: "Condition", properties_template: "condition", field_template: "condition" },
+        0x500: { type: 0x500, item_type: "selector", display_name: "Selector", properties_template: "selector", field_template: "selector" },
+        0x800: { type: 0x800, item_type: "data", display_name: "Data", properties_template: "data", field_template: "data" }
     };
 
     this.mask = {
@@ -131,8 +136,8 @@ var formUIHelper = new function () {
     ];
 
     this.groupSubTypes = [
-        { value: 0x000, label: "Basic Group - and" },
-        { value: 0x001, label: "Basic Group - or" },
+        { value: 0x000, label: "Basic Group (AND)" },
+        { value: 0x001, label: "Basic Group (OR)" },
         { value: 0x022, label: "Validator Save" },
         { value: 0x023, label: "Validator Save List" },
         { value: 0x040, label: "Table" },

@@ -222,20 +222,25 @@ app.controller('formsController', function ($scope, $http, $location, $sessionSt
 
     $scope.getFieldTemplate = function (item) {
         var type = formUIHelper.tieTypeBasicTypes[item.type & BASIC_TYPE_MASK];
+        var isGroup = type.type == 0x000;
 
-        if (type.type == 0x000) {
+        if (type.subTypes != null) {
+            type = type.subTypes[item.type & BASIC_SUBTYPE_MASK];
+        }
+        if (type === undefined) {
+            return 'views/includes/field-templates/unknownField.html';
+        }
+
+        if (isGroup) {
             // Group - ensure it can accept children
             if (!item.theChildren) {
                 item.theChildren = [];
             }
-
-            if (type.subTypes != null) {
-                type = type.subTypes[item.type & BASIC_SUBTYPE_MASK];
-            }
-            return 'views/includes/field-templates/' + type.item_type + '.html';
+            return 'views/includes/field-templates/' + type.field_template + '.html';
         }
-        return 'views/includes/field-templates/formItem.html';
 
+        return 'views/includes/field-templates/formItem.html';
+        //return 'views/includes/field-templates/' + type.item_type + '.html';
 
         //var type = formUIHelper.tieTypeBasicTypes[item.type & BASIC_TYPE_MASK];
         //if (type.subTypes != null) {
