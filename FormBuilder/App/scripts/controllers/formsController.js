@@ -9,61 +9,81 @@ var DELETE = 'delete';
  * The controller doesn't do much more than setting the initial data model
  */
 app.controller('formsController', function ($scope, $http, $location, $sessionStorage, $localStorage, FormService, controlsService, $routeParams, modalService) {
-    $scope.$storage = $sessionStorage;
+    try{
 
-    $scope.models = {
-        selected: null,
-        deleted: [],
-        dirty: false,
-        form: {},
-        controls: {}
-    };
+        $scope.$storage = $sessionStorage;
 
-    //$scope.$on('$viewContentLoaded', function () {
-    //    $scope.msg = $route.current.templateUrl + ' is loaded !!';
-    //});
+        $scope.models = {
+            selected: null,
+            deleted: [],
+            dirty: false,
+            form: {},
+            controls: {}
+        };
+
+        //$scope.$on('$viewContentLoaded', function () {
+        //    $scope.msg = $route.current.templateUrl + ' is loaded !!';
+        //});
 
 
-    //$scope.$on('$locationChangeStart', routeChange);
-    var onRouteChangeOff = $scope.$on('$locationChangeStart', routeChange);
+        //$scope.$on('$locationChangeStart', routeChange);
+        var onRouteChangeOff = $scope.$on('$locationChangeStart', routeChange);
 
-    // reset ids for new items.
-    FormService.resetNewId();
+        // reset ids for new items.
+        FormService.resetNewId();
 
-    controlsService.formControls(true).then(function (response) {
-        if (response.status == 200) {
-            $scope.models.controls = response.data;
-        }
-        else {
-            reportControlsLoadFailure(response);
-        }
-    }, function myError(response) {
-        // controls failed to load 
-        reportControlsLoadFailure(response);
-    });
-
-    if ($routeParams.debug != null) {
-        $scope.$storage.debug = $routeParams.debug;
-    }
-
-    if ($routeParams.id) {
-        // read form with given id
-        FormService.form($routeParams.id).then(function (response) {
+        controlsService.formControls(true).then(function (response) {
             if (response.status == 200) {
-                $scope.models.form = response.data;
+                $scope.models.controls = response.data;
             }
             else {
-                reportFormLoadFailure(response);
+                reportControlsLoadFailure(response);
             }
         }, function myError(response) {
-            reportFormLoadFailure(response);
+            // controls failed to load 
+            reportControlsLoadFailure(response);
         });
 
+        if ($routeParams.debug != null) {
+            $scope.$storage.debug = $routeParams.debug;
+        }
+
+        if ($routeParams.id) {
+            // read form with given id
+            FormService.form($routeParams.id).then(function (response) {
+                if (response.status == 200) {
+                    $scope.models.form = response.data;
+                    // initial validations
+                    if (!$scope.models.form.rootTie){
+                        $scope.models.form.rootTie = angular.copy(formUIHelper.newForm.rootTie);
+                        $scope.models.form.rootTie.tieId = FormService.getNewId();
+                    }
+                    if (!$scope.models.form.rootTie.theChildren)
+                    {
+                        $scope.models.form.rootTie.theChildren = [];
+                    }
+
+                }
+                else {
+                    reportFormLoadFailure(response);
+                }
+            }, function myError(response) {
+                reportFormLoadFailure(response);
+            });
+
+        }
+        else {
+            angular.copy(formUIHelper.newForm, $scope.models.form);
+            $scope.models.form.formId = FormService.getNewId();
+            $scope.models.form.rootTie.tieId = FormService.getNewId();
+        }
     }
-    else {
-        angular.copy(formUIHelper.newForm, $scope.models.form);
-        $scope.models.form.formId = FormService.getNewId();
-        $scope.models.form.rootTie.tieId = FormService.getNewId();
+    catch (e) {
+        modalService.showMessage({
+            message: "Failed first page.....<br>" + e,
+            alertStyle: "alert-danger",
+            okButton: true
+        });
     }
 
     function reportFormLoadFailure(response) {
@@ -204,6 +224,11 @@ app.controller('formsController', function ($scope, $http, $location, $sessionSt
         var type = formUIHelper.tieTypeBasicTypes[item.type & BASIC_TYPE_MASK];
 
         if (type.type == 0x000) {
+            // Group - ensure it can accept children
+            if (!item.theChildren) {
+                item.theChildren = [];
+            }
+
             if (type.subTypes != null) {
                 type = type.subTypes[item.type & BASIC_SUBTYPE_MASK];
             }
