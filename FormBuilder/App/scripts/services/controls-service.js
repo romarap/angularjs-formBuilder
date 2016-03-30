@@ -16,9 +16,11 @@ app.service('controlsService', function ($http, $q, $timeout, $cacheFactory) {
 
             // convert attributes to map
             control.theAttributes = {};
-            for (var j = 0; j < controls[i].theAttributes.length; j++) {
-                var attribute = angular.extend(controls[i].theAttributes[j]);
-                control.theAttributes[attribute.type] = attribute;
+            if (controls[i].theAttributes) {
+                for (var j = 0; j < controls[i].theAttributes.length; j++) {
+                    var attribute = angular.extend(controls[i].theAttributes[j]);
+                    control.theAttributes[attribute.type] = attribute;
+                }
             }
             controlsMap[controls[i].controlId] = control;
         }

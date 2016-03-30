@@ -37,6 +37,10 @@ app.directive('formItemDirective', function ($http, $compile, controlsService) {
 
         scope.text1 = scope.item.text1;
         scope.text2 = scope.item.text2;
+        scope.textValue = scope.item.textValue;
+        scope.intValue = scope.item.intValue;
+        scope.conditionSrcId = scope.item.conditionSrcId;
+        scope.controlId = scope.item.controlId;
         try {
 
             if (scope.item.controlId && scope.controls) {

@@ -115,6 +115,12 @@ var formUIHelper = new function () {
         { value: 0x403, label: "Greater Than" }
     ];
 
+    //this.conditionSubTypes = [
+    //    { value: 0x400, label: "Basic Condition" },
+    //    { value: 0x410, label: "Disabled-Is-Zero" },
+    //    { value: 0x420, label: "Other-Value" },
+    //];
+
     this.selectorSubTypes = [
         { value: 0x500, label: "Selector" },
         { value: 0x510, label: "Selector with child" }
@@ -125,7 +131,8 @@ var formUIHelper = new function () {
     ];
 
     this.groupSubTypes = [
-        { value: 0x000, label: "Basic Group" },
+        { value: 0x000, label: "Basic Group - and" },
+        { value: 0x001, label: "Basic Group - or" },
         { value: 0x022, label: "Validator Save" },
         { value: 0x023, label: "Validator Save List" },
         { value: 0x040, label: "Table" },
