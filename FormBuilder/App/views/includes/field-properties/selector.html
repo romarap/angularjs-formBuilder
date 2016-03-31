@@ -1,5 +1,5 @@
 <div class="form-group row">
-    <label class="col-sm-2 control-label input-sm">Subtype</label>
+    <label class="col-sm-3 control-label input-sm">Subtype</label>
     <div class="col-sm-8">
         <select class="form-control input-sm" name="subtype" ng-model="subType" ng-options="value.value as value.label for (key , value) in formUIHelper.selectorSubTypes" ng-change="SetSubType(subType,formUIHelper.mask['subtype'])" required></select>
     </div>

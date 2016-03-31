@@ -4,7 +4,7 @@
         <div class="tool-tip">{{text2}}</div>
         <div class="form-group">
             <label class="control-label" ng-hide="!leftPrompt">{{leftPrompt.label}}</label>
-            <label class="control-label">{{conditionSrcId ? conditionSrcId : textValue}}</label>
+            <label class="control-label">{{conditionSrcId>0 ? conditionSrcId : textValue}}</label>
             <label class="control-label" ng-hide="!rightPrompt">{{rightPrompt}}</label>
         </div>
     </div>

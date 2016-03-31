@@ -5,81 +5,41 @@
  */
 app.controller('formFieldTemplateController', function ($scope, controlsService) {
 
-    $scope.leftPrompt = null;
-    $scope.hint = null;
-    $scope.width = null;
-    $scope.maxValue = null;
-    $scope.text = null;
-    $scope.rightPrompt = null;
-    $scope.topMargin = null;
-    $scope.fontStyle1 = null;
-    $scope.emptiness = null;
-    $scope.title = null;
-    $scope.footerRule = null;
+    $scope.fieldDisplayValues = {
+        text1: $scope.item.text1,
+        text2: $scope.item.text2,
+        textValue: $scope.item.textValue,
+        intValue: $scope.item.intValue,
+        conditionSrcId: $scope.item.conditionSrcId,
+        controlId: $scope.item.controlId,
+        tmpSelectedItem: -1,
 
-    $scope.text1 = $scope.item.text1;
-    $scope.text2 = $scope.item.text2;
-    $scope.textValue = $scope.item.textValue;
-    $scope.intValue = $scope.item.intValue;
-    $scope.conditionSrcId = $scope.item.conditionSrcId;
-    $scope.controlId = $scope.item.controlId;
+    }
 
+    $scope.init = function (controls) {
+        $scope.controls = controls;
+        $scope.initField();
+    };
 
-
-    $scope.initAttributes = function () {
+    $scope.initField = function () {
         try {
-            if ($scope.item.controlId && $scope.controls) {
-                if ($scope.item.controlId && $scope.controls) {
-                    var control = $scope.controls[$scope.item.controlId];
-                    if (control) {
-                        if (control.text1) {
-                            $scope.text1 = control.text1;
-                        }
-                        if (control.text2) {
-                            $scope.text2 = control.text2;
-                        }
+            if ($scope.item.controlId > 0 && $scope.controls) {
+                var control = $scope.controls[$scope.item.controlId];
+                if (control) {
+                    if (control.text1) {
+                        $scope.fieldDisplayValues.text1 = control.text1;
+                    }
+                    if (control.text2) {
+                        $scope.fieldDisplayValues.text2 = control.text2;
+                    }
 
-                        for (var key in control.theAttributes) {
-                            switch (parseInt(key, 10)) {
-                                case 0x0363: //'hint'
-                                    $scope.hint = control.theAttributes[key].text1;
-                                    break;
-                                case 0x0362: // Left Prompt
-                                    $scope.leftPrompt = {
-                                        label: control.theAttributes[key].text1,
-                                        width: 0
-                                    };
-                                    break;
-                                case 0x030C: //'width',
-                                    $scope.width = control.theAttributes[key].intValue;
-                                    break;
-                                case 0x030E: //'maxValue',
-                                    $scope.maxValue = control.theAttributes[key].intValue;
-                                    break;
-                                case 0x030A: //'text',
-                                    $scope.text = control.theAttributes[key].text1;
-                                    break;
-                                case 0x0361: //'rightPrompt',
-                                    $scope.rightPrompt = control.theAttributes[key].text1;
-                                    break;
-                                case 0x031E: //'topMargin',
-                                    $scope.topMargin = control.theAttributes[key].intValue;
-                                    break;
-                                case 0x0328: //'fontStyle1',
-                                    $scope.fontStyle1 = control.theAttributes[key].intValue;
-                                    break;
-                                case 0x0315: //'emptiness',
-                                    $scope.emptiness = control.theAttributes[key].text1;
-                                    break;
-                                case 0x0314: //'title',
-                                    $scope.title = control.theAttributes[key].text1;
-                                    break;
-                                case 0x0301: //'footerRule
-                                    $scope.footerRule = control.theAttributes[key].intValue;
-                                    break;
-                            }
+                    $scope.setupDisplayAttributes(control);
 
+                    if (formUIHelper.isDDL($scope.item)) {
+                        try {
+                            $scope.fieldDisplayValues.tmpSelectedItem = $scope.displayAttributes.listItems[0];
                         }
+                        catch (h) { }
                     }
                 }
             }
@@ -87,11 +47,74 @@ app.controller('formFieldTemplateController', function ($scope, controlsService)
         catch (e) { }
     }
 
-    $scope.init = function (controls) {
-        $scope.controls = controls;
-        $scope.initAttributes();
-    };
 
-    //initAttributes();
+
+    $scope.setupDisplayAttributes = function (control) {
+        if (!(control.controlId in formUIHelper.displayAttributesCache)) {
+            var displayAttributes = {
+                leftPrompt: null,
+                hint: null,
+                width: null,
+                maxValue: null,
+                text: null,
+                rightPrompt: null,
+                topMargin: null,
+                fontStyle1: null,
+                emptiness: null,
+                title: null,
+                footerRule: null,
+                listItems: []
+            };
+
+            if (control.theListItems) {
+                displayAttributes.listItems = control.theListItems;
+            }
+
+            for (var key in control.theAttributes) {
+                switch (parseInt(key, 10)) {
+                    case 0x0363: //'hint'
+                        displayAttributes.hint = control.theAttributes[key].text1;
+                        break;
+                    case 0x0362: // Left Prompt
+                        displayAttributes.leftPrompt = {
+                            label: control.theAttributes[key].text1,
+                            width: 0
+                        };
+                        break;
+                    case 0x030C: //'width',
+                        displayAttributes.width = control.theAttributes[key].intValue;
+                        break;
+                    case 0x030E: //'maxValue',
+                        displayAttributes.maxValue = control.theAttributes[key].intValue;
+                        break;
+                    case 0x030A: //'text',
+                        displayAttributes.text = control.theAttributes[key].text1;
+                        break;
+                    case 0x0361: //'rightPrompt',
+                        displayAttributes.rightPrompt = control.theAttributes[key].text1;
+                        break;
+                    case 0x031E: //'topMargin',
+                        displayAttributes.topMargin = control.theAttributes[key].intValue;
+                        break;
+                    case 0x0328: //'fontStyle1',
+                        displayAttributes.fontStyle1 = control.theAttributes[key].intValue;
+                        break;
+                    case 0x0315: //'emptiness',
+                        displayAttributes.emptiness = control.theAttributes[key].text1;
+                        break;
+                    case 0x0314: //'title',
+                        displayAttributes.title = control.theAttributes[key].text2;
+                        break;
+                    case 0x0301: //'footerRule
+                        displayAttributes.footerRule = control.theAttributes[key].intValue;
+                        break;
+                }
+
+            }
+            formUIHelper.displayAttributesCache[control.controlId] = displayAttributes;
+        }
+        $scope.displayAttributes = formUIHelper.displayAttributesCache[control.controlId];
+    }
+
 });
 

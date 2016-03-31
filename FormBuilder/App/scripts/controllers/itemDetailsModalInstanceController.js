@@ -5,7 +5,10 @@ app.controller('ItemDetailsModalInstanceCtrl', function ($scope, $uibModalInstan
     $scope.fields = fields;
     $scope.item = item;
     $scope.controls = [];
-    
+    $scope.text1Label = "Text1";
+    $scope.text2Label = "Text2";
+    $scope.text1values = ["<blank>","sys.client.fullName", "sys.device.mac", "sys.device.id"];
+
     // only concerned with relevant controls ie. those with same type
     var itemType = item.type & 0xFFFF;
     for (var key in controls) {
@@ -22,6 +25,7 @@ app.controller('ItemDetailsModalInstanceCtrl', function ($scope, $uibModalInstan
         }
     }
 
+    $scope.item_type = formUIHelper.getItemType(item);
     $scope.subType = item.type & formUIHelper.mask["subtype"];
     $scope.multiple = (item.type & formUIHelper.tieTypeFlags["multiple"]) > 0;
     $scope.readonlyWriteLock = (item.type & formUIHelper.tieTypeFlags["readonlyWriteLock"]) > 0;
@@ -48,21 +52,44 @@ app.controller('ItemDetailsModalInstanceCtrl', function ($scope, $uibModalInstan
         return type.display_name;
     }
 
+   
+
     $scope.CommonFieldRequired = function (field, item) {
         switch (field)
         {
 
-            case "Muliple":
-                if (['photo'].indexOf(item.item_type) > -1) {
-                    return false;
-                }
-                break;
-           
-            //case "Field Required":
-            //    if (['container', 'static', 'pagebreak'].indexOf(item.item_type) > -1) {
+            //case "Muliple":
+            //    if (['photo'].indexOf($scope.item_type) > -1) {
             //        return false;
             //    }
             //    break;
+           
+            case "Text1":
+                if (['static'].indexOf($scope.item_type) > -1) {
+                    return false;
+                }
+                break;
+            case "Text1DDL":
+                if (['static'].indexOf($scope.item_type) > -1) {
+                    return true;
+                }
+                return false;
+                break;
+            case "Int Value":
+                if (['group', 'validatorsave'].indexOf($scope.item_type) > -1) {
+                    return false;
+                }
+                break;
+            case "Text Value":
+                if (['group', 'validatorsave'].indexOf($scope.item_type) > -1) {
+                    return false;
+                }
+                break;
+            case "Control":
+                if (['group', 'validatorsave'].indexOf($scope.item_type) > -1) {
+                    return false;
+                }
+                break;
             default:
                 return true;
         }
@@ -77,6 +104,32 @@ app.controller('ItemDetailsModalInstanceCtrl', function ($scope, $uibModalInstan
         }
         return value;
     }
+
+    $scope.SetTextLabels = function (subType) {
+        switch (subType) {
+            case 0x000: // Group
+                $scope.text1Label = "Description";
+                $scope.text2Label = "Long Descrip.";
+                break;
+            case 0x001: // Group
+                $scope.text1Label = "Description";
+                $scope.text2Label = "Long Descrip.";
+                break;
+            case 0x022: // Group
+                $scope.text1Label = "Complaint title";
+                $scope.text2Label = "Complaint info";
+                break;
+            case 0x023: // Group
+                $scope.text1Label = "Complaint title";
+                $scope.text2Label = "Complaint info";
+                break;
+            default:
+                $scope.text1Label = "Text1";
+                $scope.text2Label = "Text2";
+                break;
+        }
+    }
+
 
     $scope.SetSubType = function (subType , mask) {
         $scope.item.type &= ~mask;
@@ -99,5 +152,5 @@ app.controller('ItemDetailsModalInstanceCtrl', function ($scope, $uibModalInstan
         $uibModalInstance.dismiss('cancel');
     };
 
-   
+    $scope.SetTextLabels($scope.subType);
 });

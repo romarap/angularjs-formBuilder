@@ -141,7 +141,6 @@
     <Content Include="App\views\includes\field-templates\selector.html" />
     <Content Include="App\views\includes\field-templates\static.html" />
     <Content Include="App\views\includes\field-templates\unknownField.html" />
-    <Content Include="App\views\includes\field-templates\temp.html" />
     <Content Include="App\views\includes\field-templates\textfield.html" />
     <Content Include="App\views\includes\partials\messagePanel.html" />
     <Content Include="App\views\modals\controlEditDialog.html" />

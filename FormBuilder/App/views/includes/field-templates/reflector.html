@@ -1,11 +1,11 @@
 <div class="item">
     <watermark-directive></watermark-directive>
     <div class="form-group row" ng-controller="formFieldTemplateController" ng-init="init(models.controls)">
-        <div class="tool-tip">{{text2}}</div>
+        <div class="tool-tip">{{fieldDisplayValues.text2}}</div>
         <div class="form-group">
-            <label class="control-label" ng-hide="!leftPrompt">{{leftPrompt.label}}</label>
-            <label class="control-label">{{conditionSrcId ? conditionSrcId : textValue}}</label>
-            <label class="control-label" ng-hide="!rightPrompt">{{rightPrompt}}</label>
+            <label class="control-label" ng-hide="!displayAttributes.leftPrompt">{{displayAttributes.leftPrompt.label}}</label>
+            <label class="control-label">{{fieldDisplayValues.conditionSrcId>0 ? fieldDisplayValues.conditionSrcId : fieldDisplayValues.textValue}}</label>
+            <label class="control-label" ng-hide="!displayAttributes.rightPrompt">{{displayAttributes.rightPrompt}}</label>
         </div>
     </div>
 </div>

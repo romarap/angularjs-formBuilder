@@ -1,13 +1,12 @@
 <div class="item">
     <watermark-directive></watermark-directive>
     <div class="form-group row" ng-controller="formFieldTemplateController" ng-init="init(models.controls)">
-        <div>{{text1}}</div>
-        <div class="tool-tip">{{text2}}</div>
+        <div>{{fieldDisplayValues.text1}}</div>
+        <div class="tool-tip">{{fieldDisplayValues.text2}}</div>
         <div class="form-group">
-            <label class="col-sm-2 control-label" ng-hide="!leftPrompt">{{leftPrompt.label}}</label>
+            <label class="col-sm-2 control-label" ng-hide="!displayAttributes.leftPrompt">{{displayAttributes.leftPrompt.label}}</label>
             <div class="col-sm-8">
-                <select>
-                    <option value="" selected="selected">--Please select item--</option>
+                <select ng-model="fieldDisplayValues.tmpSelectedItem" ng-options="li as li.text1 for li in displayAttributes.listItems"  >
                 </select>
             </div>
         </div>

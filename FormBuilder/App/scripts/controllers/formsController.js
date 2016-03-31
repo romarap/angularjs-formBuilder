@@ -161,6 +161,7 @@ app.controller('formsController', function ($scope, $http, $location, $sessionSt
             // has item changed ?
             if (JSON.stringify(item) !== JSON.stringify($scope.models.form)) {
                 angular.merge($scope.models.form, item);
+                $scope.models.form.label = $scope.models.form.rootTie.label
                 $scope.models.dirty = true;
             }
         });

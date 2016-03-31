@@ -3,11 +3,11 @@
     <div ng-controller="formFieldTemplateController" ng-init="init(models.controls)">
         <div class="pagebreak">
             <span>
-                {{text1?text1:"pagebreak"}}
+                {{fieldDisplayValues.text1?fieldDisplayValues.text1:"pagebreak"}}
             </span>
         </div>
         <div class="form-group row">
-            <div>{{text2}}</div>
+            <div>{{fieldDisplayValues.text2}}</div>
         </div>
     </div>
 </div>

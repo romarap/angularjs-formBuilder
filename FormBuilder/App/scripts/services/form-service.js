@@ -97,7 +97,7 @@ app.service('FormService', function FormService($http, $q, $timeout) {
         }
         ,
         getNewId: function () {
-            return "newid -" + itemId++;
+            return "newId:" + itemId++;
         }
         ,
         resetNewId: function () {

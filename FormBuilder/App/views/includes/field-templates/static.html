@@ -1,11 +1,12 @@
 <div class="item">
     <watermark-directive></watermark-directive>
     <div class="form-group row" ng-controller="formFieldTemplateController" ng-init="init(models.controls)">
-        <div class="tool-tip">{{text2}}</div>
-        <div class="form-group">
-            <label class="control-label" ng-hide="!leftPrompt">{{leftPrompt.label}}</label>
-            <label class="control-label">{{text1 ? text1 : textValue}}</label>
-            <label class="control-label" ng-hide="!rightPrompt">{{rightPrompt}}</label>
+        <label class="control-label" ng-class="{italicClass : displayAttributes.fontStyle1 == 1  }">{{fieldDisplayValues.text2}}</label>
+        <div class="tool-tip" ng-hide="!displayAttributes.title" >{{displayAttributes.title}}</div>
+        <div class="form-group" ng-hide="!displayAttributes.leftPrompt && !displayAttributes.rightPrompt && !fieldDisplayValues.text1 && !fieldDisplayValues.textValue">
+            <label class="control-label" ng-hide="!displayAttributes.leftPrompt">{{displayAttributes.leftPrompt.label}}</label>
+            <label class="control-label">{{fieldDisplayValues.text1 ? fieldDisplayValues.text1 : fieldDisplayValues.textValue}}</label>
+            <label class="control-label" ng-hide="!displayAttributes.rightPrompt">{{displayAttributes.rightPrompt}}</label>
         </div>
     </div>
 </div>

@@ -43,8 +43,8 @@ app.directive('formItemDirective', function ($http, $compile, controlsService) {
         scope.controlId = scope.item.controlId;
         try {
 
-            if (scope.item.controlId && scope.controls) {
-                if (scope.item.controlId && scope.controls) {
+            if (scope.item.controlId>0 && scope.controls) {
+                if (scope.item.controlId>0 && scope.controls) {
                     var control = scope.controls[scope.item.controlId];
                     scope.text1 = control.text1 ? control.text1 : scope.item.text1;
                     scope.text2 = control.text2 ? control.text2 : scope.item.text2;

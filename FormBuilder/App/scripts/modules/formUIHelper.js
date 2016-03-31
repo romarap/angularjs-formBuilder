@@ -7,22 +7,22 @@ const BASIC_SUBTYPE_MASK = 0xFF0;
 var formUIHelper = new function () {
 
     this.newForm = {
-        formId: "", label: "--New Form--", status: CREATED,
-        rootTie: { tieId: "", status: CREATED, type: 0xC010, label: '--Root--', text1: null, text2: null, intValue: null, textValue: null, conditionSrcId: null, controlId: null, theChildren: [] }
+        formId: "", name: "--New Form--", label: "--Form Root--", status: CREATED,
+        rootTie: { tieId: "", status: CREATED, type: 0xC010, label: '--Form Root--', text1: null, text2: null, intValue: 0, textValue: null, conditionSrcId: "0", controlId: "0", theChildren: [] }
     };
     this.tools = {
         //{ type: "item", id: 2, display_name: "Item" },
-        0x0110: { tieId: "", status: CREATED, type: 0x0110, label: 'no/yes', text1: null, text2: null, intValue: null, textValue: null, conditionSrcId: null, controlId: null },
-        0x0120: { tieId: "", status: CREATED, type: 0x0120, label: 'textField', text1: null, text2: null, intValue: null, textValue: null, conditionSrcId: null, controlId: null },
-        0x0130: { tieId: "", status: CREATED, type: 0x0130, label: 'dropdown', text1: null, text2: null, intValue: null, textValue: null, conditionSrcId: null, controlId: null },
-        0x0140: { tieId: "", status: CREATED, type: 0x0140, label: 'reflector', text1: null, text2: null, intValue: null, textValue: null, conditionSrcId: null, controlId: null },
-        0x0150: { tieId: "", status: CREATED, type: 0x0150, label: 'static', text1: null, text2: null, intValue: null, textValue: null, conditionSrcId: null, controlId: null },
-        0x0180: { tieId: "", status: CREATED, type: 0x0180, label: 'photo', text1: null, text2: null, intValue: null, textValue: null, conditionSrcId: null, controlId: null },
-        0x0400: { tieId: "", status: CREATED, type: 0x0400, label: 'condition', text1: null, text2: null, intValue: null, textValue: null, conditionSrcId: null, controlId: null },
-        0x0500: { tieId: "", status: CREATED, type: 0x0500, label: 'selector', text1: null, text2: null, intValue: null, textValue: null, conditionSrcId: null, controlId: null },
-        0x0800: { tieId: "", status: CREATED, type: 0x0800, label: 'data', text1: null, text2: null, intValue: null, textValue: null, conditionSrcId: null, controlId: null },
-        0x0200: { tieId: "", status: CREATED, type: 0x0200, label: 'layout', text1: null, text2: null, intValue: null, textValue: null, conditionSrcId: null, controlId: null },
-        0x4000: { tieId: "", status: CREATED, type: 0x4000, label: 'group', text1: null, text2: null, intValue: null, textValue: null, conditionSrcId: null, controlId: null, theChildren: [] }
+        0x0110: { tieId: "", status: CREATED, type: 0x0110, label: 'no/yes', text1: null, text2: null, intValue: 0, textValue: null, conditionSrcId: "0", controlId: "0" },
+        0x0120: { tieId: "", status: CREATED, type: 0x0120, label: 'textField', text1: null, text2: null, intValue: 0, textValue: null, conditionSrcId: "0", controlId: "0" },
+        0x0130: { tieId: "", status: CREATED, type: 0x0130, label: 'dropdown', text1: null, text2: null, intValue: 0, textValue: null, conditionSrcId: "0", controlId: "0" },
+        0x0140: { tieId: "", status: CREATED, type: 0x0140, label: 'reflector', text1: null, text2: null, intValue: 0, textValue: null, conditionSrcId: "0", controlId: "0" },
+        0x0150: { tieId: "", status: CREATED, type: 0x0150, label: 'static', text1: null, text2: null, intValue: 0, textValue: null, conditionSrcId: "0", controlId: "0" },
+        0x0180: { tieId: "", status: CREATED, type: 0x0180, label: 'photo', text1: null, text2: null, intValue: 0, textValue: null, conditionSrcId: "0", controlId: "0" },
+        0x0400: { tieId: "", status: CREATED, type: 0x0400, label: 'condition', text1: null, text2: null, intValue: 0, textValue: null, conditionSrcId: "0", controlId: "0" },
+        0x0500: { tieId: "", status: CREATED, type: 0x0500, label: 'selector', text1: null, text2: null, intValue: 0, textValue: null, conditionSrcId: "0", controlId: "0" },
+        0x0800: { tieId: "", status: CREATED, type: 0x0800, label: 'data', text1: null, text2: null, intValue: 0, textValue: null, conditionSrcId: "0", controlId: "0" },
+        0x0200: { tieId: "", status: CREATED, type: 0x0200, label: 'layout', text1: null, text2: null, intValue: 0, textValue: null, conditionSrcId: "0", controlId: "0" },
+        0x4000: { tieId: "", status: CREATED, type: 0x4000, label: 'group', text1: null, text2: null, intValue: 0, textValue: null, conditionSrcId: "0", controlId: "0", theChildren: [] }
 
         //{ id: "", status: CREATED, type: 0xFF, subtype: 0x00, subsubtype: 0x00, item_type: "radio", display_name: "Radio Buttons", field_label: 'radio', field_required: true, field_disabled: false, field_options: [{ value: 0, label: "0" }, { value: 1, label: "1" }] },
         //{ id: "", status: CREATED, type: 0xFF, subtype: 0x00, subsubtype: 0x00, item_type: "checkbox", display_name: "Checkbox", field_label: 'checkbox', field_required: true, field_disabled: false },
@@ -136,13 +136,26 @@ var formUIHelper = new function () {
     ];
 
     this.groupSubTypes = [
-        { value: 0x000, label: "Basic Group (AND)" },
-        { value: 0x001, label: "Basic Group (OR)" },
-        { value: 0x022, label: "Validator Save" },
-        { value: 0x023, label: "Validator Save List" },
-        { value: 0x040, label: "Table" },
-        { value: 0x080, label: "Score" }
+        { value: 0x000, label: "Group" },
+        { value: 0x001, label: "Group - Or'd" },
+        { value: 0x022, label: "Save validate" },
+        { value: 0x023, label: "Save validate with list" },
+        // Nigel didn't want these
+        //{ value: 0x040, label: "Table" },
+        //{ value: 0x080, label: "Score" }
     ];
+
+    this.getItemType = function (item) {
+        var type = formUIHelper.tieTypeBasicTypes[item.type & BASIC_TYPE_MASK];
+        if (type.subTypes != null) {
+            type = type.subTypes[item.type & BASIC_SUBTYPE_MASK];
+        }
+        return type.item_type;
+    }
+
+    this.isDDL = function (item) {
+        return (item.type & BASIC_SUBTYPE_MASK) == 0x130;
+    }
 
     // get a flat list of fields but ignore fields in the ignore list
     this.getFieldList = function (root, ignoreFields, flattenFieldList) {
@@ -184,6 +197,8 @@ var formUIHelper = new function () {
         $.merge(types, this.layoutSubTypes);
         return types;
     }
+
+    this.displayAttributesCache = {};
 
 
     //var containsItem = function (itemList, item) {

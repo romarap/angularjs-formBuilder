@@ -126,6 +126,14 @@
     margin-bottom: 2px;
 }
 
+.formBuilder .dropzone label {
+    font-weight : normal;
+}
+
+.formBuilder .dropzone .italicClass {
+    font-style : italic;
+}
+
 /***************************** Toolbox *****************************/
 
 .formBuilder .toolbox ul {
@@ -211,6 +219,16 @@
 h3 > .tools {
     float: right;
     cursor: default;
+}
+
+
+h3 .float-left{
+    float: left;
+}
+
+h3 .float-right{
+    float: right;
+    margin:0 0 0 5px;
 }
 
 .selectable {
@@ -346,4 +364,3 @@ h3 > .tools {
 .spacer{
     padding: 10px 5px;
 }
-
