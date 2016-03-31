@@ -64,7 +64,7 @@
     <Content Include="App\images\camera_icon_black.jpg" />
     <Content Include="App\images\trashcan.jpg" />
     <Content Include="App\scripts\controllers\controlEditModalInstanceController.js" />
-    <Content Include="App\scripts\controllers\textFieldTemplateController.js" />
+    <Content Include="App\scripts\controllers\formFieldTemplateController.js" />
     <Content Include="App\scripts\controllers\formDetailsModalInstanceController.js" />
     <Content Include="App\scripts\controllers\controlsController.js" />
     <Content Include="App\scripts\controllers\itemDetailsModalInstanceController.js" />

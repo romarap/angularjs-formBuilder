@@ -18,7 +18,8 @@ app.controller('formsController', function ($scope, $http, $location, $sessionSt
             deleted: [],
             dirty: false,
             form: {},
-            controls: {}
+            controls: {},
+            formDisplayCache: {}
         };
 
         //$scope.$on('$viewContentLoaded', function () {
@@ -221,32 +222,29 @@ app.controller('formsController', function ($scope, $http, $location, $sessionSt
     }, true);
 
     $scope.getFieldTemplate = function (item) {
-        var type = formUIHelper.tieTypeBasicTypes[item.type & BASIC_TYPE_MASK];
-        var isGroup = type.type == 0x000;
 
-        if (type.subTypes != null) {
-            type = type.subTypes[item.type & BASIC_SUBTYPE_MASK];
-        }
-        if (type === undefined) {
-            return 'views/includes/field-templates/unknownField.html';
-        }
+        // cache display template info to reduce processing - this function get called alot! 
+        if (!(item.tieId in $scope.models.formDisplayCache)) {
+            var displayCacheItem = {};
 
-        if (isGroup) {
-            // Group - ensure it can accept children
-            if (!item.theChildren) {
+            displayCacheItem.type = formUIHelper.tieTypeBasicTypes[item.type & BASIC_TYPE_MASK];
+            if (displayCacheItem.type.type == 0x000 && !item.theChildren) {
+                // Group - ensure it can accept children
                 item.theChildren = [];
             }
-            return 'views/includes/field-templates/' + type.field_template + '.html';
+
+            if (displayCacheItem.type.subTypes != null) {
+                displayCacheItem.type = displayCacheItem.type.subTypes[item.type & BASIC_SUBTYPE_MASK];
+            }
+            if (displayCacheItem.type === undefined) {
+                displayCacheItem.template = 'views/includes/field-templates/unknownField.html';
+            }
+            else {
+                displayCacheItem.template = 'views/includes/field-templates/' + displayCacheItem.type.field_template + '.html';
+            }
+            $scope.models.formDisplayCache[item.tieId] = displayCacheItem;
         }
-
-        return 'views/includes/field-templates/formItem.html';
-        //return 'views/includes/field-templates/' + type.item_type + '.html';
-
-        //var type = formUIHelper.tieTypeBasicTypes[item.type & BASIC_TYPE_MASK];
-        //if (type.subTypes != null) {
-        //    type = type.subTypes[item.type & BASIC_SUBTYPE_MASK];
-        //}
-        //return 'views/includes/field-templates/' + type.item_type + '.html';
+        return $scope.models.formDisplayCache[item.tieId].template;
     }
 
     $scope.getItemTypeDisplayName = function (item_type) {
@@ -300,6 +298,9 @@ app.controller('formsController', function ($scope, $http, $location, $sessionSt
                 if ($scope.models.selected.status != CREATED) {
                     $scope.models.selected.status = UPDATED;
                 }
+                // delete cached info
+                delete $scope.models.formDisplayCache[item.tieId];
+
                 $scope.models.dirty = true;
             }
         });
