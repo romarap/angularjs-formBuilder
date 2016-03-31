@@ -2,8 +2,8 @@
 
 
 app.service('controlsService', function ($http, $q, $timeout, $cacheFactory) {
-    var listControls = "http://81.109.89.222/QansMark/Anon/EditorSvc.asmx/FetchControlsBig";
-    var getControl = "http://81.109.89.222/QansMark/Anon/EditorSvc.asmx/FetchControl?controlId=";
+    var listControls = "http://qans.sads.com/QansMark/Anon/EditorSvc.asmx/FetchControlsBig";
+    var getControl = "http://qans.sads.com/QansMark/Anon/EditorSvc.asmx/FetchControl?controlId=";
 
     // create cache object. The cache id must be unique
     var controlCache = $cacheFactory('controlsService');

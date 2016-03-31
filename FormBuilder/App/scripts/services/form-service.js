@@ -6,10 +6,10 @@ app.service('FormService', function FormService($http, $q, $timeout) {
     var formsJsonPath = './static-data/fulldetails.json';
     var listFormsJsonPath = './static-data/list_forms.json';
     var listFormControlsJsonPath = './static-data/list_formcontrols.json';
-   // var getForm = "http://81.109.89.222/QansMark/Anon/EditorSvc.asmx/FetchTieTree?formId=";
-    var getForm = "http://81.109.89.222/QansMark/Anon/EditorSvc.asmx/FetchForm?formId=";
-    var listForms = "http://81.109.89.222/QansMark/Anon/EditorSvc.asmx/FetchForms";
-    var saveForm = "http://81.109.89.222/QansMark/Anon/EditorSvc.asmx/SaveForm";
+    // var getForm = "http://qans.sads.com/QansMark/Anon/EditorSvc.asmx/FetchTieTree?formId=";
+    var getForm = "http://qans.sads.com/QansMark/Anon/EditorSvc.asmx/FetchForm?formId=";
+    var listForms = "http://qans.sads.com/QansMark/Anon/EditorSvc.asmx/FetchForms";
+    var saveForm = "http://qans.sads.com/QansMark/Anon/EditorSvc.asmx/SaveForm";
 
     return {
         sendAPI: function (api) {
