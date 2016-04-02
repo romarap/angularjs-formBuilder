@@ -1,5 +1,4 @@
 ﻿<div class="formBuilder row">
-
     <!-- Sidebar -->
     <div class="col-md-2">
         <forms-short-list-directive selectedid="{{models.form.formId}}"></forms-short-list-directive>
@@ -35,13 +34,13 @@
                 <div ng-controller="controlsController">
                     <div class="dropzone box box-yellow">
                         <h3>
-                            <label class="selectable-title" >Controls</label>
+                            <label class="selectable-title">Controls</label>
                             <span class="tools">
                                 <i class="glyphicon glyphicon-plus selectable" title="Create New Control" ng-click="newControl()"></i>
                                 <i id="refreshControls" class="glyphicon glyphicon-refresh selectable" title="Refresh Controls" ng-click="refreshControls(true)"></i>
                             </span>
                         </h3>
-                        <div class="tab-area" >
+                        <div class="tab-area">
 
                             <table class="table table-striped">
                                 <thead>
@@ -52,7 +51,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr ng-repeat="(key,control) in models.controls" >
+                                    <tr ng-repeat="(key,control) in models.controls">
                                         <td class="col-md-1">{{control.controlId}}</td>
                                         <td>{{control.label == null ? 'control -' + control.controlId : control.label}}</td>
                                         <td>{{getItemTypeDisplayName(control.type)}}</td>

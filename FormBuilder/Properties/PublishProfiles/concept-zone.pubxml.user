@@ -44,7 +44,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/20/2016 19:01:48</publishTime>
     </File>
     <File Include="App/scripts/controllers/formFieldTemplateController.js">
-      <publishTime>03/31/2016 13:11:24</publishTime>
+      <publishTime>03/31/2016 21:57:20</publishTime>
     </File>
     <File Include="App/scripts/controllers/formsController.js">
       <publishTime>03/31/2016 13:25:56</publishTime>
@@ -56,7 +56,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/24/2016 11:01:05</publishTime>
     </File>
     <File Include="App/scripts/controllers/itemDetailsModalInstanceController.js">
-      <publishTime>03/30/2016 14:02:21</publishTime>
+      <publishTime>03/31/2016 22:26:46</publishTime>
     </File>
     <File Include="App/scripts/controllers/textFieldTemplateController.js">
       <publishTime>03/29/2016 23:24:44</publishTime>
@@ -122,7 +122,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="App/scripts/modules/formUIHelper.js">
-      <publishTime>03/31/2016 13:17:32</publishTime>
+      <publishTime>03/31/2016 21:24:01</publishTime>
     </File>
     <File Include="App/scripts/modules/listHelpers.js">
       <publishTime>11/03/2016 11:15:07</publishTime>
@@ -131,10 +131,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="App/scripts/services/controls-service.js">
-      <publishTime>03/29/2016 22:49:09</publishTime>
+      <publishTime>03/31/2016 22:31:14</publishTime>
     </File>
     <File Include="App/scripts/services/form-service.js">
-      <publishTime>03/31/2016 13:11:24</publishTime>
+      <publishTime>03/31/2016 22:31:14</publishTime>
     </File>
     <File Include="App/scripts/services/modal-service.js">
       <publishTime>03/23/2016 21:42:17</publishTime>
@@ -158,7 +158,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/03/2016 20:21:37</publishTime>
     </File>
     <File Include="App/styles/formBuilder.css">
-      <publishTime>03/31/2016 13:51:44</publishTime>
+      <publishTime>03/31/2016 21:00:41</publishTime>
     </File>
     <File Include="App/styles/glyphicon-animate-rotation-and-flip.css">
       <publishTime>03/10/2016 17:16:31</publishTime>
@@ -200,7 +200,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/24/2016 13:07:14</publishTime>
     </File>
     <File Include="App/views/directive-templates/attributes/title.html">
-      <publishTime>03/24/2016 12:56:37</publishTime>
+      <publishTime>03/31/2016 21:53:18</publishTime>
     </File>
     <File Include="App/views/directive-templates/attributes/topMargin.html">
       <publishTime>03/24/2016 12:56:37</publishTime>
@@ -395,7 +395,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/03/2016 18:01:59</publishTime>
     </File>
     <File Include="App/views/includes/field-properties/condition.html">
-      <publishTime>03/24/2016 19:24:51</publishTime>
+      <publishTime>03/31/2016 21:46:03</publishTime>
     </File>
     <File Include="App/views/includes/field-properties/container.html">
       <publishTime>08/03/2016 18:01:59</publishTime>
@@ -416,13 +416,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="App/views/includes/field-properties/group.html">
-      <publishTime>03/24/2016 19:30:24</publishTime>
+      <publishTime>03/31/2016 21:46:03</publishTime>
     </File>
     <File Include="App/views/includes/field-properties/hidden.html">
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="App/views/includes/field-properties/layout.html">
-      <publishTime>03/24/2016 19:24:51</publishTime>
+      <publishTime>03/31/2016 21:46:03</publishTime>
     </File>
     <File Include="App/views/includes/field-properties/noyes.html">
       <publishTime>03/16/2016 11:58:15</publishTime>
@@ -452,7 +452,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/03/2016 18:01:59</publishTime>
     </File>
     <File Include="App/views/includes/field-properties/photo.html">
-      <publishTime>03/24/2016 19:24:51</publishTime>
+      <publishTime>03/31/2016 21:46:03</publishTime>
     </File>
     <File Include="App/views/includes/field-properties/radio.html">
       <publishTime>08/03/2016 18:01:59</publishTime>
@@ -464,7 +464,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/27/2016 22:58:43</publishTime>
     </File>
     <File Include="App/views/includes/field-properties/selector.html">
-      <publishTime>03/24/2016 19:24:51</publishTime>
+      <publishTime>03/31/2016 21:46:03</publishTime>
     </File>
     <File Include="App/views/includes/field-properties/static.html">
       <publishTime>03/09/2016 14:33:56</publishTime>
@@ -473,7 +473,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/03/2016 14:36:30</publishTime>
     </File>
     <File Include="App/views/includes/field-properties/textfield.html">
-      <publishTime>03/24/2016 19:24:51</publishTime>
+      <publishTime>03/31/2016 21:46:03</publishTime>
     </File>
     <File Include="App/views/includes/field-properties/tryItDialog.html">
       <publishTime>03/03/2016 09:08:42</publishTime>
@@ -491,7 +491,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/31/2016 09:08:10</publishTime>
     </File>
     <File Include="App/views/includes/field-templates/dropdown.html">
-      <publishTime>03/31/2016 12:22:50</publishTime>
+      <publishTime>03/31/2016 19:16:19</publishTime>
     </File>
     <File Include="App/views/includes/field-templates/droppedItem.html">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -503,16 +503,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/29/2016 12:06:24</publishTime>
     </File>
     <File Include="App/views/includes/field-templates/group.html">
-      <publishTime>03/22/2016 18:01:25</publishTime>
+      <publishTime>03/31/2016 21:04:37</publishTime>
     </File>
     <File Include="App/views/includes/field-templates/hidden.html">
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="App/views/includes/field-templates/layout.html">
-      <publishTime>03/31/2016 09:08:10</publishTime>
+      <publishTime>03/31/2016 19:16:19</publishTime>
     </File>
     <File Include="App/views/includes/field-templates/noyes.html">
-      <publishTime>03/31/2016 09:08:10</publishTime>
+      <publishTime>03/31/2016 19:16:19</publishTime>
     </File>
     <File Include="App/views/includes/field-templates/old/condition.html">
       <publishTime>03/16/2016 14:49:47</publishTime>
@@ -566,25 +566,25 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/03/2016 18:01:59</publishTime>
     </File>
     <File Include="App/views/includes/field-templates/photo.html">
-      <publishTime>03/31/2016 09:08:10</publishTime>
+      <publishTime>03/31/2016 19:16:19</publishTime>
     </File>
     <File Include="App/views/includes/field-templates/radio.html">
       <publishTime>08/03/2016 18:01:59</publishTime>
     </File>
     <File Include="App/views/includes/field-templates/reflector.html">
-      <publishTime>03/31/2016 13:11:24</publishTime>
+      <publishTime>03/31/2016 19:16:19</publishTime>
     </File>
     <File Include="App/views/includes/field-templates/selector.html">
       <publishTime>03/31/2016 09:08:10</publishTime>
     </File>
     <File Include="App/views/includes/field-templates/static.html">
-      <publishTime>03/31/2016 14:13:42</publishTime>
+      <publishTime>03/31/2016 21:57:20</publishTime>
     </File>
     <File Include="App/views/includes/field-templates/temp.html">
       <publishTime>03/31/2016 09:22:58</publishTime>
     </File>
     <File Include="App/views/includes/field-templates/textfield.html">
-      <publishTime>03/31/2016 09:08:10</publishTime>
+      <publishTime>03/31/2016 19:19:03</publishTime>
     </File>
     <File Include="App/views/includes/field-templates/unknownField.html">
       <publishTime>03/30/2016 13:39:51</publishTime>
@@ -608,7 +608,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/29/2016 12:37:24</publishTime>
     </File>
     <File Include="App/views/modals/fieldPropertiesDialog.html">
-      <publishTime>03/25/2016 20:43:45</publishTime>
+      <publishTime>03/31/2016 22:14:46</publishTime>
     </File>
     <File Include="App/views/modals/formPropertiesDialog.html">
       <publishTime>03/31/2016 13:23:34</publishTime>

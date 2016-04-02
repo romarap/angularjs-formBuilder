@@ -8,7 +8,7 @@ var DELETE = 'delete';
 /**
  * The controller doesn't do much more than setting the initial data model
  */
-app.controller('formsController', function ($scope, $http, $location, $sessionStorage, $localStorage, FormService, controlsService, $routeParams, modalService) {
+app.controller('formsController', function ($scope, $rootScope, $http, $location, $sessionStorage, $localStorage, $timeout, $route, FormService, controlsService, $routeParams, modalService) {
     try{
 
         $scope.$storage = $sessionStorage;
@@ -177,6 +177,23 @@ app.controller('formsController', function ($scope, $http, $location, $sessionSt
             FormService.save($scope.models.form).then(function (response) {
                 modalService.hideMessage();
                 $scope.models.dirty = false;
+                var form = response.data.d;
+                var id = form.formId
+                // delay redirect
+                $timeout(function () { }, 100).then(function () {
+                    try {
+                        if (id == $scope.models.form.formId){
+                            // existing form so refresh due to caching
+                            $route.reload();
+                        }
+                        else {
+                            // new form - redirect
+                            $location.path("/forms/" + id);
+                        }
+                    }
+                    catch (e) { }
+                });
+               
             }, function myError(response) {
                 // modalService.hideMessage();
                 modalService.showMessage({
@@ -303,6 +320,8 @@ app.controller('formsController', function ($scope, $http, $location, $sessionSt
                 delete $scope.models.formDisplayCache[item.tieId];
 
                 $scope.models.dirty = true;
+                // broadcast so that field knows to update
+                $rootScope.$broadcast('field-details-Updated-' + item.tieId);
             }
         });
 

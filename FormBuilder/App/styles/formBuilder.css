@@ -116,6 +116,7 @@
 .formBuilder .dropzone .box-small > h3 {
     font-size: 10px;
     padding: 0px 3px;
+    height: 10px;
 }
 
 .formBuilder .dropzone .box-small  {
@@ -222,13 +223,15 @@ h3 > .tools {
 }
 
 
-h3 .float-left{
+h3 .watermark-left{
     float: left;
+    color: #a0a0a0;
 }
 
-h3 .float-right{
+h3 .watermark-right{
     float: right;
     margin:0 0 0 5px;
+    color: #a0a0a0;
 }
 
 .selectable {
@@ -350,7 +353,7 @@ h3 .float-right{
 
 .pagebreak{
     width: 100%; 
-    border-bottom: 1px solid black; 
+    border-bottom: 1px solid #a0a0a0; 
     text-align: center
 }
 

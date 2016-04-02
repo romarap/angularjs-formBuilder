@@ -5,16 +5,12 @@
  */
 app.controller('formFieldTemplateController', function ($scope, controlsService) {
 
-    $scope.fieldDisplayValues = {
-        text1: $scope.item.text1,
-        text2: $scope.item.text2,
-        textValue: $scope.item.textValue,
-        intValue: $scope.item.intValue,
-        conditionSrcId: $scope.item.conditionSrcId,
-        controlId: $scope.item.controlId,
-        tmpSelectedItem: -1,
+    
 
-    }
+    $scope.$on('field-details-Updated-' + $scope.item.tieId, function (event, args) {
+        // refresh field
+        $scope.initField();
+    });
 
     $scope.init = function (controls) {
         $scope.controls = controls;
@@ -22,6 +18,17 @@ app.controller('formFieldTemplateController', function ($scope, controlsService)
     };
 
     $scope.initField = function () {
+        $scope.fieldDisplayValues = {
+            text1: $scope.item.text1,
+            text2: $scope.item.text2,
+            textValue: $scope.item.textValue,
+            intValue: $scope.item.intValue,
+            conditionSrcId: $scope.item.conditionSrcId,
+            controlId: $scope.item.controlId,
+            tmpSelectedItem: -1,
+
+        }
+
         try {
             if ($scope.item.controlId > 0 && $scope.controls) {
                 var control = $scope.controls[$scope.item.controlId];

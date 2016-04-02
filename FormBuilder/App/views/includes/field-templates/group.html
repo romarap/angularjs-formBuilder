@@ -1,8 +1,7 @@
 <div class="container-element box box-small box-blue">
- <!--   <h3><span class="float-left">{{item.text1}}</span><span class="float-right">{{item.label + " (" + item.type + ","+ item.tieId + ")"}}</span></h3>-->
-    <h3>{{item.label + " (" + item.type + ","+ item.tieId + ")"}}</h3>
+ <h3><span class="watermark-left">{{item.text1}}</span><span class="watermark-right">{{item.label + " (" + item.type + ","+ item.tieId + ")"}}</span></h3>
+    <!--<h3>{{item.label + " (" + item.type + ","+ item.tieId + ")"}}</h3>-->
     <!--Fake an array to get list in its own scope-->
-    <!--<dropzone-directive list="item.controls" new-id="models.newId" dirty="$scope.models.dirty"></dropzone-directive>-->
     <div ng-repeat="list in [item.theChildren]" ng-include="'views/includes/partials/dropZone.html'"></div>
     <div class="clearfix"></div>
 </div>

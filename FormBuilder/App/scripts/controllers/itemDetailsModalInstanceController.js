@@ -52,7 +52,6 @@ app.controller('ItemDetailsModalInstanceCtrl', function ($scope, $uibModalInstan
         return type.display_name;
     }
 
-   
 
     $scope.CommonFieldRequired = function (field, item) {
         switch (field)
